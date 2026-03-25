@@ -1443,19 +1443,35 @@ Quero Avaliação Gratuita
 <div class="lead-capture-grid">
 <div>
 <label>Nome</label>
-<input type="text" name="nome" placeholder="Seu nome">
+<input type="text" name="nome" placeholder="Seu nome" required>
 </div>
 <div>
 <label>Telefone</label>
-<input type="tel" name="telefone" placeholder="(61) 99999-9999">
+<input type="tel" name="telefone" placeholder="(61) 99999-9999" required>
 </div>
 <div>
 <label>Tipo de Imóvel</label>
-<input type="text" name="tipo_imovel" id="leadAluguelTipoDisplay" readonly style="background:var(--gray-50)">
+<select name="tipo_imovel" id="leadAluguelTipoDisplay">
+<option value="">Selecione...</option>
+<option value="Apartamento">Apartamento</option>
+<option value="Kitnet">Kitnet</option>
+<option value="Casa">Casa</option>
+<option value="Sobrado">Sobrado</option>
+<option value="Cobertura">Cobertura</option>
+<option value="Duplex">Duplex</option>
+<option value="Sala comercial">Sala comercial</option>
+<option value="Loja">Loja</option>
+<option value="Galpão">Galpão</option>
+<option value="Terreno">Terreno</option>
+</select>
 </div>
 <div>
 <label>Região</label>
 <input type="text" name="regiao" id="leadAluguelRegiaoDisplay" readonly style="background:var(--gray-50)">
+</div>
+<div style="grid-column:1/-1">
+<label>Nome do prédio / condomínio (se souber)</label>
+<input type="text" name="condominio" placeholder="Ex: Residencial Park Sul">
 </div>
 <div style="grid-column:1/-1">
 <label>Objetivo</label>
@@ -1595,19 +1611,35 @@ Quero Avaliação Gratuita para Venda
 <div class="lead-capture-grid">
 <div>
 <label>Nome</label>
-<input type="text" name="nome" placeholder="Seu nome">
+<input type="text" name="nome" placeholder="Seu nome" required>
 </div>
 <div>
 <label>Telefone</label>
-<input type="tel" name="telefone" placeholder="(61) 99999-9999">
+<input type="tel" name="telefone" placeholder="(61) 99999-9999" required>
 </div>
 <div>
 <label>Tipo de Imóvel</label>
-<input type="text" name="tipo_imovel" id="leadVendaTipoDisplay" readonly style="background:var(--gray-50)">
+<select name="tipo_imovel" id="leadVendaTipoDisplay">
+<option value="">Selecione...</option>
+<option value="Apartamento">Apartamento</option>
+<option value="Kitnet">Kitnet</option>
+<option value="Casa">Casa</option>
+<option value="Sobrado">Sobrado</option>
+<option value="Cobertura">Cobertura</option>
+<option value="Duplex">Duplex</option>
+<option value="Sala comercial">Sala comercial</option>
+<option value="Loja">Loja</option>
+<option value="Galpão">Galpão</option>
+<option value="Terreno">Terreno</option>
+</select>
 </div>
 <div>
 <label>Região</label>
 <input type="text" name="regiao" id="leadVendaRegiaoDisplay" readonly style="background:var(--gray-50)">
+</div>
+<div style="grid-column:1/-1">
+<label>Nome do prédio / condomínio (se souber)</label>
+<input type="text" name="condominio" placeholder="Ex: Residencial Park Sul">
 </div>
 <div style="grid-column:1/-1">
 <label>Objetivo</label>
@@ -2962,9 +2994,9 @@ function calcularAluguel() {
   document.getElementById('leadAluguelQuartos').value = document.getElementById('simQuartos').value + ' quartos';
   document.getElementById('leadAluguelArea').value = area + 'm²';
   document.getElementById('leadAluguelResultado').value = resultadoTexto;
-  document.getElementById('leadAluguelTipoDisplay').value = tipoText;
+  document.getElementById('leadAluguelTipoDisplay').value = normalizeLeadPropertyType(tipoText) || '';
   document.getElementById('leadAluguelRegiaoDisplay').value = bairroText;
-  document.getElementById('leadAluguelWaBtn').href = 'https://wa.me/556130424344?text=' + encodeURIComponent('Olá, acabei de fazer uma simulação de aluguel no site e gostaria de uma avaliação mais precisa.');
+  updateLeadWhatsAppLink('leadAluguelWaBtn', 'Olá, acabei de fazer uma simulação de aluguel no site e gostaria de uma avaliação mais precisa.');
   setTimeout(function(){ document.getElementById('leadFormAluguel').classList.add('show'); }, 400);
 }
 
@@ -3082,9 +3114,9 @@ function calcularVenda() {
   document.getElementById('leadVendaQuartos').value = document.getElementById('simQuartosVenda').value + ' quartos';
   document.getElementById('leadVendaArea').value = area + 'm²';
   document.getElementById('leadVendaResultado').value = resultadoTexto;
-  document.getElementById('leadVendaTipoDisplay').value = tipoText;
+  document.getElementById('leadVendaTipoDisplay').value = normalizeLeadPropertyType(tipoText) || '';
   document.getElementById('leadVendaRegiaoDisplay').value = bairroText;
-  document.getElementById('leadVendaWaBtn').href = 'https://wa.me/556130424344?text=' + encodeURIComponent('Olá, acabei de fazer uma simulação de venda no site e gostaria de avaliar meu imóvel.');
+  updateLeadWhatsAppLink('leadVendaWaBtn', 'Olá, acabei de fazer uma simulação de venda no site e gostaria de avaliar meu imóvel.');
   setTimeout(function(){ document.getElementById('leadFormVenda').classList.add('show'); }, 400);
 }
 
@@ -3317,6 +3349,99 @@ function formatConsBRL(value) {
   return 'R$ ' + value.toLocaleString('pt-BR', { minimumFractionDigits: 2, maximumFractionDigits: 2 });
 }
 
+function normalizeLeadPropertyType(raw) {
+  const value = (raw || '').toString().toLowerCase().trim();
+  const map = {
+    'apartamento': 'Apartamento',
+    'kitnet': 'Kitnet',
+    'casa': 'Casa',
+    'sobrado': 'Sobrado',
+    'cobertura': 'Cobertura',
+    'duplex': 'Duplex',
+    'apartamento duplex': 'Duplex',
+    'apartamento triplex': 'Duplex',
+    'triplex': 'Duplex',
+    'loft': 'Apartamento',
+    'sala-comercial': 'Sala comercial',
+    'sala comercial': 'Sala comercial',
+    'loja': 'Loja',
+    'galpao': 'Galpão',
+    'galpão': 'Galpão',
+    'ponto-comercial': 'Loja',
+    'terreno': 'Terreno',
+    'lote': 'Terreno',
+    'loteamento': 'Terreno',
+    'casa-condominio': 'Casa',
+    'casa em condomínio': 'Casa'
+  };
+  return map[value] || '';
+}
+
+function updateLeadWhatsAppLink(anchorId, message) {
+  const anchor = document.getElementById(anchorId);
+  if (!anchor) return;
+  anchor.href = 'https://wa.me/556130424344?text=' + encodeURIComponent(message);
+}
+
+function attachLeadFormHandler(formId, waAnchorId, leadTypeLabel) {
+  const form = document.getElementById(formId);
+  if (!form || form.dataset.bound === 'true') return;
+  form.dataset.bound = 'true';
+
+  form.addEventListener('submit', function (event) {
+    event.preventDefault();
+
+    const nome = (form.querySelector('[name="nome"]')?.value || '').trim();
+    const telefone = (form.querySelector('[name="telefone"]')?.value || '').trim();
+    const tipo = (form.querySelector('[name="tipo_imovel"]')?.value || '').trim();
+    const regiao = (form.querySelector('[name="regiao"]')?.value || '').trim();
+    const condominio = (form.querySelector('[name="condominio"]')?.value || '').trim();
+    const objetivo = (form.querySelector('[name="objetivo"]')?.value || '').trim();
+    const simTipo = (form.querySelector('[name="sim_tipo"]')?.value || '').trim();
+    const simBairro = (form.querySelector('[name="sim_bairro"]')?.value || '').trim();
+    const simQuartos = (form.querySelector('[name="sim_quartos"]')?.value || '').trim();
+    const simArea = (form.querySelector('[name="sim_area"]')?.value || '').trim();
+    const simResultado = (form.querySelector('[name="sim_resultado"]')?.value || '').trim();
+
+    if (!nome) { alert('Por favor, preencha seu nome.'); return; }
+    if (!telefone) { alert('Por favor, preencha seu telefone.'); return; }
+    if (!tipo) { alert('Selecione o tipo de imóvel.'); return; }
+
+    const message = [
+      'Olá! Quero receber uma avaliação completa.',
+      '',
+      `*Lead:* ${leadTypeLabel}`,
+      `*Nome:* ${nome}`,
+      `*Telefone:* ${telefone}`,
+      `*Objetivo:* ${objetivo || 'Não informado'}`,
+      `*Tipo de imóvel:* ${tipo}`,
+      `*Região:* ${regiao || simBairro || 'Não informado'}`,
+      `*Prédio/Condomínio:* ${condominio || 'Não informado'}`,
+      `*Perfil simulado:* ${simTipo || 'Não informado'}`,
+      `*Quartos:* ${simQuartos || 'Não informado'}`,
+      `*Área:* ${simArea || 'Não informado'}`,
+      `*Resultado da simulação:* ${simResultado || 'Não informado'}`
+    ].join('\n');
+
+    updateLeadWhatsAppLink(waAnchorId, message);
+
+    const submitBtn = form.querySelector('.btn-lead-submit');
+    if (submitBtn) {
+      submitBtn.textContent = '✅ Redirecionando para WhatsApp...';
+      submitBtn.disabled = true;
+    }
+
+    window.open('https://wa.me/556130424344?text=' + encodeURIComponent(message), '_blank');
+
+    setTimeout(() => {
+      if (submitBtn) {
+        submitBtn.textContent = '📩 Receber avaliação completa';
+        submitBtn.disabled = false;
+      }
+    }, 1200);
+  });
+}
+
 function resolveMainConPrazo() {
   const select = document.getElementById('mainConPrazo');
   if (!select) return 0;
@@ -3431,6 +3556,9 @@ if (mainConPrazoSelect) {
     if (manual) custom.focus();
   });
 }
+
+attachLeadFormHandler('leadFormAluguelForm', 'leadAluguelWaBtn', 'Avaliação de locação');
+attachLeadFormHandler('leadFormVendaForm', 'leadVendaWaBtn', 'Avaliação de venda');
 </script>
 </body>
 </html>
