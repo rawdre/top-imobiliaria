@@ -474,8 +474,13 @@ img{max-width:100%;display:block}
 .properties-grid{grid-template-columns:1fr}
 .search-fields{flex-direction:column}
 .search-select,.search-input,.search-btn{min-width:100%;width:100%}
+.hero-grid{gap:30px}
+.hero-cards-grid,.hero-cards-grid.hero-cards-5{grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;max-width:720px}
+.search-box{margin-bottom:24px}
 .hero-owner-panel{padding:18px 16px}
+.hero-content-anim[style*="max-width:680px"]{margin-bottom:24px!important}
 .hero-owner-actions a{justify-content:center}
+.trust-badges{justify-content:center}
 .stats-row{gap:24px}
 .stat-item{min-width:120px}
 .footer-bottom{flex-direction:column;text-align:center}
@@ -489,11 +494,18 @@ img{max-width:100%;display:block}
 
 @media(max-width:480px){
 .section{padding:64px 0}
-.hero{padding:100px 0 60px;background-position:78% center}
+.hero{padding:96px 0 52px;background-position:78% center}
 .hero::before{background:linear-gradient(165deg,rgba(15,26,46,.42) 0%,rgba(27,42,74,.34) 45%,rgba(36,54,86,.28) 100%)}
 .hero-badge{font-size:12px;padding:10px 14px;max-width:calc(100vw - 48px);line-height:1.35;white-space:normal}
+.hero-cards-grid,.hero-cards-grid.hero-cards-5{grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.search-box{padding:14px;margin-bottom:18px}
+.hero-owner-panel{padding:16px 14px}
+.trust-badges{gap:8px}
 .trust-badge .num{font-size:15px}
 .trust-badge .label{font-size:10px}
+}
+@media(max-width:380px){
+.hero-cards-grid,.hero-cards-grid.hero-cards-5{grid-template-columns:1fr}
 }
 
 /* DUAL-PATH HERO CARDS */
