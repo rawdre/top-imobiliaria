@@ -783,27 +783,27 @@ img{max-width:100%;display:block}
 <a href="#simulador" onclick="setTimeout(function(){showSimulator('venda')},500)" class="hero-owner-cta hero-content-anim">Simular valor do meu imóvel</a>
 
 <div class="hero-cards-grid hero-cards-5 hero-content-anim">
-<a href="#" onclick="openStandardizedWhatsApp('venda'); return false;" class="dual-path-card primary-owner">
+<a href="#" onclick="openStandardizedWhatsApp('venda', event); return false;" class="dual-path-card primary-owner">
 <span class="dp-emoji">📋</span>
 <div class="dp-title">VENDER OU ALUGAR MEU IMÓVEL</div>
 <div class="dp-sub">Avaliação gratuita, administração e aluguel protegido com garantia locatícia</div>
 </a>
-<a href="#" onclick="openStandardizedWhatsApp('alugar'); return false;" class="dual-path-card">
+<a href="#" onclick="openStandardizedWhatsApp('alugar', event); return false;" class="dual-path-card">
 <span class="dp-emoji">🔑</span>
 <div class="dp-title">ALUGAR IMÓVEL</div>
 <div class="dp-sub">Encontre o lugar perfeito para morar com segurança</div>
 </a>
-<a href="#" onclick="openStandardizedWhatsApp('venda'); return false;" class="dual-path-card">
+<a href="#" onclick="openStandardizedWhatsApp('venda', event); return false;" class="dual-path-card">
 <span class="dp-emoji">🏠</span>
 <div class="dp-title">COMPRAR IMÓVEL</div>
 <div class="dp-sub">Apartamentos e casas à venda em Águas Claras e região</div>
 </a>
-<a href="#" onclick="openStandardizedWhatsApp('consorcio'); return false;" class="dual-path-card" style="border-color:rgba(46,125,50,.4);background:linear-gradient(135deg,rgba(46,125,50,.08),rgba(67,160,71,.05))">
+<a href="#" onclick="openStandardizedWhatsApp('consorcio', event); return false;" class="dual-path-card" style="border-color:rgba(46,125,50,.4);background:linear-gradient(135deg,rgba(46,125,50,.08),rgba(67,160,71,.05))">
 <span class="dp-emoji">🧮</span>
 <div class="dp-title" style="color:#2E7D32">CONSÓRCIO IMOBILIÁRIO</div>
 <div class="dp-sub">Compare com financiamento e veja quanto você economiza — sem juros</div>
 </a>
-<a href="#" onclick="openStandardizedWhatsApp('indique'); return false;" class="dual-path-card" style="border-color:rgba(255,152,0,.4);background:linear-gradient(135deg,rgba(255,152,0,.1),rgba(245,124,0,.05))">
+<a href="#" onclick="openStandardizedWhatsApp('indique', event); return false;" class="dual-path-card" style="border-color:rgba(255,152,0,.4);background:linear-gradient(135deg,rgba(255,152,0,.1),rgba(245,124,0,.05))">
 <span class="dp-emoji">🎁</span>
 <div class="dp-title" style="color:#FFC247">INDIQUE UM PROPRIETÁRIO E GANHE</div>
 <div class="dp-sub">Indique um proprietário e ganhe recompensa quando o negócio for fechado</div>
@@ -902,10 +902,10 @@ img{max-width:100%;display:block}
 <div class="hero-owner-panel">
 <h3 style="color:var(--white);font-size:1.1rem;font-weight:700;margin-bottom:14px">🏡 É proprietário?</h3>
 <div class="hero-owner-actions">
-<a href="#" onclick="openStandardizedWhatsApp('alugar'); return false;" style="padding:10px 20px;border-radius:50px;background:var(--red);color:var(--white);font-size:.85rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px">🔑 Colocar para Alugar</a>
-<a href="#" onclick="openStandardizedWhatsApp('venda'); return false;" style="padding:10px 20px;border-radius:50px;background:var(--red);color:var(--white);font-size:.85rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px">💰 Colocar para Vender</a>
+<a href="#" onclick="openStandardizedWhatsApp('alugar', event); return false;" style="padding:10px 20px;border-radius:50px;background:var(--red);color:var(--white);font-size:.85rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px">🔑 Colocar para Alugar</a>
+<a href="#" onclick="openStandardizedWhatsApp('venda', event); return false;" style="padding:10px 20px;border-radius:50px;background:var(--red);color:var(--white);font-size:.85rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px">💰 Colocar para Vender</a>
 <a href="#simulador" onclick="setTimeout(function(){showSimulator('venda')},500)" style="padding:10px 20px;border-radius:50px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:var(--white);font-size:.85rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px">💰 Descubra Quanto Vale Seu Imóvel</a>
-<a href="#administracao" onclick="openStandardizedWhatsApp('administracao'); return false;" style="padding:10px 20px;border-radius:50px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:var(--white);font-size:.85rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px">📋 Administração</a>
+<a href="#administracao" onclick="openStandardizedWhatsApp('administracao', event); return false;" style="padding:10px 20px;border-radius:50px;background:rgba(255,255,255,.1);border:1.5px solid rgba(255,255,255,.2);color:var(--white);font-size:.85rem;font-weight:600;transition:var(--transition);display:inline-flex;align-items:center;gap:6px">📋 Administração</a>
 </div>
 </div>
 </div>
@@ -1241,7 +1241,7 @@ Via Google Reviews
 <a href="#simulador" onclick="setTimeout(function(){showSimulator('venda')},500)" style="display:block;margin-bottom:12px">
 <button class="btn-calcular" style="width:100%;font-size:.9rem;padding:14px 28px">💰 Descubra Quanto Vale Seu Imóvel</button>
 </a>
-<a href="#" onclick="openStandardizedWhatsApp('venda'); return false;" target="_blank">
+<a href="#" onclick="openStandardizedWhatsApp('venda', event); return false;" target="_blank">
 <button class="btn-whatsapp">
 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 Quero Anunciar Meu Imóvel
@@ -1327,7 +1327,7 @@ Quero Anunciar Meu Imóvel
 </div>
 
 <div class="text-center reveal">
-<a href="#" onclick="openStandardizedWhatsApp('garantias'); return false;" target="_blank">
+<a href="#" onclick="openStandardizedWhatsApp('garantias', event); return false;" target="_blank">
 <button class="btn-whatsapp">
 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 Saiba Mais Sobre Garantias Locatícias
@@ -1904,7 +1904,7 @@ Quero uma simulação personalizada
 </div>
 
 <div class="text-center reveal" style="margin-top:48px">
-<a href="#" onclick="openStandardizedWhatsApp('administracao'); return false;" target="_blank">
+<a href="#" onclick="openStandardizedWhatsApp('administracao', event); return false;" target="_blank">
 <button class="btn-whatsapp">
 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 Quero Colocar Meu Imóvel Para Administração
@@ -1969,7 +1969,7 @@ Quero Colocar Meu Imóvel Para Administração
 </div>
 
 <div class="text-center reveal" style="margin-top:48px">
-<a href="#" onclick="openStandardizedWhatsApp('alugar'); return false;" target="_blank">
+<a href="#" onclick="openStandardizedWhatsApp('alugar', event); return false;" target="_blank">
 <button class="btn-whatsapp">
 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 Começar Agora
@@ -2211,7 +2211,7 @@ Começar Agora
 </div>
 
 <div class="text-center reveal">
-<a href="#" onclick="openStandardizedWhatsApp('corretor'); return false;" target="_blank">
+<a href="#" onclick="openStandardizedWhatsApp('corretor', event); return false;" target="_blank">
 <button class="btn-whatsapp">
 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 Quero Ser Parceiro
@@ -2282,13 +2282,13 @@ Quero Ser Parceiro
 </div>
 
 <div class="text-center reveal" style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap">
-<a href="#" onclick="openStandardizedWhatsApp('venda'); return false;" target="_blank">
+<a href="#" onclick="openStandardizedWhatsApp('venda', event); return false;" target="_blank">
 <button class="btn-whatsapp">
 <svg viewBox="0 0 24 24"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/></svg>
 Quero Vender Meu Imóvel
 </button>
 </a>
-<a href="#" onclick="openStandardizedWhatsApp('venda-assistida'); return false;" target="_blank">
+<a href="#" onclick="openStandardizedWhatsApp('venda-assistida', event); return false;" target="_blank">
 <button class="btn-whatsapp" style="background:linear-gradient(135deg,var(--red),var(--red-dark));color:var(--navy)">
 ⚡ Quero Venda Assistida
 </button>
@@ -3543,7 +3543,13 @@ function attachLeadFormHandler(formId, waAnchorId, leadTypeLabel) {
 }
 
 // Padronização de botões diretos do WhatsApp
-function openStandardizedWhatsApp(interestType) {
+function openStandardizedWhatsApp(interestType, event) {
+  // Prevent any event bubbling or multiple triggers
+  if (event) {
+    event.preventDefault();
+    event.stopPropagation();
+  }
+  
   const baseMessage = 'Olá! Vim pelo site da Top Imobiliária.';
   
   const messages = {
