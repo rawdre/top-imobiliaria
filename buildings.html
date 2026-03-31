@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prédios em Águas Claras | Top Imobiliária</title>
+    <style>
+        :root { --navy: #1B2A4A; --navy-deep: #0F172A; --red: #D32F2F; --white: #FFFFFF; --gray-50: #F9FAFB; --gray-600: #6B7280; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: #1F2937; line-height: 1.6; background: var(--gray-50); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; border: 1.5px solid var(--gray-200); background: var(--white); color: var(--navy); font-weight: 600; text-decoration: none; margin: 32px 0; }
+        .back-btn:hover { background: var(--navy); color: var(--white); }
+        .buildings-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 24px; margin: 40px 0; }
+        .building-card { background: var(--white); border-radius: 12px; padding: 24px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: all 0.3s ease; text-align: center; }
+        .building-card:hover { transform: translateY(-8px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .building-icon { font-size: 3rem; margin-bottom: 16px; }
+        .building-card h3 { color: var(--navy); font-size: 1.3rem; margin-bottom: 8px; }
+        .building-card p { color: var(--gray-600); font-size: 0.9rem; margin-bottom: 16px; }
+        .btn-see { display: inline-block; padding: 10px 20px; border-radius: 50px; background: var(--red); color: var(--white); text-decoration: none; font-weight: 600; font-size: 0.9rem; }
+        .btn-see:hover { background: var(--red); color: var(--white); }
+        h1 { font-size: 2.5rem; color: var(--navy); margin-bottom: 16px; }
+        .intro { color: var(--gray-600); font-size: 1.1rem; max-width: 700px; margin: 0 auto 40px; text-align: center; }
+        @media(max-width: 768px) { h1 { font-size: 2rem; } .buildings-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="index.html" class="back-btn">
+            <i class="fas fa-arrow-left"></i>
+            Voltar para o Site Principal
+        </a>
+        
+        <h1>Prédios em Águas Claras</h1>
+        <p class="intro">Especialistas nos principais condomínios de Águas Claras. Conheça cada prédio e encontre o imóvel perfeito.</p>
+        
+        <div class="buildings-grid">
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>DF Plaza</h3>
+                <p>Residencial moderno, 25 andares. Rua das Pitangueiras, Águas Claras Sul.</p>
+                <a href="df-plaza.html" class="btn-see">Ver Imóveis</a>
+            </div>
+            
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>Real Splendor</h3>
+                <p>Condomínio completo com área de lazer, 20 andares. Av. Araucárias.</p>
+                <a href="real-splendor.html" class="btn-see">Ver Imóveis</a>
+            </div>
+            
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>Via Azaleas</h3>
+                <p>Residencial com excelente acabamento, 18 andares. Rua 25 Sul.</p>
+                <a href="via-azaleas.html" class="btn-see">Ver Imóveis</a>
+            </div>
+            
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>Residencial Easy</h3>
+                <p>Perfeito para jovens e casais, 15 andares. Localização central.</p>
+                <a href="residencial-easy.html" class="btn-see">Ver Imóveis</a>
+            </div>
+            
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>Life Resort</h3>
+                <p>Resort urbano com piscinas e quadras, 22 andares. Rua 12 Norte.</p>
+                <a href="life-resort.html" class="btn-see">Ver Imóveis</a>
+            </div>
+            
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>Reserva Taguatinga</h3>
+                <p>Condomínio amplo com áreas verdes, 16 andares. Região central.</p>
+                <a href="reserva-taguatinga.html" class="btn-see">Ver Imóveis</a>
+            </div>
+            
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>Parque Amazônia</h3>
+                <p>Residencial familiar completo, 20 andares. Próximo ao metrô.</p>
+                <a href="parque-amazonia.html" class="btn-see">Ver Imóveis</a>
+            </div>
+            
+            <div class="building-card">
+                <div class="building-icon">🏢</div>
+                <h3>Vitrium</h3>
+                <p>Design moderno e sofisticado, 24 andares. Av. Castanheiras.</p>
+                <a href="vitrium.html" class="btn-see">Ver Imóveis</a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
