@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Residencial Easy - Imóveis em Águas Claras | Top Imobiliária</title>
+    <style>
+        :root { --navy: #1B2A4A; --navy-deep: #0F172A; --red: #D32F2F; --white: #FFFFFF; --gray-50: #F9FAFB; --gray-600: #6B7280; }
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body { font-family: 'Plus Jakarta Sans', sans-serif; color: #1F2937; line-height: 1.6; background: var(--gray-50); }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        .building-hero { background: linear-gradient(135deg, var(--navy-deep), var(--navy)); color: var(--white); padding: 80px 0; text-align: center; }
+        .building-hero h1 { font-size: clamp(2rem, 5vw, 3.5rem); font-weight: 700; margin-bottom: 16px; }
+        .building-hero p { font-size: 1.1rem; opacity: 0.9; max-width: 700px; margin: 0 auto; }
+        .building-info { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 24px; margin: 40px 0; }
+        .info-card { background: var(--white); padding: 24px; border-radius: 12px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
+        .info-card h3 { color: var(--red); font-size: 1.5rem; margin-bottom: 8px; }
+        .info-card p { color: var(--gray-600); font-size: 0.95rem; }
+        .section { padding: 60px 0; }
+        .section-title { font-size: clamp(1.8rem, 4vw, 2.5rem); font-weight: 700; color: var(--navy); margin-bottom: 16px; text-align: center; }
+        .section-desc { text-align: center; color: var(--gray-600); font-size: 1.1rem; max-width: 700px; margin: 0 auto 40px; }
+        .properties-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 24px; margin-top: 32px; }
+        .property-card { background: var(--white); border-radius: 12px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.05); transition: transform 0.3s ease; position: relative; }
+        .property-card:hover { transform: translateY(-8px); box-shadow: 0 8px 24px rgba(0,0,0,0.1); }
+        .property-image { height: 220px; background: linear-gradient(135deg, var(--navy), var(--navy-deep)); display: flex; align-items: center; justify-content: center; color: rgba(255,255,255,0.2); font-size: 80px; }
+        .property-body { padding: 20px; }
+        .property-title { font-size: 1.2rem; font-weight: 600; color: var(--navy); margin-bottom: 8px; }
+        .property-desc { color: var(--gray-600); font-size: 0.95rem; margin-bottom: 16px; }
+        .property-price { font-size: 1.5rem; font-weight: 700; color: var(--red); margin-bottom: 12px; }
+        .property-features { display: flex; gap: 16px; margin-bottom: 16px; font-size: 0.9rem; color: var(--gray-600); }
+        .property-features span { display: flex; align-items: center; gap: 6px; }
+        .btn-whatsapp { display: inline-flex; align-items: center; justify-content: center; width: 100%; gap: 8px; padding: 12px 20px; border-radius: 50px; background: #25D366; color: #fff; font-size: 1rem; font-weight: 600; border: none; cursor: pointer; transition: background 0.3s ease; text-decoration: none; }
+        .btn-whatsapp:hover { background: #128C7E; }
+        .back-btn { display: inline-flex; align-items: center; gap: 8px; padding: 12px 24px; border-radius: 50px; border: 1.5px solid var(--gray-200); background: var(--white); color: var(--navy); font-size: 1rem; font-weight: 600; text-decoration: none; transition: all 0.3s ease; margin-bottom: 32px; }
+        .back-btn:hover { background: var(--navy); color: var(--white); border-color: var(--navy); }
+        @media(max-width: 768px) { .building-hero { padding: 60px 0; } .properties-grid { grid-template-columns: 1fr; } }
+    </style>
+</head>
+<body>
+    <header class="building-hero">
+        <div class="container">
+            <h1>Residencial Easy</h1>
+            <p>Perfeito para jovens e casais, 15 andares. Localização central em Águas Claras Norte.</p>
+        </div>
+    </header>
+    
+    <section class="section">
+        <div class="container">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-arrow-left"></i>
+                Voltar para o Site
+            </a>
+            
+            <div class="building-info">
+                <div class="info-card">
+                    <h3>📍</h3>
+                    <p><strong>Endereço:</strong><br>Localização central, Águas Claras Norte</p>
+                </div>
+                <div class="info-card">
+                    <h3>🏢</h3>
+                    <p><strong>Andares:</strong><br>15 andares</p>
+                </div>
+                <div class="info-card">
+                    <h3>🏠</h3>
+                    <p><strong>Tipo:</strong><br>Residencial para Jovens</p>
+                </div>
+            </div>
+            
+            <h2 class="section-title">🏠 Imóveis Disponíveis</h2>
+            <p class="section-desc">Conheça os imóveis à venda e para aluguel no Residencial Easy</p>
+            
+            <div class="properties-grid">
+                <div class="property-card">
+                    <div class="property-image">🏢</div>
+                    <div class="property-body">
+                        <div class="property-title">Apartamento 1 Quarto</div>
+                        <p class="property-desc">Studio moderno perfeito para jovens profissionais</p>
+                        <div class="property-price">R$ 320.000</div>
+                        <div class="property-features">
+                            <span>🛏️ 1 quarto</span>
+                            <span>🚿 1 banheiro</span>
+                            <span>🚗 1 vaga</span>
+                        </div>
+                        <a href="https://wa.me/556130424344?text=Tenho+interesse+no+apartamento+de+1+quarto+no+Residencial+Easy" target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Tenho Interesse
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="property-card">
+                    <div class="property-image">🏢</div>
+                    <div class="property-body">
+                        <div class="property-title">Apartamento 2 Quartos</div>
+                        <p class="property-desc">Apartamento espaçoso para casais jovens</p>
+                        <div class="property-price">R$ 400.000</div>
+                        <div class="property-features">
+                            <span>🛏️ 2 quartos</span>
+                            <span>🚿 2 banheiros</span>
+                            <span>🚗 1 vaga</span>
+                        </div>
+                        <a href="https://wa.me/556130424344?text=Tenho+interesse+no+apartamento+de+2+quartos+no+Residencial+Easy" target="_blank" class="btn-whatsapp">
+                            <i class="fab fa-whatsapp"></i>
+                            Tenho Interesse
+                        </a>
+                    </div>
+                </div>
+            </div>
+            
+            <div style="text-align: center; margin-top: 40px;">
+                <a href="https://wa.me/556130424344?text=Tenho+interesse+em+imóveis+no+prédio+Residencial+Easy" target="_blank" class="btn-whatsapp" style="max-width: 300px;">
+                    <i class="fab fa-whatsapp"></i>
+                    Falar com Corretor
+                </a>
+            </div>
+        </div>
+    </section>
+    
+    <footer style="background: var(--navy); color: var(--white); padding: 40px 0; text-align: center; margin-top: 60px;">
+        <div class="container">
+            <p>&copy; 2026 Top Imobiliária DF. Todos os direitos reservados.</p>
+            <p style="margin-top: 8px; opacity: 0.8;">Águas Claras, Brasília - DF | (61) 3042-4344</p>
+        </div>
+    </footer>
+</body>
+</html>
