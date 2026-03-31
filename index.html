@@ -3684,15 +3684,7 @@ function attachWhatsAppLeadForm(formId, buttonId, serviceType) {
       return;
     }
     
-    // Format phone for WhatsApp
-    let phone = telefone.replace(/\D/g, '');
-    if (phone.startsWith('61')) {
-      // Already has DDD
-    } else if (phone.length === 11) {
-      phone = '61' + phone;
-    }
-    
-    // Build WhatsApp message
+    // Build WhatsApp message - ALWAYS sends to company number (61) 3042-4344
     const message = [
       'Olá! Vim pelo site da Top Imobiliária.',
       '',
@@ -3710,8 +3702,8 @@ function attachWhatsAppLeadForm(formId, buttonId, serviceType) {
     submitBtn.textContent = '✅ Enviando para WhatsApp...';
     submitBtn.disabled = true;
     
-    // Open WhatsApp
-    window.open('https://wa.me/55' + phone + '?text=' + encodeURIComponent(message), '_blank');
+    // Open WhatsApp to company number (61) 3042-4344
+    window.open('https://wa.me/556130424344?text=' + encodeURIComponent(message), '_blank');
     
     // Reset button after delay
     setTimeout(() => {
