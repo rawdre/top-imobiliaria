@@ -3550,21 +3550,21 @@ function openStandardizedWhatsApp(interestType, event) {
     event.stopPropagation();
   }
   
-  const baseMessage = 'Olá! Vim pelo site da Top Imobiliária.';
-  
+    
   const messages = {
-    'alugar': baseMessage + ' Tenho interesse em alugar um imóvel.',
-    'venda': baseMessage + ' Tenho interesse em vender meu imóvel.',
-    'administracao': baseMessage + ' Gostaria de informações sobre administração de imóvel.',
-    'parceria': baseMessage + ' Tenho interesse em parceria.',
-    'indique': baseMessage + ' Gostaria de indicar um proprietário.',
-    'simulador': baseMessage + ' Fiz uma simulação no site e gostaria de falar com um consultor.',
-    'consorcio': baseMessage + ' Gostaria de informações sobre consórcio imobiliário.',
-    'corretor': baseMessage + ' Sou corretor e gostaria de uma parceria.',
-    'venda-assistida': baseMessage + ' Tenho interesse em Venda Assistida.',
-    'park-way': baseMessage + ' Gostaria de informações sobre imóveis no Park Way.',
-    'garantias': baseMessage + ' Gostaria de informações sobre garantias locatícias.',
-    'padrao': baseMessage + ' Gostaria de falar com um consultor.'
+    'alugar': 'Vim pelo site da Top Imobiliária. Tenho interesse em alugar um imóvel.',
+    'venda': 'Vim pelo site da Top Imobiliária. Tenho interesse em vender meu imóvel.',
+    'administracao': 'Vim pelo site da Top Imobiliária. Gostaria de informações sobre administração de imóvel.',
+    'parceria': 'Vim pelo site da Top Imobiliária. Tenho interesse em parceria.',
+    'indique': 'Vim pelo site da Top Imobiliária. Gostaria de indicar um proprietário.',
+    'simulador': 'Vim pelo site da Top Imobiliária. Fiz uma simulação no site.',
+    'consorcio': 'Vim pelo site da Top Imobiliária. Gostaria de informações sobre consórcio imobiliário.',
+    'corretor': 'Vim pelo site da Top Imobiliária. Sou corretor.',
+    'venda-assistida': 'Vim pelo site da Top Imobiliária. Tenho interesse em Venda Assistida.',
+    'park-way': 'Vim pelo site da Top Imobiliária. Gostaria de informações sobre imóveis no Park Way.',
+    'garantias': 'Vim pelo site da Top Imobiliária. Gostaria de informações sobre garantias locatícias.',
+    'compra': 'Vim pelo site da Top Imobiliária. Tenho interesse em comprar um imóvel.',
+    'padrao': 'Vim pelo site da Top Imobiliária.'
   };
   
   const message = messages[interestType] || messages['padrao'];
