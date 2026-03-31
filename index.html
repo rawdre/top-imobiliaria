@@ -2454,6 +2454,75 @@ Quero Vender Meu Imóvel
 </div>
 </section>
 
+<!-- WHATSAPP LEAD FORM SECTION -->
+<section id="contato" class="section section-gray" style="padding: 80px 0;">
+<div class="container">
+<div class="section-label">📱 Contato Direto</div>
+<h2 class="section-title text-center" style="margin-bottom: 16px;">Fale Conosco no WhatsApp</h2>
+<p class="section-desc text-center" style="margin: 0 auto 48px;max-width: 600px;">Preencha o formulário abaixo e seu contato será enviado automaticamente para nosso WhatsApp com todas as informações organizadas.</p>
+
+<div class="lead-form-container" style="max-width: 600px;margin: 0 auto;background: white;border-radius: 24px;padding: 40px;box-shadow: var(--shadow-lg);">
+<form id="whatsappLeadForm" class="lead-form">
+<div class="form-grid">
+<div class="form-group">
+<label for="leadNome" style="font-weight: 600;margin-bottom: 8px;display: block;">Nome *</label>
+<input type="text" id="leadNome" name="nome" placeholder="Seu nome completo" required style="width: 100%;padding: 14px 18px;border-radius: 12px;border: 1px solid var(--gray-200);font-size: 15px;outline: none;transition: var(--transition);">
+<input type="text" id="leadTelefone" name="telefone" placeholder="Seu WhatsApp (com DDD)" required style="width: 100%;padding: 14px 18px;border-radius: 12px;border: 1px solid var(--gray-200);font-size: 15px;outline: none;transition: var(--transition);margin-top: 12px;">
+</div>
+
+<div class="form-group">
+<label for="leadInteresse" style="font-weight: 600;margin-bottom: 8px;display: block;">Tipo de Interesse *</label>
+<select id="leadInteresse" name="interesse" required style="width: 100%;padding: 14px 18px;border-radius: 12px;border: 1px solid var(--gray-200);font-size: 15px;outline: none;background: white;cursor: pointer;">
+<option value="">Selecione uma opção</option>
+<option value="Comprar">Quero Comprar Imóvel</option>
+<option value="Alugar">Quero Alugar Imóvel</option>
+<option value="Vender">Quero Vender Imóvel</option>
+<option value="Anunciar">Quero Anunciar Meu Imóvel</option>
+<option value="Consultoria">Preciso de Consultoria</option>
+<option value="Outro">Outro</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="leadTipoImovel" style="font-weight: 600;margin-bottom: 8px;display: block;">Tipo de Imóvel</label>
+<select id="leadTipoImovel" name="tipo_imovel" style="width: 100%;padding: 14px 18px;border-radius: 12px;border: 1px solid var(--gray-200);font-size: 15px;outline: none;background: white;cursor: pointer;">
+<option value="">Selecione o tipo</option>
+<option value="Apartamento">Apartamento</option>
+<option value="Casa">Casa</option>
+<option value="Cobertura">Cobertura</option>
+<option value="Terreno">Terreno</option>
+<option value="Loja Comercial">Loja Comercial</option>
+<option value="Sala Comercial">Sala Comercial</option>
+<option value="Galpão">Galpão</option>
+<option value="Outro">Outro</option>
+</select>
+</div>
+
+<div class="form-group">
+<label for="leadRegiao" style="font-weight: 600;margin-bottom: 8px;display: block;">Região</label>
+<input type="text" id="leadRegiao" name="regiao" placeholder="Ex: Águas Claras, Park Way, Sudoeste" style="width: 100%;padding: 14px 18px;border-radius: 12px;border: 1px solid var(--gray-200);font-size: 15px;outline: none;">
+</div>
+
+<div class="form-group">
+<label for="leadFaixaValor" style="font-weight: 600;margin-bottom: 8px;display: block;">Faixa de Valor</label>
+<input type="text" id="leadFaixaValor" name="faixa_valor" placeholder="Ex: R$ 500 mil - R$ 800 mil" style="width: 100%;padding: 14px 18px;border-radius: 12px;border: 1px solid var(--gray-200);font-size: 15px;outline: none;">
+</div>
+
+<div class="form-group">
+<label for="leadObservacoes" style="font-weight: 600;margin-bottom: 8px;display: block;">Observações</label>
+<textarea id="leadObservacoes" name="observacoes" rows="4" placeholder="Descreva seu interesse, preferências ou dúvidas..." style="width: 100%;padding: 14px 18px;border-radius: 12px;border: 1px solid var(--gray-200);font-size: 15px;outline: none;resize: vertical;font-family: inherit;"></textarea>
+</div>
+</div>
+
+<div class="form-actions" style="margin-top: 32px;text-align: center;">
+<button type="button" id="whatsappLeadSubmitBtn" class="nav-cta" style="padding: 16px 48px;font-size: 16px;cursor: pointer;display: inline-block;">📱 Falar no WhatsApp</button>
+<p style="margin-top: 12px;font-size: 13px;color: var(--gray-600);">Seus dados serão enviados diretamente para o WhatsApp da Top Imobiliária</p>
+</div>
+</form>
+</div>
+</div>
+</section>
+
 <!-- POWERED BY SECTION -->
 <!-- FOOTER -->
 <footer class="footer">
@@ -3590,6 +3659,70 @@ if (mainConPrazoSelect) {
 
 attachLeadFormHandler('leadFormAluguelForm', 'leadAluguelWaBtn', 'Avaliação de locação');
 attachLeadFormHandler('leadFormVendaForm', 'leadVendaWaBtn', 'Avaliação de venda');
+
+// WhatsApp Lead Form Handler
+function attachWhatsAppLeadForm(formId, buttonId, serviceType) {
+  const form = document.getElementById(formId);
+  const button = document.getElementById(buttonId);
+  
+  if (!form || !button) return;
+
+  button.addEventListener('click', function(e) {
+    e.preventDefault();
+    
+    const nome = document.getElementById('leadNome')?.value.trim();
+    const telefone = document.getElementById('leadTelefone')?.value.trim();
+    const interesse = document.getElementById('leadInteresse')?.value;
+    const tipoImovel = document.getElementById('leadTipoImovel')?.value.trim();
+    const regiao = document.getElementById('leadRegiao')?.value.trim();
+    const faixaValor = document.getElementById('leadFaixaValor')?.value.trim();
+    const observacoes = document.getElementById('leadObservacoes')?.value.trim();
+    
+    // Validation
+    if (!nome || !telefone || !interesse) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+    
+    // Format phone for WhatsApp
+    let phone = telefone.replace(/\D/g, '');
+    if (phone.startsWith('61')) {
+      // Already has DDD
+    } else if (phone.length === 11) {
+      phone = '61' + phone;
+    }
+    
+    // Build WhatsApp message
+    const message = [
+      'Olá! Vim pelo site da Top Imobiliária.',
+      '',
+      `*Nome:* ${nome}`,
+      `*Telefone/WhatsApp:* ${telefone}`,
+      `*Interesse:* ${interesse}`,
+      `*Tipo de imóvel:* ${tipoImovel || 'Não informado'}`,
+      `*Região:* ${regiao || 'Não informado'}`,
+      `*Faixa de valor:* ${faixaValor || 'Não informado'}`,
+      observacoes ? `*Observações:* ${observacoes}` : ''
+    ].filter(Boolean).join('\n');
+    
+    // Update button text
+    const submitBtn = button;
+    submitBtn.textContent = '✅ Enviando para WhatsApp...';
+    submitBtn.disabled = true;
+    
+    // Open WhatsApp
+    window.open('https://wa.me/55' + phone + '?text=' + encodeURIComponent(message), '_blank');
+    
+    // Reset button after delay
+    setTimeout(() => {
+      submitBtn.textContent = '📱 Falar no WhatsApp';
+      submitBtn.disabled = false;
+    }, 2000);
+  });
+}
+
+// Initialize WhatsApp Lead Form
+attachWhatsAppLeadForm('whatsappLeadForm', 'whatsappLeadSubmitBtn');
 </script>
 </body>
 </html>
