@@ -1,0 +1,569 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quanto Cobrar de Aluguel em Águas Claras 2026 | Top Imobiliária</title>
+    <meta name="description" content="Análise completa dos valores de aluguel em Águas Claras por bairro, tipo de imóvel e metragem. Guia atualizado para proprietários.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B2A4A;
+            --navy-dark: #0F1A2E;
+            --navy-deep: #0A1220;
+            --red: #D32F2F;
+            --red-light: #E53935;
+            --red-dark: #B71C1C;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-300: #E0E0E0;
+            --gray-600: #757575;
+            --success: #2E7D32;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(15, 26, 46, 0.05);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: var(--transition);
+        }
+        
+        .header.scrolled {
+            background: rgba(15, 26, 46, 0.95);
+            padding: 10px 0;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .logo-text span { color: var(--red); }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .nav a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav a:hover { color: var(--red); }
+        
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--red), var(--red-light));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav a:hover::after { width: 100%; }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--red), var(--red-dark)) !important;
+            color: var(--navy) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: var(--transition) !important;
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.3);
+        }
+        
+        .nav-cta:hover {
+            background: linear-gradient(135deg, var(--red-light), var(--red)) !important;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(211, 47, 47, 0.5);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        /* CONTENT */
+        .content-section {
+            padding: 140px 0 80px;
+        }
+        
+        .content-container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .content-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .content-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        
+        .content-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--red);
+            border-radius: 2px;
+        }
+        
+        .content-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        
+        .content-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+        
+        .content-body {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .content-body h2 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+        
+        .content-body h2:first-child { margin-top: 0; }
+        
+        .content-body p {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .content-body ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 24px;
+        }
+        
+        .content-body li {
+            padding-left: 28px;
+            margin-bottom: 12px;
+            position: relative;
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+        
+        .content-body li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: 700;
+        }
+        
+        .content-cta {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            color: var(--navy);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(211, 47, 47, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(211, 47, 47, 0.4);
+        }
+        
+        /* BACK BUTTON */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--gray-100);
+            color: var(--navy);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            margin-bottom: 32px;
+        }
+        
+        .back-button:hover {
+            background: var(--gray-200);
+            transform: translateX(-4px);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--navy-deep);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--red);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* RESPONSIVE */
+        @media(max-width: 768px) {
+            .nav { display: none; }
+            
+            .mobile-toggle { display: block; }
+            
+            .content-section { padding: 120px 0 60px; }
+            
+            .content-body {
+                padding: 32px 24px;
+            }
+            
+            .content-title { font-size: 1.8rem; }
+            
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 32px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Top<span>Imobiliária</span></div>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Início</a>
+                <a href="index.html#imoveis">Imóveis</a>
+                <a href="index.html#proprietarios">Proprietários</a>
+                <a href="index.html#servicos">Serviços</a>
+                <a href="buildings.html">Imóveis</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="index.html#sobre">Sobre</a>
+                <a href="index.html#contato" class="nav-cta">Contato</a>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="content-section">
+        <div class="content-container">
+            <a href="index.html#blog" class="back-button">← Voltar ao Blog</a>
+            
+            <div class="content-header">
+                <div class="content-label">
+                    <span>📖 5 min de leitura</span>
+                    <span>•</span>
+                    <span>Mercado 2026</span>
+                </div>
+                <h1 class="content-title">Quanto Cobrar de Aluguel em Águas Claras em 2026?</h1>
+                <div class="content-meta">
+                    <span>📅 Atualizado: Abril 2026</span>
+                    <span>✏️ Top Imobiliária</span>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <p>Com o mercado imobiliário de Brasília em alta, muitos proprietários de Águas Claras ficam na dúvida sobre qual valor cobrar pelo aluguel do seu imóvel. Esta análise completa vai te ajudar a definir o preço ideal e maximizar seu retorno.</p>
+
+                <h2>📊 Médias de Aluguel por Bairro (2026)</h2>
+                <p>Águas Claras é composta por vários quadras e bloquinhos, cada um com características específicas. Veja as médias:</p>
+                <ul>
+                    <li><strong>Quadras 100-200:</strong> R$ 2.800 - R$ 4.500 (1/2 dorm)</li>
+                    <li><strong>Quadras 300-400:</strong> R$ 3.200 - R$ 5.800 (2/3 dorm)</li>
+                    <li><strong>Quadras 500-600:</strong> R$ 4.500 - R$ 8.000 (3/4 dorm)</li>
+                    <li><strong>Quadras 800-900:</strong> R$ 5.000 - R$ 12.000+ (Sobrados)</li>
+                </ul>
+
+                <h2>🏢 Fatores que Influenciam o Valor</h2>
+                <p>Vários elementos impactam diretamente no preço do seu aluguel:</p>
+                <ul>
+                    <li><strong>Metragem:</strong> Apartamentos de 60-80m² vs 100-140m²</li>
+                    <li><strong>Acabamento:</strong> Padrão básico, médio ou premium</li>
+                    <li><strong> Mobília:</strong> Móvel, semi-móvel ou vazio</li>
+                    <li><strong>Servicos:</strong> Piscina, academia, área gourmet</li>
+                    <li><strong>Andar:</strong> Vistos panorâmicos valem +15-20%</li>
+                    <li><strong>Vaga de garagem:</strong> 2 vagas +R$ 300-500/mês</li>
+                </ul>
+
+                <h2>📈 Tendências do Mercado em 2026</h2>
+                <p>O mercado de Águas Claras apresentou os seguintes movimentos:</p>
+                <ul>
+                    <li>📈 Valorização média de 8-12% ao ano</li>
+                    <li>⏱️ Tempo médio de locação: 25-35 dias</li>
+                    <li>🔍 Maior demanda por imóveis 3 quartos</li>
+                    <li>💼 Home office impulsiona demanda por escritórios</li>
+                    <li>🌿 Áreas verdes e pet-friendly valorizam 10-15%</li>
+                </ul>
+
+                <h2>💡 Dicas para Cobrar o Valor Ideal</h2>
+                <p>Para maximizar seu retorno com segurança:</p>
+                <ul>
+                    <li><strong>Faça uma avaliação profissional:</strong> Conhecer o valor real do seu imóvel é essencial</li>
+                    <li><strong>Analise concorrentes:</strong> Veja imóveis similares na mesma região</li>
+                    <li><strong>Considere a sazonalidade:</strong> Janeiro-Março e Setembro-Novembro são períodos mais quentes</li>
+                    <li><strong>Invista em fotos profissionais:</strong> Imóveis bem fotografados alugam 30% mais rápido</li>
+                    <li><strong>Garanta aluguel protegido:</strong> Contrate uma imobiliária com garantia locatícia</li>
+                </ul>
+
+                <h2>⚠️ Erros Comuns a Evitar</h2>
+                <p>Não cometa esses erros que podem te custar caro:</p>
+                <ul>
+                    <li>Cobrar acima da média de mercado (imóvel fica parado)</li>
+                    <li>Cobrar abaixo (você perde rentabilidade desnecessariamente)</li>
+                    <li>Não ter documentação em dia (pode impedir a locação)</li>
+                    <li>Ignorar a necessidade de fiador ou seguro-fiança</li>
+                    <li>Não fazer vistoria detalhada antes e depois</li>
+                </ul>
+
+                <div class="content-cta">
+                    <p style="margin-bottom:24px;font-size:1.1rem;color:var(--navy);font-weight:600">
+                        Quer uma avaliação gratuita do seu imóvel em Águas Claras?
+                    </p>
+                    <a href="https://wa.me/5561998229223?text=Olá!%20Gostaria%20de%20uma%20avaliação%20gratuita%20do%20meu%20imóvel" 
+                       class="cta-button"
+                       target="_blank"
+                       rel="noopener">
+                        📞 Chamar no WhatsApp
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Top Imobiliária</h4>
+                    <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:1.6;margin-bottom:16px">
+                        Há mais de 34 anos conectando proprietários e inquilinos com excelência e segurança em Águas Claras.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#imoveis">Imóveis</a></li>
+                        <li><a href="index.html#servicos">Serviços</a></li>
+                        <li><a href="index.html#blog">Blog</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="index.html#proprietarios">Locação</a></li>
+                        <li><a href="index.html#proprietarios">Venda</a></li>
+                        <li><a href="index.html#administracao">Administração</a></li>
+                        <li><a href="index.html#consorcio">Consórcio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li>📞 (61) 3042-4344</li>
+                        <li>📱 (61) 99822-9223</li>
+                        <li>📧 redetopdf@gmail.com</li>
+                        <li>📍 Águas Claras, Brasília - DF</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Top Imobiliária. Todos os direitos reservados. Há 34+ anos no mercado.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('open');
+        });
+
+        // Click outside to close mobile menu
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('nav');
+            const toggle = document.getElementById('mobileToggle');
+            
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
