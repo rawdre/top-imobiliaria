@@ -1,0 +1,26 @@
+# robots.txt for Top Imobiliária
+# This file prevents search engines from indexing the site
+
+User-agent: *
+Disallow: /
+
+# All search engines blocked from indexing
+# Site is under development and not ready for public search
+
+User-agent: Googlebot
+Disallow: /
+
+User-agent: Bingbot
+Disallow: /
+
+User-agent: Applebot
+Disallow: /
+
+User-agent: Yandex
+Disallow: /
+
+User-agent: Baidu
+Disallow: /
+
+# Crawl-delay to be respectful
+Crawl-delay: 10

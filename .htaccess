@@ -1,0 +1,23 @@
+# Block search engines from indexing
+<IfModule mod_headers.c>
+    # Block Google
+    SetEnvIf User-Agent "Googlebot" googlebot
+    Header set X-Robots-Tag "noindex, nofollow" env=googlebot
+    
+    # Block Bing
+    SetEnvIf User-Agent "bingbot" bingbot
+    Header set X-Robots-Tag "noindex, nofollow" env=bingbot
+    
+    # Block all search engines by default
+    Header set X-Robots-Tag "noindex, nofollow, noarchive"
+</IfModule>
+
+# Prevent directory listing
+Options -Indexes
+
+# Security headers
+<IfModule mod_headers.c>
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+</IfModule>
