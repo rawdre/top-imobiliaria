@@ -1,0 +1,597 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vale Mais a Pena Vender ou Alugar Imóvel - Top Imobiliária</title>
+    <meta name="description" content="Decidir entre vender ou alugar imóvel depende de momento financeiro, objetivos pessoais e cenário do mercado. Descubra qual é melhor para você.">
+    <meta name="robots" content="noindex, nofollow">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --navy: #1B2A4A;
+            --navy-dark: #0F1A2E;
+            --navy-deep: #0A1220;
+            --red: #D32F2F;
+            --red-light: #E53935;
+            --red-dark: #B71C1C;
+            --white: #FFFFFF;
+            --gray-50: #FAFAFA;
+            --gray-100: #F5F5F5;
+            --gray-200: #EEEEEE;
+            --gray-600: #757575;
+            --success: #2E7D32;
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Inter', sans-serif;
+            color: var(--navy);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+        
+        h1, h2, h3, h4 {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-weight: 700;
+            line-height: 1.2;
+        }
+        
+        a { text-decoration: none; color: inherit; }
+        img { max-width: 100%; display: block; }
+        
+        /* HEADER */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            padding: 16px 0;
+            background: rgba(15, 26, 46, 0.05);
+            backdrop-filter: blur(20px);
+            transition: var(--transition);
+        }
+        
+        .header.scrolled {
+            background: rgba(15, 26, 46, 0.95);
+            padding: 10px 0;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .logo-icon {
+            width: 42px;
+            height: 42px;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            color: var(--navy);
+            font-size: 18px;
+        }
+        
+        .logo-text {
+            font-size: 20px;
+            font-weight: 700;
+            color: var(--white);
+        }
+        
+        .logo-text span { color: var(--red); }
+        
+        .nav {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+        
+        .nav a {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 14px;
+            font-weight: 500;
+            transition: var(--transition);
+            position: relative;
+            padding: 8px 0;
+        }
+        
+        .nav a:hover { color: var(--red); }
+        
+        .nav a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: linear-gradient(90deg, var(--red), var(--red-light));
+            transition: width 0.3s ease;
+            border-radius: 2px;
+        }
+        
+        .nav a:hover::after { width: 100%; }
+        
+        .nav-cta {
+            background: linear-gradient(135deg, var(--red), var(--red-dark)) !important;
+            color: var(--navy) !important;
+            padding: 10px 24px;
+            border-radius: 50px;
+            font-weight: 600 !important;
+            transition: var(--transition) !important;
+            box-shadow: 0 4px 20px rgba(211, 47, 47, 0.3);
+        }
+        
+        .nav-cta:hover {
+            background: linear-gradient(135deg, var(--red-light), var(--red)) !important;
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 8px 30px rgba(211, 47, 47, 0.5);
+        }
+        
+        .mobile-toggle {
+            display: none;
+            background: none;
+            border: none;
+            cursor: pointer;
+            padding: 8px;
+        }
+        
+        .mobile-toggle span {
+            display: block;
+            width: 24px;
+            height: 2px;
+            background: var(--white);
+            margin: 6px 0;
+            border-radius: 2px;
+            transition: var(--transition);
+        }
+        
+        /* CONTENT */
+        .content-section {
+            padding: 140px 0 80px;
+        }
+        
+        .content-container {
+            max-width: 850px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .content-header {
+            text-align: center;
+            margin-bottom: 48px;
+        }
+        
+        .content-label {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 13px;
+            font-weight: 600;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 16px;
+        }
+        
+        .content-label::before {
+            content: '';
+            width: 32px;
+            height: 2px;
+            background: var(--red);
+            border-radius: 2px;
+        }
+        
+        .content-title {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 700;
+            color: var(--navy);
+            line-height: 1.15;
+            margin-bottom: 20px;
+        }
+        
+        .content-meta {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 24px;
+            color: var(--gray-600);
+            font-size: 14px;
+        }
+        
+        .content-body {
+            background: var(--white);
+            border-radius: 16px;
+            padding: 48px;
+            box-shadow: 0 4px 40px rgba(0, 0, 0, 0.08);
+        }
+        
+        .content-body h2 {
+            font-size: 1.8rem;
+            color: var(--navy);
+            margin-top: 40px;
+            margin-bottom: 16px;
+        }
+        
+        .content-body h2:first-child { margin-top: 0; }
+        
+        .content-body p {
+            color: var(--gray-600);
+            font-size: 1.05rem;
+            line-height: 1.7;
+            margin-bottom: 20px;
+        }
+        
+        .content-body ul {
+            list-style: none;
+            padding-left: 0;
+            margin-bottom: 24px;
+        }
+        
+        .content-body li {
+            padding-left: 28px;
+            margin-bottom: 12px;
+            position: relative;
+            color: var(--gray-600);
+            font-size: 1rem;
+        }
+        
+        .content-body li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: var(--red);
+            font-weight: 700;
+        }
+        
+        .content-cta {
+            text-align: center;
+            margin-top: 48px;
+            padding-top: 48px;
+            border-top: 1px solid var(--gray-200);
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            padding: 16px 40px;
+            background: linear-gradient(135deg, var(--red), var(--red-dark));
+            color: var(--navy);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 1rem;
+            font-weight: 700;
+            border-radius: 50px;
+            transition: var(--transition);
+            box-shadow: 0 8px 30px rgba(211, 47, 47, 0.3);
+        }
+        
+        .cta-button:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 12px 40px rgba(211, 47, 47, 0.4);
+        }
+        
+        /* BACK BUTTON */
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            padding: 12px 24px;
+            background: var(--gray-100);
+            color: var(--navy);
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            font-size: 14px;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            margin-bottom: 32px;
+        }
+        
+        .back-button:hover {
+            background: var(--gray-200);
+            transform: translateX(-4px);
+        }
+        
+        /* FOOTER */
+        .footer {
+            background: var(--navy-deep);
+            color: var(--white);
+            padding: 60px 0 30px;
+        }
+        
+        .footer .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+        
+        .footer-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 48px;
+            margin-bottom: 40px;
+        }
+        
+        .footer-column h4 {
+            font-size: 16px;
+            margin-bottom: 20px;
+            color: var(--white);
+        }
+        
+        .footer-column ul {
+            list-style: none;
+        }
+        
+        .footer-column li {
+            margin-bottom: 12px;
+        }
+        
+        .footer-column a {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 14px;
+            transition: var(--transition);
+        }
+        
+        .footer-column a:hover {
+            color: var(--red);
+        }
+        
+        .footer-bottom {
+            text-align: center;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 14px;
+        }
+        
+        /* RESPONSIVE */
+        @media(max-width:768px){
+            .nav{display:none;position:absolute;top:100%;left:0;right:0;background:rgba(15,26,46,.98);backdrop-filter:blur(20px);flex-direction:column;padding:24px;gap:20px;border-radius:0 0 var(--radius) var(--radius)}
+            .nav.open{display:flex}
+            .mobile-toggle{display:block}
+            .indique-grid{grid-template-columns:1fr!important;gap:16px!important}
+        }
+
+        @media(max-width:768px){
+            .search-box{padding:20px 16px!important;margin:0 auto 28px!important;max-width:100%!important;}
+            .search-box .search-fields{flex-direction:column!important;gap:12px!important;}
+            .search-input,.search-select{width:100%!important;min-width:0!important;padding:14px 16px!important;font-size:14px!important;border-radius:8px!important;}
+            .search-btn{width:100%!important;padding:14px!important;font-size:14px!important;border-radius:8px!important;margin-top:12px!important;}
+            .hero{padding:100px 0 60px!important;}
+            .hero h1{font-size:1.9rem!important;margin-bottom:16px!important;}
+            .hero-sim-copy{font-size:1rem!important;margin-bottom:10px!important;}
+            .hero-sim-support{font-size:0.92rem!important;margin-bottom:20px!important;}
+            .hero-owner-cta{padding:14px 28px!important;font-size:0.92rem!important;margin-bottom:24px!important;}
+            .hero-badge{font-size:12px!important;padding:8px 16px!important;margin-bottom:16px!important;}
+            .hero-sub{font-size:0.95rem!important;margin-bottom:28px!important;}
+        }
+
+        @media(max-width: 768px) {
+            .content-section { padding: 120px 0 60px; }
+            .content-body { padding: 32px 24px; }
+            .content-title { font-size: 1.8rem; }
+            .footer-grid { grid-template-columns: 1fr; gap: 32px; }
+        }
+    </style>
+</head>
+<body>
+    <!-- HEADER -->
+    <header class="header" id="header">
+        <div class="container">
+            <a href="index.html" class="logo">
+                <div class="logo-icon">T</div>
+                <div class="logo-text">Top<span>Imobiliária</span></div>
+            </a>
+            <nav class="nav" id="nav">
+                <a href="index.html">Início</a>
+                <a href="index.html#imoveis">Imóveis</a>
+                <a href="index.html#proprietarios">Proprietários</a>
+                <a href="index.html#servicos">Serviços</a>
+                <a href="buildings.html">Imóveis</a>
+                <a href="index.html#blog">Blog</a>
+                <a href="index.html#sobre">Sobre</a>
+                <a href="index.html#contato" class="nav-cta">Contato</a>
+            </nav>
+            <button class="mobile-toggle" id="mobileToggle">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- CONTENT -->
+    <section class="content-section">
+        <div class="content-container">
+            <a href="index.html#blog" class="back-button">← Voltar ao Blog</a>
+            
+            <div class="content-header">
+                <div class="content-label">
+                    <span>📖 5 min de leitura</span>
+                    <span>•</span>
+                    <span>Investimento Inteligente</span>
+                </div>
+                <h1 class="content-title">Vale Mais a Pena Vender ou Alugar Imóvel?</h1>
+                <div class="content-meta">
+                    <span>📅 Atualizado: Abril 2026</span>
+                    <span>✏️ Top Imobiliária</span>
+                </div>
+            </div>
+
+            <div class="content-body">
+                <p>A decisão entre vender ou alugar um imóvel depende de diversos fatores, como momento financeiro, objetivos pessoais e cenário do mercado.</p>
+
+                <h2>💰 Alugar: Renda Recorrente e Valorização</h2>
+                <p>Alugar pode gerar renda recorrente e valorização ao longo do tempo:</p>
+                <ul>
+                    <li><strong>Renda mensal:</strong] Fluxo de caixa previsível e constante</li>
+                    <li><strong>Valorização contínua:</strong] Imóvel mantém e valoriza patrimônio</li>
+                    <li><strong>Menor risco:</strong] Diversificação de investimentos</li>
+                    <li><strong>Flexibilidade:</strong] Pode vender se precisar de capital</li>
+                    <li><strong>Benefícios fiscais:</strong] Deduções e isenções possíveis</li>
+                </ul>
+
+                <h2>💵 Vender: Capital Imediato e Liquidez</h2>
+                <p>Já vender permite acesso imediato ao capital, podendo ser utilizado em outros investimentos:</p>
+                <ul>
+                    <li><strong>Capital liberado:</strong] Dinheiro disponível para novos investimentos</li>
+                    <li><strong>Zero manutenção:</strong] Sem preocupações com imóvel</li>
+                    <li><strong>Reorganização patrimonial:</strong] Alocar recursos onde forem mais eficientes</li>
+                    <li><strong>Fim de responsabilidade:</strong] Sem gestão ou burocracia</li>
+                    <li><strong>Realização de ganho:</strong] Lucro realizado em vez de potencial</li>
+                </ul>
+
+                <h2>📊 Comparando Cenários</h2>
+                <p>O ideal é analisar os dois cenários com base em números reais, considerando retorno, liquidez e riscos:</p>
+
+                <h3>📈 Cenário 1: Manter e Alugar</h3>
+                <ul>
+                    <li>Valor do imóvel: R$ 500.000</li>
+                    <li>Aluguel mensal: R$ 3.500 (R$ 42.000/ano)</li>
+                    <li>Valorização anual média: 5-8%</li>
+                    <li>Custos (IPTU, condomínio, taxas): ~3% ao ano</li>
+                    <li>Retorno líquido: ~4-5% + valorização</li>
+                </ul>
+
+                <h3>💵 Cenário 2: Vender e Investir</h3>
+                <ul>
+                    <li>Venda do imóvel: R$ 500.000</li>
+                    <li>Investimento alternativo: Tesouro Direto, CDI, FIIs</li>
+                    <li>Retorno anual: 6-10% (dependendo do investimento)</li>
+                    <li>Liquidez: Alta (dependendo do investimento)</li>
+                    <li>Risco: Variável (dependendo do investimento)</li>
+                </ul>
+
+                <h2>🎯 Fatores a Considerar</h2>
+                <p>Para tomar a melhor decisão, avalie:</p>
+                <ul>
+                    <li><strong>Objetivos financeiros:</strong] Necessidade de renda vs. liquidez</li>
+                    <li><strong>Horizonte de tempo:</strong] Curto vs. longo prazo</li>
+                    <li><strong>Perfil de risco:</strong] Conservador vs. arrojado</li>
+                    <li><strong>Cenário econômico:</strong] Juros, inflação, crescimento</li>
+                    <li><strong>Necessidade pessoal:</strong] Uso do capital vs. renda passiva</li>
+                </ul>
+
+                <h2>💡 Quando Vale Mais a Pena...</h2>
+                <p><strong>ALUGAR se:</strong></p>
+                <ul>
+                    <li>Você quer renda passiva mensal</li>
+                    <li>Você acredita na valorização imobiliária</li>
+                    <li>Você quer manter patrimônio diversificado</li>
+                    <li>Você não precisa do capital imediatamente</li>
+                </ul>
+
+                <p><strong>VENDER se:</strong></p>
+                <ul>
+                    <li>Você precisa de capital agora</li>
+                    <li>Você quer investir em algo mais rentável</li>
+                    <li>Você não quer gerenciar imóvel</li>
+                    <li>O imóvel precisa de grandes reformas</li>
+                </ul>
+
+                <div class="content-cta">
+                    <p style="margin-bottom:24px;font-size:1.1rem;color:var(--navy);font-weight:600">
+                        Compare agora e descubra a melhor opção para o seu caso
+                    </p>
+                    <a href="https://wa.me/556130424344?text=Olá!%20Gostaria%20de%20analisar%20se%20vale%20mais%20a%20pena%20vender%20ou%20alugar%20meu%20imóvel" 
+                       class="cta-button"
+                       target="_blank"
+                       rel="noopener">
+                        💬 Falar com Especialista
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-column">
+                    <h4>Top Imobiliária</h4>
+                    <p style="color:rgba(255,255,255,0.7);font-size:14px;line-height:1.6;margin-bottom:16px">
+                        Há mais de 34 anos conectando proprietários e inquilinos com excelência e segurança em Águas Claras.
+                    </p>
+                </div>
+                <div class="footer-column">
+                    <h4>Navegação</h4>
+                    <ul>
+                        <li><a href="index.html">Início</a></li>
+                        <li><a href="index.html#imoveis">Imóveis</a></li>
+                        <li><a href="index.html#servicos">Serviços</a></li>
+                        <li><a href="index.html#blog">Blog</a></li>
+                        <li><a href="index.html#sobre">Sobre</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Serviços</h4>
+                    <ul>
+                        <li><a href="index.html#proprietarios">Locação</a></li>
+                        <li><a href="index.html#proprietarios">Venda</a></li>
+                        <li><a href="index.html#administracao">Administração</a></li>
+                        <li><a href="index.html#consorcio">Consórcio</a></li>
+                    </ul>
+                </div>
+                <div class="footer-column">
+                    <h4>Contato</h4>
+                    <ul>
+                        <li><a href="https://www.google.com/maps/search/?api=1&query=Rua+07+Norte+LT+3,+5+e+7+Loja+06+Edifício+Max+Mall+-+Águas+Claras,+Brasília+-+DF,+71908-180" target="_blank" rel="noopener">🗺️ Como Chegar</a></li>
+                        <li>📍 Rua 07 Norte LT 3, 5 e 7 Loja 06 Edifício Max Mall - Águas Claras, Brasília - DF</li>
+                        <li>📞 (61) 3042-4344</li>
+                        <li>📱 (61) 98281-3233</li>
+                        <li>💬 WhatsApp: (61) 3042-4344</li>
+                        <li>⏰ Segunda a Sexta: 09:00 às 18:00 | Sábado: 09:00 às 18:00</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2026 Top Imobiliária. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Header scroll effect
+        window.addEventListener('scroll', function() {
+            const header = document.getElementById('header');
+            if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+            } else {
+                header.classList.remove('scrolled');
+            }
+        });
+
+        // Mobile menu toggle
+        document.getElementById('mobileToggle').addEventListener('click', function() {
+            const nav = document.getElementById('nav');
+            nav.classList.toggle('open');
+        });
+
+        // Click outside to close mobile menu
+        document.addEventListener('click', function(e) {
+            const nav = document.getElementById('nav');
+            const toggle = document.getElementById('mobileToggle');
+            
+            if (!nav.contains(e.target) && !toggle.contains(e.target)) {
+                nav.classList.remove('open');
+            }
+        });
+    </script>
+</body>
+</html>
