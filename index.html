@@ -868,59 +868,58 @@ img{max-width:100%;display:block}
 </select>
 <select class="search-select">
 <option>Região</option>
-<optgroup label="Brasília DF">
+<optgroup label="Distrito Federal">
 <option>Águas Claras</option>
-<option>Brasília (Plano Piloto)</option>
-<option>Sudoeste</option>
-<option>Lago Sul</option>
-<option>Lago Norte</option>
-<option>Park Way</option>
-<option>Sunset</option>
-<option>Sobradinho II</option>
-<option>Riacho Fundo II</option>
-<option>Riacho Fundo</option>
-<option>Paranoá</option>
-<option>São Sebastião</option>
-<option>Gama</option>
-<option>Planaltina</option>
-<option>Planícia</option>
-<option>Recanto das Emas</option>
 <option>Água Limpa</option>
-<option>Candangolândia</option>
-<option>Itapoã</option>
-<option>Varjão</option>
-<option>Núcleo Bandeirante</option>
-<option>Cruzeiro</option>
-<option>Sia/Sui</option>
-<option>Taquara</option>
-<option>Rio Abaixo</option>
-<option>SCIA</option>
+<option>Brazlândia</option>
 <option>Ceilândia</option>
-<option>Vicente Pires</option>
-<option>Santa Maria</option>
+<option>Candangolândia</option>
+<option>Cruzeiro</option>
+<option>Gama</option>
+<option>Guará</option>
+<option>Itapoã</option>
+<option>Jardim Botânico</option>
+<option>Lago Norte</option>
+<option>Lago Sul</option>
+<option>Núcleo Bandeirante</option>
+<option>Paranoá</option>
+<option>Planaltina</option>
+<option>Planície</option>
+<option>Park Way</option>
+<option>Recanto das Emas</option>
+<option>Riacho Fundo</option>
+<option>Riacho Fundo II</option>
+<option>Rio Abaixo</option>
+<option>Samambaia</option>
 <option>Samambaia Norte</option>
 <option>Samambaia Sul</option>
-<option>Jardim Botânico</option>
-<option>Guará</option>
-<option>Taguatinga</option>
+<option>Santa Maria</option>
+<option>São Sebastião</option>
+<option>SIA/SUI</option>
+<option>SCIA</option>
 <option>Sobradinho</option>
+<option>Sobradinho II</option>
+<option>Sudoeste</option>
+<option>Sunset</option>
+<option>Taquara</option>
+<option>Taguatinga</option>
+<option>Vicente Pires</option>
+<option>Varjão</option>
 </optgroup>
-<optgroup label="Entorno do DF">
-<option>Luziânia (GO)</option>
-<option>Novo Gama (GO)</option>
-<option>Valparaíso de Goiás (GO)</option>
-<option>Cidade Ocidental (GO)</option>
-<option>Águas Lindas de Goiás (GO)</option>
-<option>Nerópolis (GO)</option>
-<option>Abadia de Goiás (GO)</option>
-<option>Anápolis (GO)</option>
-<option>Formosa (GO)</option>
-<option>Nerópolis (GO)</option>
-<option>Cachoeira de Goiás (GO)</option>
-<option>Palmas (GO)</option>
-<option>Cocalzinho de Goiás (GO)</option>
-<option>Três Ranchos (GO)</option>
-<option>Caldas Novas (GO)</option>
+<optgroup label="Goiás (Entorno)">
+<option>Águas Lindas de Goiás</option>
+<option>Abadia de Goiás</option>
+<option>Anápolis</option>
+<option>Cachoeira de Goiás</option>
+<option>Caldas Novas</option>
+<option>Cocalzinho de Goiás</option>
+<option>Formosa</option>
+<option>Luziânia</option>
+<option>Nerópolis</option>
+<option>Novo Gama</option>
+<option>Palmas</option>
+<option>Três Ranchos</option>
+<option>Valparaíso de Goiás</option>
 </optgroup>
 </select>
 <select class="search-select">
@@ -3515,19 +3514,19 @@ function calcularVenda() {
 
   let minPm2, maxPm2;
   if (bairro === 'ac-norte' || bairro === 'ac-sul') {
-    minPm2 = 6500; maxPm2 = 8500;
+    minPm2 = 8500; maxPm2 = 12000;
   } else if (bairro === 'sudoeste' || bairro === 'brasilia') {
-    minPm2 = 8000; maxPm2 = 12000;
+    minPm2 = 10000; maxPm2 = 15000;
   } else if (bairro === 'lago-sul' || bairro === 'lago-norte') {
-    minPm2 = 12000; maxPm2 = 18000;
+    minPm2 = 15000; maxPm2 = 25000;
   } else if (bairro === 'park-way') {
-    minPm2 = 8000; maxPm2 = 15000;
+    minPm2 = 10000; maxPm2 = 18000;
   } else if (bairro === 'guara' || bairro === 'cruzeiro') {
-    minPm2 = 5500; maxPm2 = 7500;
+    minPm2 = 7000; maxPm2 = 10000;
   } else if (bairro === 'taguatinga' || bairro === 'jardim-botanico') {
-    minPm2 = 4500; maxPm2 = 6500;
+    minPm2 = 6000; maxPm2 = 8500;
   } else {
-    minPm2 = 3500; maxPm2 = 5500;
+    minPm2 = 4500; maxPm2 = 7000;
   }
 
   let minVal = area * minPm2;
