@@ -1447,7 +1447,7 @@ Saiba Mais Sobre Garantias Locatícias
 </select>
 </div>
 <div class="sim-field">
-<label>Bairro</label>
+<label>Região</label>
 <select id="simBairro">
 <optgroup label="Distrito Federal">
 <option value="ac-norte">Águas Claras Norte</option>
@@ -1502,10 +1502,10 @@ Saiba Mais Sobre Garantias Locatícias
 <option value="formosa">Formosa</option>
 <option value="goianesia">Goianésia</option>
 <option value="goias">Goiânia</option>
+<option value="indai">Indaiá</option>
 <option value="itelandia">Itolândia</option>
 <option value="trindade">Trindade</option>
 </optgroup>
-</select>
 </select>
 </div>
 <div class="sim-field">
@@ -1518,26 +1518,23 @@ Saiba Mais Sobre Garantias Locatícias
 </select>
 </div>
 <div class="sim-field">
-<label>Área (m²)</label>
-<input type="number" id="simArea" placeholder="Ex: 70" min="20" max="500" value="70">
+<label>Faixa de Preço (Aluguel Mensal)</label>
+<select id="simPreco">
+<option value="1">Até R$1.500</option>
+<option value="2">R$1.500 - R$2.500</option>
+<option value="3">R$2.500 - R$3.500</option>
+<option value="4">R$3.500 - R$5.000</option>
+<option value="5">R$5.000+</option>
+</select>
 </div>
 <div class="sim-field">
-<label>Mobiliado</label>
-<div class="sim-toggle" id="simMobiliado">
-<button class="active" data-val="nao" onclick="simToggle(this)">Não</button>
-<button data-val="sim" onclick="simToggle(this)">Sim</button>
-</div>
-</div>
-<div class="sim-field">
-<label>Vagas de Garagem</label>
-<select id="simGaragem">
-<option value="0">0 Vagas</option>
-<option value="1">1 Vaga</option>
-<option value="2" selected>2 Vagas</option>
-<option value="3">3 Vagas</option>
-<option value="4">4+ Vagas</option>
-<option value="5">5+ Vagas</option>
-<option value="6">6+ Vagas</option>
+<label>Metragem (m²)</label>
+<select id="simMetros">
+<option value="1">Até 50m²</option>
+<option value="2">50 - 80m²</option>
+<option value="3">80 - 120m²</option>
+<option value="4">120 - 200m²</option>
+<option value="5">200m²+</option>
 </select>
 </div>
 </div>
@@ -1668,7 +1665,7 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 </select>
 </div>
 <div class="sim-field">
-<label>Bairro</label>
+<label>Região</label>
 <select id="simBairroVenda">
 <optgroup label="Distrito Federal">
 <option value="ac-norte">Águas Claras Norte</option>
@@ -1728,7 +1725,6 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 <option value="trindade">Trindade</option>
 </optgroup>
 </select>
-</select>
 </div>
 <div class="sim-field">
 <label>Quartos</label>
@@ -1740,19 +1736,23 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 </select>
 </div>
 <div class="sim-field">
-<label>Área (m²)</label>
-<input type="number" id="simAreaVenda" placeholder="Ex: 70" min="20" max="500" value="70">
+<label>Faixa de Preço (Valor de Venda)</label>
+<select id="simPrecoVenda">
+<option value="1">Até R$250.000</option>
+<option value="2">R$250.000 - R$400.000</option>
+<option value="3">R$400.000 - R$600.000</option>
+<option value="4">R$600.000 - R$1.000.000</option>
+<option value="5">R$1.000.000+</option>
+</select>
 </div>
 <div class="sim-field">
-<label>Vagas de Garagem</label>
-<select id="simGaragemVenda">
-<option value="0">0 Vagas</option>
-<option value="1">1 Vaga</option>
-<option value="2" selected>2 Vagas</option>
-<option value="3">3 Vagas</option>
-<option value="4">4+ Vagas</option>
-<option value="5">5+ Vagas</option>
-<option value="6">6+ Vagas</option>
+<label>Metragem (m²)</label>
+<select id="simMetrosVenda">
+<option value="1">Até 50m²</option>
+<option value="2">50 - 80m²</option>
+<option value="3">80 - 120m²</option>
+<option value="4">120 - 200m²</option>
+<option value="5">200m²+</option>
 </select>
 </div>
 </div>
