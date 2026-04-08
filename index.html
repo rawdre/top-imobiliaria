@@ -774,7 +774,7 @@ img{max-width:100%;display:block}
 <a href="#proprietarios">Vender ou Anunciar meu Imóvel</a>
 <a href="#servicos">Serviços</a>
 <a href="#consorcio" style="color:#43A047!important">🏠 Consórcio</a>
-<a href="#indique" style="color:#FF9800!important">🎁 Indique um Proprietário e Ganhe</a>
+<a href="#indique" onclick="smoothScrollToElement('indique'); return false;" style="color:#FF9800!important">🎁 Indique um Proprietário e Ganhe</a>
 <a href="#blog">Conteúdo</a>
 <a href="#sobre">Sobre</a>
 <a href="#contato" class="nav-cta">Contato</a>
@@ -3810,6 +3810,15 @@ function initPremiumAnimations() {
       }
     });
   });
+}
+
+// Scroll to element with smooth animation
+function smoothScrollToElement(elementId) {
+  const element = document.getElementById(elementId);
+  if (element) {
+    const offsetTop = element.getBoundingClientRect().top + window.pageYOffset;
+    smoothScrollTo(offsetTop, 800);
+  }
 }
 
 // Custom smooth scroll with easing
