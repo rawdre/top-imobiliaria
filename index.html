@@ -1542,16 +1542,6 @@ Saiba Mais Sobre Garantias Locatícias
 <option value="4">4+ Quartos</option>
 </select>
 </div>
-<div class="sim-field sim-field-price" id="fieldPreco" style="display:none">
-<label>Faixa de Preço (Aluguel Mensal)</label>
-<select id="simPreco">
-<option value="1">Até R$1.500</option>
-<option value="2">R$1.500 - R$2.500</option>
-<option value="3">R$2.500 - R$3.500</option>
-<option value="4">R$3.500 - R$5.000</option>
-<option value="5">R$5.000+</option>
-</select>
-</div>
 <div class="sim-field">
 <label>Metragem (m²)</label>
 <input type="number" id="simMetros" placeholder="Ex: 75" min="1" max="10000" style="width:100%;padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.9);font-family:inherit;font-size:.95rem;box-sizing:border-box">
@@ -1561,22 +1551,19 @@ Saiba Mais Sobre Garantias Locatícias
 <button class="btn-calcular" id="btnCalcularAluguel" onclick="calcularAluguel()">🔍 Calcular Estimativa</button>
 
 <script>
-// Check all fields filled before showing price and enabling button
+// Enable button only when the required fields are filled
 function checkFields() {
   const tipo = document.getElementById('simTipo').value;
   const bairro = document.getElementById('simBairro').value;
   const quartos = document.getElementById('simQuartos').value;
   const metros = document.getElementById('simMetros').value;
-  const precoField = document.getElementById('fieldPreco');
   const btn = document.getElementById('btnCalcularAluguel');
   
   if (tipo && bairro && quartos && metros) {
-    precoField.style.display = 'block';
     btn.disabled = false;
     btn.style.opacity = '1';
     btn.style.cursor = 'pointer';
   } else {
-    precoField.style.display = 'none';
     btn.disabled = true;
     btn.style.opacity = '0.7';
     btn.style.cursor = 'not-allowed';
@@ -1594,8 +1581,8 @@ checkFields();
 </script>
 
 <div class="sim-result" id="simResult">
-<div class="est-label">Estimativa de Aluguel Mensal</div>
-<div class="est-value" id="simValor">R$ 0 — R$ 0 /mês</div>
+<div class="est-label">Estimativa Média de Aluguel Mensal</div>
+<div class="est-value" id="simValor">R$ 0 /mês</div>
 <p class="est-cta">Quer uma avaliação mais precisa ou entender melhor esse resultado?</p>
 <a href="https://wa.me/556130424344?text=Olá,%20acabei%20de%20fazer%20uma%20simulação%20de%20aluguel%20no%20site%20e%20gostaria%20de%20uma%20avaliação%20mais%20precisa." target="_blank">
 <button class="btn-whatsapp" style="font-size:.9rem;padding:14px 28px">
@@ -1787,16 +1774,6 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 <option value="4">4+ Quartos</option>
 </select>
 </div>
-<div class="sim-field sim-field-price" id="fieldPrecoVenda" style="display:none">
-<label>Faixa de Preço (Valor de Venda)</label>
-<select id="simPrecoVenda">
-<option value="1">Até R$250.000</option>
-<option value="2">R$250.000 - R$400.000</option>
-<option value="3">R$400.000 - R$600.000</option>
-<option value="4">R$600.000 - R$1.000.000</option>
-<option value="5">R$1.000.000+</option>
-</select>
-</div>
 <div class="sim-field">
 <label>Metragem (m²)</label>
 <input type="number" id="simMetrosVenda" placeholder="Ex: 75" min="1" max="10000" style="width:100%;padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.9);font-family:inherit;font-size:.95rem;box-sizing:border-box">
@@ -1806,22 +1783,19 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 <button class="btn-calcular" id="btnCalcularVenda" onclick="calcularVenda()">🔍 Calcular Estimativa de Venda</button>
 
 <script>
-// Check all fields filled before showing price and enabling button
+// Enable button only when the required fields are filled
 function checkFieldsVenda() {
   const tipo = document.getElementById('simTipoVenda').value;
   const bairro = document.getElementById('simBairroVenda').value;
   const quartos = document.getElementById('simQuartosVenda').value;
   const metros = document.getElementById('simMetrosVenda').value;
-  const precoField = document.getElementById('fieldPrecoVenda');
   const btn = document.getElementById('btnCalcularVenda');
   
   if (tipo && bairro && quartos && metros) {
-    precoField.style.display = 'block';
     btn.disabled = false;
     btn.style.opacity = '1';
     btn.style.cursor = 'pointer';
   } else {
-    precoField.style.display = 'none';
     btn.disabled = true;
     btn.style.opacity = '0.7';
     btn.style.cursor = 'not-allowed';
@@ -1839,8 +1813,8 @@ checkFieldsVenda();
 </script>
 
 <div class="sim-result" id="simResultVenda">
-<div class="est-label">Estimativa de Valor para Venda</div>
-<div class="est-value" id="simValorVenda">R$ 0 — R$ 0</div>
+<div class="est-label">Estimativa Média de Valor para Venda</div>
+<div class="est-value" id="simValorVenda">R$ 0</div>
 <p class="est-cta">Quer uma avaliação mais precisa ou entender melhor esse resultado?</p>
 <a href="https://wa.me/556130424344?text=Olá,%20acabei%20de%20fazer%20uma%20simulação%20de%20venda%20no%20site%20e%20gostaria%20de%20avaliar%20meu%20imóvel." target="_blank">
 <button class="btn-whatsapp" style="font-size:.9rem;padding:14px 28px">
@@ -3649,43 +3623,177 @@ function simToggle(btn) {
 }
 
 // Simulador calculation
+function getAreaAdjustment(area) {
+  if (area <= 40) return 1.08;
+  if (area <= 70) return 1.03;
+  if (area <= 110) return 1;
+  if (area <= 180) return 0.96;
+  return 0.92;
+}
+
+function getBedroomAdjustment(quartos) {
+  if (quartos <= 1) return 0.96;
+  if (quartos === 2) return 1;
+  if (quartos === 3) return 1.1;
+  return 1.2;
+}
+
+function getRentBasePerSquareMeter(bairro) {
+  const rentBase = {
+    'ac-norte': 33,
+    'ac-sul': 31,
+    'ao-norte': 29,
+    'ao-sul': 28,
+    'asa-sul': 42,
+    'asa-norte': 40,
+    'ceilandia': 18,
+    'cruzeiro': 29,
+    'gama': 17,
+    'guara': 26,
+    'itapoan': 16,
+    'jardim-botanico': 24,
+    'lago-norte': 37,
+    'lago-sul': 39,
+    'park-way': 28,
+    'planaltina': 15,
+    'rio-preto': 15,
+    'samambaia': 18,
+    'sao-marcos': 16,
+    'sudoeste': 41,
+    'taguatinga': 22,
+    'varjao': 18,
+    'vicente-pires': 23,
+    'riohondo': 15,
+    'sol-norte': 16,
+    'sol-sul': 16,
+    'sobradinho': 18,
+    'bra-sul': 15,
+    'bra-norte': 15,
+    'recanto': 16,
+    'reserva': 17,
+    'candangos': 18,
+    'lago-este': 23,
+    'lago-oeste': 22,
+    'lago-centro': 23,
+    'sia': 20,
+    'sri': 18,
+    'saz': 18,
+    'sudeste': 24,
+    'nucleo-bandeirante': 20,
+    'agua-linda': 14,
+    'aba-de-goias': 14,
+    'anapolis': 20,
+    'cachoeira': 14,
+    'caldas': 19,
+    'catalao': 19,
+    'corumba': 15,
+    'formosa': 17,
+    'goianesia': 17,
+    'goias': 25,
+    'indai': 14,
+    'itelandia': 14,
+    'trindade': 16
+  };
+  return rentBase[bairro] || 20;
+}
+
+function getSaleBasePerSquareMeter(bairro) {
+  const saleBase = {
+    'ac-norte': 9400,
+    'ac-sul': 9000,
+    'ao-norte': 8500,
+    'ao-sul': 8200,
+    'asa-sul': 14500,
+    'asa-norte': 13800,
+    'ceilandia': 4200,
+    'cruzeiro': 7900,
+    'gama': 3600,
+    'guara': 6900,
+    'itapoan': 3400,
+    'jardim-botanico': 6200,
+    'lago-norte': 16500,
+    'lago-sul': 17800,
+    'park-way': 11800,
+    'planaltina': 3200,
+    'rio-preto': 3000,
+    'samambaia': 4300,
+    'sao-marcos': 3500,
+    'sudoeste': 14800,
+    'taguatinga': 5400,
+    'varjao': 4200,
+    'vicente-pires': 6100,
+    'riohondo': 3000,
+    'sol-norte': 3400,
+    'sol-sul': 3400,
+    'sobradinho': 4300,
+    'bra-sul': 3000,
+    'bra-norte': 3000,
+    'recanto': 3400,
+    'reserva': 3600,
+    'candangos': 4200,
+    'lago-este': 5600,
+    'lago-oeste': 5200,
+    'lago-centro': 5600,
+    'sia': 4800,
+    'sri': 4300,
+    'saz': 4300,
+    'sudeste': 6200,
+    'nucleo-bandeirante': 4700,
+    'agua-linda': 2600,
+    'aba-de-goias': 2500,
+    'anapolis': 4300,
+    'cachoeira': 2400,
+    'caldas': 3900,
+    'catalao': 4200,
+    'corumba': 2600,
+    'formosa': 3400,
+    'goianesia': 3300,
+    'goias': 7000,
+    'indai': 2400,
+    'itelandia': 2400,
+    'trindade': 3000
+  };
+  return saleBase[bairro] || 4800;
+}
+
+function getPropertyTypeAdjustment(tipo) {
+  const map = {
+    'apartamento': 1,
+    'kitnet': 1.08,
+    'loft': 1.12,
+    'cobertura': 1.25,
+    'duplex': 1.18,
+    'triplex': 1.22,
+    'casa': 0.96,
+    'casa-condominio': 1.08,
+    'sala-comercial': 1.05,
+    'loja': 1.12,
+    'ponto-comercial': 1.15,
+    'galpao': 0.88,
+    'predio-comercial': 1.1,
+    'terreno': 0.72,
+    'lote': 0.75,
+    'loteamento': 0.7,
+    'garagem': 0.45,
+    'hotel-flat': 1.04
+  };
+  return map[tipo] || 1;
+}
+
 function calcularAluguel() {
+  const tipo = document.getElementById('simTipo').value;
   const bairro = document.getElementById('simBairro').value;
+  const quartos = parseInt(document.getElementById('simQuartos').value, 10) || 1;
   const area = parseFloat(document.getElementById('simMetros').value) || 70;
-  const mobiliado = document.querySelector('#simMobiliado button.active').dataset.val === 'sim';
-  const garagem = parseInt(document.getElementById('simGaragem').value) || 1;
-
-  let minPm2, maxPm2;
-  if (bairro === 'ac-norte' || bairro === 'ac-sul') {
-    minPm2 = 25; maxPm2 = 35;
-  } else if (bairro === 'sudoeste' || bairro === 'brasilia') {
-    minPm2 = 30; maxPm2 = 45;
-  } else if (bairro === 'lago-sul' || bairro === 'lago-norte' || bairro === 'park-way') {
-    minPm2 = 20; maxPm2 = 40;
-  } else if (bairro === 'guara' || bairro === 'cruzeiro') {
-    minPm2 = 22; maxPm2 = 32;
-  } else if (bairro === 'taguatinga' || bairro === 'jardim-botanico') {
-    minPm2 = 20; maxPm2 = 28;
-  } else {
-    minPm2 = 15; maxPm2 = 22;
-  }
-
-  let minVal = area * minPm2;
-  let maxVal = area * maxPm2;
-
-  if (mobiliado) {
-    minVal *= 1.3;
-    maxVal *= 1.3;
-  }
-
-  minVal += garagem * 200;
-  maxVal += garagem * 400;
-
-  minVal = Math.round(minVal / 100) * 100;
-  maxVal = Math.round(maxVal / 100) * 100;
+  const averagePm2 =
+    getRentBasePerSquareMeter(bairro) *
+    getPropertyTypeAdjustment(tipo) *
+    getBedroomAdjustment(quartos) *
+    getAreaAdjustment(area);
+  const averageVal = Math.round((area * averagePm2) / 100) * 100;
 
   const fmt = (v) => v.toLocaleString('pt-BR', {minimumFractionDigits:0, maximumFractionDigits:0});
-  var resultadoTexto = `R$ ${fmt(minVal)} — R$ ${fmt(maxVal)} /mês`;
+  var resultadoTexto = `R$ ${fmt(averageVal)} /mês`;
   document.getElementById('simValor').textContent = resultadoTexto;
   const result = document.getElementById('simResult');
   result.classList.remove('show');
@@ -3774,38 +3882,19 @@ function showSimulator(type) {
 
 // Sale value calculator
 function calcularVenda() {
+  const tipo = document.getElementById('simTipoVenda').value;
   const bairro = document.getElementById('simBairroVenda').value;
+  const quartos = parseInt(document.getElementById('simQuartosVenda').value, 10) || 1;
   const area = parseFloat(document.getElementById('simMetrosVenda').value) || 70;
-  const garagem = parseInt(document.getElementById('simGaragemVenda').value) || 1;
-
-  let minPm2, maxPm2;
-  if (bairro === 'ac-norte' || bairro === 'ac-sul') {
-    minPm2 = 8500; maxPm2 = 12000;
-  } else if (bairro === 'sudoeste' || bairro === 'brasilia') {
-    minPm2 = 10000; maxPm2 = 15000;
-  } else if (bairro === 'lago-sul' || bairro === 'lago-norte') {
-    minPm2 = 15000; maxPm2 = 25000;
-  } else if (bairro === 'park-way') {
-    minPm2 = 10000; maxPm2 = 18000;
-  } else if (bairro === 'guara' || bairro === 'cruzeiro') {
-    minPm2 = 7000; maxPm2 = 10000;
-  } else if (bairro === 'taguatinga' || bairro === 'jardim-botanico') {
-    minPm2 = 6000; maxPm2 = 8500;
-  } else {
-    minPm2 = 4500; maxPm2 = 7000;
-  }
-
-  let minVal = area * minPm2;
-  let maxVal = area * maxPm2;
-
-  minVal += garagem * 25000;
-  maxVal += garagem * 40000;
-
-  minVal = Math.round(minVal / 5000) * 5000;
-  maxVal = Math.round(maxVal / 5000) * 5000;
+  const averagePm2 =
+    getSaleBasePerSquareMeter(bairro) *
+    getPropertyTypeAdjustment(tipo) *
+    getBedroomAdjustment(quartos) *
+    getAreaAdjustment(area);
+  const averageVal = Math.round((area * averagePm2) / 5000) * 5000;
 
   const fmt = (v) => v.toLocaleString('pt-BR', {minimumFractionDigits:0, maximumFractionDigits:0});
-  var resultadoTexto = `R$ ${fmt(minVal)} — R$ ${fmt(maxVal)}`;
+  var resultadoTexto = `R$ ${fmt(averageVal)}`;
   document.getElementById('simValorVenda').textContent = resultadoTexto;
   const result = document.getElementById('simResultVenda');
   result.classList.remove('show');
