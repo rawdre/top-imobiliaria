@@ -1517,7 +1517,7 @@ Saiba Mais Sobre Garantias Locatícias
 <option value="4">4+ Quartos</option>
 </select>
 </div>
-<div class="sim-field">
+<div class="sim-field sim-field-price" id="fieldPreco" style="display:none">
 <label>Faixa de Preço (Aluguel Mensal)</label>
 <select id="simPreco">
 <option value="1">Até R$1.500</option>
@@ -1529,17 +1529,44 @@ Saiba Mais Sobre Garantias Locatícias
 </div>
 <div class="sim-field">
 <label>Metragem (m²)</label>
-<select id="simMetros">
-<option value="1">Até 50m²</option>
-<option value="2">50 - 80m²</option>
-<option value="3">80 - 120m²</option>
-<option value="4">120 - 200m²</option>
-<option value="5">200m²+</option>
-</select>
+<input type="number" id="simMetros" placeholder="Ex: 75" min="1" max="10000" style="width:100%;padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.9);font-family:inherit;font-size:.95rem;box-sizing:border-box">
 </div>
 </div>
 
-<button class="btn-calcular" onclick="calcularAluguel()">🔍 Calcular Estimativa</button>
+<button class="btn-calcular" id="btnCalcularAluguel" onclick="calcularAluguel()">🔍 Calcular Estimativa</button>
+
+<script>
+// Check all fields filled before showing price and enabling button
+function checkFields() {
+  const tipo = document.getElementById('simTipo').value;
+  const bairro = document.getElementById('simBairro').value;
+  const quartos = document.getElementById('simQuartos').value;
+  const metros = document.getElementById('simMetros').value;
+  const precoField = document.getElementById('fieldPreco');
+  const btn = document.getElementById('btnCalcularAluguel');
+  
+  if (tipo && bairro && quartos && metros) {
+    precoField.style.display = 'block';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  } else {
+    precoField.style.display = 'none';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.cursor = 'not-allowed';
+  }
+}
+
+// Add event listeners to all fields
+document.getElementById('simTipo').addEventListener('change', checkFields);
+document.getElementById('simBairro').addEventListener('change', checkFields);
+document.getElementById('simQuartos').addEventListener('change', checkFields);
+document.getElementById('simMetros').addEventListener('input', checkFields);
+
+// Initialize button state
+checkFields();
+</script>
 
 <div class="sim-result" id="simResult">
 <div class="est-label">Estimativa de Aluguel Mensal</div>
@@ -1735,7 +1762,7 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 <option value="4">4+ Quartos</option>
 </select>
 </div>
-<div class="sim-field">
+<div class="sim-field sim-field-price" id="fieldPrecoVenda" style="display:none">
 <label>Faixa de Preço (Valor de Venda)</label>
 <select id="simPrecoVenda">
 <option value="1">Até R$250.000</option>
@@ -1747,17 +1774,44 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 </div>
 <div class="sim-field">
 <label>Metragem (m²)</label>
-<select id="simMetrosVenda">
-<option value="1">Até 50m²</option>
-<option value="2">50 - 80m²</option>
-<option value="3">80 - 120m²</option>
-<option value="4">120 - 200m²</option>
-<option value="5">200m²+</option>
-</select>
+<input type="number" id="simMetrosVenda" placeholder="Ex: 75" min="1" max="10000" style="width:100%;padding:12px 16px;border-radius:8px;border:1px solid rgba(255,255,255,.3);background:rgba(255,255,255,.9);font-family:inherit;font-size:.95rem;box-sizing:border-box">
 </div>
 </div>
 
-<button class="btn-calcular" onclick="calcularVenda()">🔍 Calcular Estimativa de Venda</button>
+<button class="btn-calcular" id="btnCalcularVenda" onclick="calcularVenda()">🔍 Calcular Estimativa de Venda</button>
+
+<script>
+// Check all fields filled before showing price and enabling button
+function checkFieldsVenda() {
+  const tipo = document.getElementById('simTipoVenda').value;
+  const bairro = document.getElementById('simBairroVenda').value;
+  const quartos = document.getElementById('simQuartosVenda').value;
+  const metros = document.getElementById('simMetrosVenda').value;
+  const precoField = document.getElementById('fieldPrecoVenda');
+  const btn = document.getElementById('btnCalcularVenda');
+  
+  if (tipo && bairro && quartos && metros) {
+    precoField.style.display = 'block';
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  } else {
+    precoField.style.display = 'none';
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.cursor = 'not-allowed';
+  }
+}
+
+// Add event listeners to all fields
+document.getElementById('simTipoVenda').addEventListener('change', checkFieldsVenda);
+document.getElementById('simBairroVenda').addEventListener('change', checkFieldsVenda);
+document.getElementById('simQuartosVenda').addEventListener('change', checkFieldsVenda);
+document.getElementById('simMetrosVenda').addEventListener('input', checkFieldsVenda);
+
+// Initialize button state
+checkFieldsVenda();
+</script>
 
 <div class="sim-result" id="simResultVenda">
 <div class="est-label">Estimativa de Valor para Venda</div>
@@ -3470,7 +3524,7 @@ function simToggle(btn) {
 // Simulador calculation
 function calcularAluguel() {
   const bairro = document.getElementById('simBairro').value;
-  const area = parseFloat(document.getElementById('simArea').value) || 70;
+  const area = parseFloat(document.getElementById('simMetros').value) || 70;
   const mobiliado = document.querySelector('#simMobiliado button.active').dataset.val === 'sim';
   const garagem = parseInt(document.getElementById('simGaragem').value) || 1;
 
@@ -3594,7 +3648,7 @@ function showSimulator(type) {
 // Sale value calculator
 function calcularVenda() {
   const bairro = document.getElementById('simBairroVenda').value;
-  const area = parseFloat(document.getElementById('simAreaVenda').value) || 70;
+  const area = parseFloat(document.getElementById('simMetrosVenda').value) || 70;
   const garagem = parseInt(document.getElementById('simGaragemVenda').value) || 1;
 
   let minPm2, maxPm2;
