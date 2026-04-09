@@ -1,0 +1,977 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Blog Top Imobiliária - Artigos completos sobre mercado imobiliário em Águas Claras, dicas de aluguel, venda e administração de imóveis.">
+<meta name="keywords" content="blog, imobiliária, águas claras, aluguel, venda, administração, imóveis, df">
+<meta name="robots" content="index, follow">
+<title>Blog Top Imobiliária - Todos os Artigos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root {
+  --navy: #1B2A4A;
+  --navy-deep: #0F172A;
+  --red: #D32F2F;
+  --red-light: #EF5350;
+  --red-dark: #B71C1C;
+  --white: #ffffff;
+  --gray-100: #F5F5F5;
+  --gray-200: #EEEEEE;
+  --gray-300: #E0E0E0;
+  --gray-600: #616161;
+  --gray-800: #212121;
+  --success: #4CAF50;
+  --warning: #FF9800;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 16px;
+}
+
+body {
+  font-family: 'Inter', sans-serif;
+  color: var(--gray-800);
+  background: var(--white);
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Header */
+.header {
+  background: var(--navy-deep);
+  padding: 0;
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 1000;
+  transition: all 0.3s ease;
+}
+
+.header.scrolled {
+  background: var(--navy-deep);
+  box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+}
+
+.header .container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 20px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.logo {
+  color: var(--white);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.8rem;
+  font-weight: 800;
+  text-decoration: none;
+  letter-spacing: -0.5px;
+}
+
+.logo span {
+  color: var(--red-light);
+}
+
+.nav {
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.nav a {
+  color: var(--white);
+  text-decoration: none;
+  font-weight: 500;
+  font-size: 0.95rem;
+  transition: color 0.3s;
+}
+
+.nav a:hover {
+  color: var(--red-light);
+}
+
+.nav-cta {
+  background: var(--red);
+  padding: 12px 24px;
+  border-radius: 8px;
+  font-weight: 600 !important;
+}
+
+.nav-cta:hover {
+  background: var(--red-dark);
+  transform: translateY(-2px);
+  transition: all 0.3s;
+}
+
+.mobile-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.mobile-toggle span {
+  width: 24px;
+  height: 2px;
+  background: var(--white);
+  transition: all 0.3s;
+}
+
+/* Section */
+.section {
+  padding: 100px 0;
+  background: var(--white);
+}
+
+.section-gray {
+  background: var(--gray-100);
+}
+
+.section-dark {
+  background: var(--navy-deep);
+  color: var(--white);
+}
+
+.container {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: 0 24px;
+  position: relative;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.section-label {
+  background: var(--red);
+  color: var(--white);
+  padding: 8px 16px;
+  border-radius: 50px;
+  font-weight: 600;
+  font-size: 0.85rem;
+  display: inline-block;
+  margin-bottom: 16px;
+}
+
+.section-title {
+  color: var(--navy);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: clamp(2rem, 4vw, 3rem);
+  margin-bottom: 16px;
+  font-weight: 700;
+}
+
+.section-dark .section-title {
+  color: var(--white);
+}
+
+.section-desc {
+  color: var(--gray-600);
+  font-size: 1.1rem;
+  max-width: 700px;
+  margin: 0 auto 40px;
+  line-height: 1.6;
+}
+
+.section-dark .section-desc {
+  color: rgba(255,255,255,0.85);
+}
+
+/* Blog Grid */
+.blog-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 24px;
+  margin-bottom: 40px;
+}
+
+@media (max-width: 1024px) {
+  .blog-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+.blog-card {
+  background: var(--white);
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+  transition: all 0.3s;
+  cursor: pointer;
+}
+
+.blog-card:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 12px 40px rgba(0,0,0,0.15);
+}
+
+.blog-card-img {
+  height: 200px;
+  position: relative;
+  overflow: hidden;
+}
+
+.gradient-bg {
+  width: 100%;
+  height: 100%;
+}
+
+.blog-card-body {
+  padding: 24px;
+}
+
+.blog-meta {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 0.85rem;
+  color: var(--gray-600);
+}
+
+.blog-meta span {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+}
+
+.blog-card-body h3 {
+  color: var(--navy);
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  font-size: 1.25rem;
+  font-weight: 600;
+  margin-bottom: 12px;
+  line-height: 1.4;
+}
+
+.blog-card-body .excerpt {
+  color: var(--gray-600);
+  font-size: 0.95rem;
+  line-height: 1.6;
+  margin-bottom: 16px;
+}
+
+.read-more {
+  color: var(--red);
+  font-weight: 600;
+  text-decoration: none;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  transition: all 0.3s;
+}
+
+.read-more:hover {
+  color: var(--red-dark);
+  transform: translateX(4px);
+}
+
+/* Pagination */
+.pagination {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.pagination a {
+  padding: 12px 20px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 500;
+  transition: all 0.3s;
+  border: 2px solid transparent;
+}
+
+.pagination .current {
+  background: var(--red);
+  color: var(--white);
+  border-color: var(--red);
+}
+
+.pagination a:not(.current):hover {
+  border-color: var(--red);
+  color: var(--red);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--red), var(--red-dark));
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-block;
+  margin-top: 32px;
+  transition: all 0.3s;
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(211, 47, 47, 0.3);
+}
+
+.btn-whatsapp {
+  background: linear-gradient(135deg, #25D366, #128C7E);
+  color: var(--white);
+  padding: 14px 32px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 16px;
+  transition: all 0.3s;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+.btn-whatsapp:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.3);
+}
+
+.btn-whatsapp svg {
+  width: 20px;
+  height: 20px;
+  fill: currentColor;
+}
+
+/* Back to Blog */
+.back-to-blog {
+  text-align: center;
+  margin-bottom: 40px;
+}
+
+.back-to-blog a {
+  color: var(--red);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  transition: all 0.3s;
+}
+
+.back-to-blog a:hover {
+  color: var(--red-dark);
+  transform: translateX(-4px);
+}
+
+/* Footer */
+.footer {
+  background: var(--navy);
+  color: var(--white);
+  padding: 40px 0;
+  text-align: center;
+}
+
+.footer p {
+  color: rgba(255,255,255,0.7);
+  font-size: 0.9rem;
+}
+
+/* Reveal Animation */
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.reveal-delay-1 { transition-delay: 0.1s; }
+.reveal-delay-2 { transition-delay: 0.2s; }
+.reveal-delay-3 { transition-delay: 0.3s; }
+
+/* WhatsApp Floating */
+.whatsapp-float {
+  position: fixed;
+  bottom: 24px;
+  right: 24px;
+  background: #25D366;
+  color: var(--white);
+  width: 56px;
+  height: 56px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(37, 211, 102, 0.3);
+  transition: all 0.3s;
+  z-index: 999;
+}
+
+.whatsapp-float:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 20px rgba(37, 211, 102, 0.4);
+}
+
+.whatsapp-float svg {
+  width: 28px;
+  height: 28px;
+  fill: currentColor;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .header .container {
+    flex-wrap: wrap;
+  }
+  
+  .nav {
+    display: none;
+    flex-direction: column;
+    width: 100%;
+    gap: 0;
+    margin-top: 16px;
+    background: var(--navy-deep);
+    padding: 16px 0;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+  }
+  
+  .nav.active {
+    display: flex;
+  }
+  
+  .nav a {
+    padding: 12px 24px;
+    display: block;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+  
+  .nav-cta {
+    margin-top: 8px;
+  }
+  
+  .mobile-toggle {
+    display: flex;
+  }
+  
+  .blog-grid {
+    grid-template-columns: 1fr;
+  }
+  
+  .section-title {
+    font-size: 2rem;
+  }
+}
+</style>
+</head>
+<body>
+<!-- Header -->
+<header class="header" id="header">
+<div class="container">
+<a href="index.html" class="logo">Top<span>Imobiliária</span></a>
+<nav class="nav" id="nav">
+<a href="index.html#imoveis">Comprar</a>
+<a href="index.html#imoveis">Alugar</a>
+<a href="index.html#proprietarios">Vender ou Anunciar</a>
+<a href="index.html#servicos">Serviços</a>
+<a href="index.html#consorcio">🏠 Consórcio</a>
+<a href="index.html#blog" style="color:var(--red)">Blog</a>
+<a href="index.html#contato">Contato</a>
+</nav>
+<button class="mobile-toggle" id="mobileToggle">
+<span></span><span></span><span></span>
+</button>
+</div>
+</header>
+
+<!-- Main Blog Page -->
+<section class="section" id="blog-index">
+<div class="container">
+<div class="text-center reveal">
+<div class="section-label">Blog Top Imobiliária</div>
+<h2 class="section-title">Todos os Artigos</h2>
+<p class="section-desc">Explore nosso conteúdo completo sobre mercado imobiliário em Águas Claras, dicas de aluguel, venda e administração de imóveis.</p>
+</div>
+
+<div class="blog-grid">
+
+<!-- BLOG #1 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#1B2A4A 0%,#D32F2F 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Mercado</span></div>
+<h3>Quanto Cobrar de Aluguel em Águas Claras em 2026?</h3>
+<p class="excerpt">Análise completa dos valores praticados por bairro, tipo de imóvel e metragem. Dados atualizados do mercado local.</p>
+<a href="blog-aluguel-aguas-claras.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #2 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#2C3E50 0%,#3498DB 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Dicas</span></div>
+<h3>Como Escolher o Inquilino Ideal para Seu Imóvel</h3>
+<p class="excerpt">Critérios essenciais, análise de crédito e red flags. Guia prático para proprietários que querem segurança.</p>
+<a href="blog-escolher-inquilino.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #3 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#1A1A2E 0%,#16213E 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 3 min</span><span>Documentação</span></div>
+<h3>Documentos Necessários para Locação de Imóveis</h3>
+<p class="excerpt">Checklist completo de documentos para proprietário e inquilino. Evite problemas na hora de fechar contrato.</p>
+<a href="blog-documentos-locacao.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #4 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#16A085 0%,#16213E 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 6 min</span><span>Opinião</span></div>
+<h3>Vantagens de Usar uma Imobiliária para Alugar Seu Apartamento</h3>
+<p class="excerpt">Por que contar com especialistas em administração de imóveis faz diferença na rentabilidade e segurança do seu patrimônio.</p>
+<a href="blog-vantagens-imobiliaria.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #5 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#D32F2F 0%,#1B2A4A 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Guia</span></div>
+<h3>Quanto Vale Meu Imóvel em Águas Claras?</h3>
+<p class="excerpt">Descubra quanto vale seu imóvel com avaliação profissional. Análise de localização, andar, posição solar e mais.</p>
+<a href="blog-quanto-vale-imovel.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #6 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#616161 0%,#1B2A4A 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Guia</span></div>
+<h3>Quanto Cobrar de Aluguel em Águas Claras?</h3>
+<p class="excerpt">Definir o valor ideal de aluguel evita que imóvel fique parado. Saiba os fatores que influenciam no valor.</p>
+<a href="blog-quanto-cobrar-aluguel.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #7 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#EF5350 0%,#B71C1C 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Guia</span></div>
+<h3>Como Alugar Meu Imóvel Rápido em Águas Claras?</h3>
+<p class="excerpt">Para alugar rápido: preço correto, boa apresentação e divulgação eficiente. Dicas práticas para proprietários.</p>
+<a href="blog-como-alugar-rapido.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #8 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#2C3E50 0%,#E74C3C 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Guia</span></div>
+<h3>Imobiliária em Águas Claras DF: Por Que Escolher Bem?</h3>
+<p class="excerpt">Conhecimento local, avaliação correta e suporte completo. Benefícios de trabalhar com imobiliária especializada.</p>
+<a href="blog-imobiliaria-aguas-claras.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #9 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#16A085 0%,#27AE60 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Investimento</span></div>
+<h3>Vale Mais a Pena Vender ou Alugar Imóvel?</h3>
+<p class="excerpt">Decisão depende de momento financeiro, objetivos e cenário. Compare os dois cenários com dados reais.</p>
+<a href="blog-vender-ou-alugar.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #10 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#8E44AD 0%,#9B59B6 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Avaliação</span></div>
+<h3>Avaliar Imóvel em Águas Claras: Guia Completo</h3>
+<p class="excerpt">Detalhes como localização, vista e estrutura impactam valor. Saiba como fazer avaliação correta.</p>
+<a href="blog-avaliar-imovel.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #11 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#D35400 0%,#E67E22 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Guia</span></div>
+<h3>Colocar Imóvel para Alugar em Águas Claras</h3>
+<p class="excerpt">Exige planejamento: valor correto, preparação do imóvel e escolha do inquilino qualificado.</p>
+<a href="blog-colocar-alugar.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #12 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#16A085 0%,#2ECC71 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Gestão</span></div>
+<h3>Como Alugar Imóvel com Tranquilidade</h3>
+<p class="excerpt">Uma boa gestão transforma o aluguel em renda previsível e segura. Saiba como alugar com tranquilidade.</p>
+<a href="blog-administracao-tranquilidade.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #13 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#3498DB 0%,#5DADE2 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Estratégia</span></div>
+<h3>Colocar Imóvel para Vender em Águas Claras</h3>
+<p class="excerpt">Vender exige estratégia. Desde preço até apresentação e divulgação. Saiba como vender com eficiência.</p>
+<a href="blog-colocar-vender.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #14 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#9B59B6 0%,#BB8FCE 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Gestão</span></div>
+<h3>Administração de Imóveis em Águas Claras</h3>
+<p class="excerpt">Facilita sua vida cuidando de cobranças, contratos, manutenção e relacionamento. Entenda como funciona.</p>
+<a href="blog-administracao-completa.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #15 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#E74C3C 0%,#F1948A 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Especialização</span></div>
+<h3>Imobiliária Especialista em Locação em Águas Claras</h3>
+<p class="excerpt">Conhece perfil de inquilinos e estratégias para reduzir vacância. Descubra os benefícios de gestão especializada.</p>
+<a href="blog-especialista-locacao.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #16 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#C0392B 0%,#E74C3C 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Precificação</span></div>
+<h3>Quanto Cobrar de Aluguel em Águas Claras?</h3>
+<p class="excerpt">Definir valor correto evita vacância e garante rentabilidade. Descubra quanto cobrar do seu aluguel.</p>
+<a href="blog-quanto-cobrar-aluguel-2.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #17 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#2980B9 0%,#3498DB 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Metodologia</span></div>
+<h3>Como Definir Valor de Aluguel</h3>
+<p class="excerpt">Baseado em dados reais de mercado, não em expectativa. Compare imóveis e encontre valor competitivo.</p>
+<a href="blog-como-definir-aluguel.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #18 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#27AE60 0%,#2ECC71 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Segurança</span></div>
+<h3>Imobiliária para Administrar Aluguel</h3>
+<p class="excerpt">Gestão inclui cobrança, contrato, suporte e manutenção. Garanta tranquilidade ao proprietário.</p>
+<a href="blog-administracao-imovel.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #19 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#8E44AD 0%,#9B59B6 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Eficiência</span></div>
+<h3>Empresa de Administração de Imóveis</h3>
+<p class="excerpt">Especializada cuida de todos detalhes, reduzindo riscos e aumentando eficiência. Renda previsível.</p>
+<a href="blog-empresa-administracao.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #20 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#D35400 0%,#E67E22 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Locação</span></div>
+<h3>Melhor Imobiliária para Alugar Imóvel</h3>
+<p class="excerpt">Escolha certa faz diferença no tempo e segurança. Atrai interessados e seleciona melhor inquilinos.</p>
+<a href="blog-melhor-imobiliaria-alugar.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #21 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#C0392B 0%,#E74C3C 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Venda</span></div>
+<h3>Melhor Imobiliária para Vender Imóvel</h3>
+<p class="excerpt">Posiciona melhor no mercado, aumentando chances de venda rápida e com bom valor.</p>
+<a href="blog-melhor-imobiliaria-vender.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #22 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#34495E 0%,#5D6D7E 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Guia</span></div>
+<h3>Como Escolher Imobiliária</h3>
+<p class="excerpt">Atenção à experiência, conhecimento da região e qualidade do atendimento. Evite problemas.</p>
+<a href="blog-como-escolher-imobiliaria.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #23 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#5D4037 0%,#795548 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Comparativo</span></div>
+<h3>Vale a Pena Imobiliária ou Direto?</h3>
+<p class="excerpt">Direto parece vantajoso, mas envolve riscos e trabalho. Imobiliária oferece segurança completa.</p>
+<a href="blog-vale-pena-imobiliaria.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #24 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#2980B9 0%,#3498DB 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Benefícios</span></div>
+<h3>Vantagens de Imobiliária</h3>
+<p class="excerpt">Segurança, agilidade e organização no processo. Reduz riscos e facilita negociações.</p>
+<a href="blog-vantagens-imobiliaria.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #25 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#1E5631 0%,#27AE60 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Custos</span></div>
+<h3>Quanto Custa Administrar Imóvel?</h3>
+<p class="excerpt">Custo varia conforme serviço, mas representa pequeno percentual do aluguel. Segurança e tranquilidade.</p>
+<a href="blog-custo-administrar-imovel.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #26 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#BF360C 0%,#FF7043 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Transparência</span></div>
+<h3>Taxa de Administração Imobiliária</h3>
+<p class="excerpt">Cobre cobrança, contrato e suporte. Saiba como funciona a taxa e o que está incluído.</p>
+<a href="blog-taxa-administracao.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #27 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#27AE60 0%,#2ECC71 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Divulgação</span></div>
+<h3>Como Anunciar Imóvel para Alugar</h3>
+<p class="excerpt">Fotos de qualidade, descrição clara e preço adequado. Veja como anunciar com eficiência.</p>
+<a href="blog-anunciar-imovel-alugar.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #28 -->
+<div class="blog-card reveal reveal-delay-1">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#C0392B 0%,#E74C3C 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Estratégia</span></div>
+<h3>Como Anunciar Imóvel para Vender</h3>
+<p class="excerpt">Boa apresentação aumenta chances de venda. Aprenda a anunciar corretamente.</p>
+<a href="blog-anunciar-imovel-vender.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #29 -->
+<div class="blog-card reveal reveal-delay-2">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#E67E22 0%,#F39C12 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 4 min</span><span>Reduzir Vacância</span></div>
+<h3>Como Conseguir Inquilino Rápido</h3>
+<p class="excerpt">Alinhe preço, apresentação e divulgação. Facilite o processo e acelere a locação.</p>
+<a href="blog-inquilino-rapido.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+<!-- BLOG #30 -->
+<div class="blog-card reveal reveal-delay-3">
+<div class="blog-card-img">
+<div class="gradient-bg" style="background:linear-gradient(135deg,#1565C0 0%,#42A5F5 100%)"></div>
+</div>
+<div class="blog-card-body">
+<div class="blog-meta"><span>📖 5 min</span><span>Guia de Bairros</span></div>
+<h3>Imóveis em Águas Claras</h3>
+<p class="excerpt">Localização estratégica, infraestrutura completa e valorização constante. Conheça o melhor bairro.</p>
+<a href="blog-imoveis-aguas-claras.html" class="read-more">Ler Mais →</a>
+</div>
+</div>
+
+</div>
+
+<!-- Back to Blog -->
+<div class="back-to-blog reveal">
+<a href="index.html#blog">← Voltar para Blog na Home</a>
+</div>
+
+</div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+<div class="container">
+<p>© 2026 Top Imobiliária - CRECI-DF J-15806</p>
+<p><a href="index.html#contato" style="color:rgba(255,255,255,0.7);text-decoration:none">Contato</a></p>
+</div>
+</footer>
+
+<!-- WhatsApp Float -->
+<a href="https://wa.me/556130424344" class="whatsapp-float" target="_blank">
+<svg viewBox="0 0 24 24">
+<path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z"/>
+</svg>
+</a>
+
+<script>
+// Header scroll
+window.addEventListener('scroll', function() {
+  const header = document.getElementById('header');
+  if (window.scrollY > 50) {
+    header.classList.add('scrolled');
+  } else {
+    header.classList.remove('scrolled');
+  }
+});
+
+// Mobile menu
+const mobileToggle = document.getElementById('mobileToggle');
+const nav = document.getElementById('nav');
+
+mobileToggle.addEventListener('click', function() {
+  nav.classList.toggle('active');
+});
+
+// Reveal on scroll
+const reveals = document.querySelectorAll('.reveal');
+
+function revealOnScroll() {
+  reveals.forEach(el => {
+    const elementTop = el.getBoundingClientRect().top;
+    const elementVisible = 150;
+    
+    if (elementTop < window.innerHeight - elementVisible) {
+      el.classList.add('active');
+    }
+  });
+}
+
+window.addEventListener('scroll', revealOnScroll);
+revealOnScroll();
+</script>
+</body>
+</html>
