@@ -12,6 +12,10 @@
 <link rel="icon" type="image/jpeg" href="assets/top-imobiliaria/icon-square.jpg">
 <link rel="apple-touch-icon" href="assets/top-imobiliaria/icon-square.jpg">
 <link rel="canonical" href="https://www.topimobiliariadf.com.br/">
+<!-- Security -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' *.supabase.co formsubmit.co; form-action 'self' formsubmit.co; object-src 'none'; base-uri 'self';">
+<meta name="referrer" content="strict-origin-when-cross-origin">
+<meta name="theme-color" content="#1B2A4A">
 
 <!-- Open Graph -->
 <meta property="og:type" content="website">
@@ -796,13 +800,14 @@ img{max-width:100%;display:block}
 <nav class="nav" id="nav">
 <a href="#imoveis" onclick="filterProperties('sale')">Comprar</a>
 <a href="#imoveis" onclick="filterProperties('rent')">Alugar</a>
+<a href="buildings.html">Todos os Imóveis</a>
 <a href="#proprietarios">Vender ou Anunciar meu Imóvel</a>
 <a href="#servicos">Serviços</a>
 <a href="#consorcio" style="color:#43A047!important">🏠 Consórcio</a>
 <a href="#programa-indicacao" onclick="smoothScrollToElement('programa-indicacao'); return false;" style="color:#FF9800!important">🎁 Indique um Proprietário e Ganhe</a>
 <a href="#blog">Conteúdo</a>
-<a href="#sobre">Sobre</a>
-<a href="#contato" class="nav-cta">Contato</a>
+<a href="sobre.html">Sobre</a>
+<a href="contato.html" class="nav-cta">Contato</a>
 </nav>
 <button class="mobile-toggle" id="mobileToggle" aria-label="Menu">
 <span></span><span></span><span></span>
@@ -1601,6 +1606,7 @@ Quero Avaliação Gratuita
 <input type="hidden" name="_subject" value="Novo Lead Top Imobiliária — Avaliação de Locação">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
+<input type="text" name="_honey" style="display:none;visibility:hidden;position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
 <input type="hidden" name="lead_type" value="Avaliação de Locação">
 <input type="hidden" name="sim_tipo" id="leadAluguelTipo">
 <input type="hidden" name="sim_bairro" id="leadAluguelBairro">
@@ -1833,6 +1839,7 @@ Quero Avaliação Gratuita para Venda
 <input type="hidden" name="_subject" value="Novo Lead Top Imobiliária — Avaliação de Venda">
 <input type="hidden" name="_template" value="table">
 <input type="hidden" name="_captcha" value="false">
+<input type="text" name="_honey" style="display:none;visibility:hidden;position:absolute;left:-9999px" tabindex="-1" autocomplete="off">
 <input type="hidden" name="lead_type" value="Avaliação de Venda">
 <input type="hidden" name="sim_tipo" id="leadVendaTipo">
 <input type="hidden" name="sim_bairro" id="leadVendaBairro">
@@ -3016,7 +3023,7 @@ Quero Vender Meu Imóvel
 <li><a href="#administracao">Administração</a></li>
 <li><a href="#consorcio">Consórcio</a></li>
 <li><a href="#simulador">Simulador</a></li>
-<li><a href="#sobre">Sobre</a></li>
+<li><a href="sobre.html">Sobre</a></li>
 <li><a href="#blog">Blog</a></li>
 <li><a href="#contato">Contato</a></li>
 </ul>
