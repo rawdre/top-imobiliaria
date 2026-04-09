@@ -1,23 +1,59 @@
-# Block search engines from indexing
+# ============================================================
+# .htaccess — Top Imobiliaria DF
+# Security + Performance configuration
+# NOTE: GitHub Pages uses nginx — these rules apply on Apache hosts.
+# ============================================================
+
+# --- Security Headers ---
 <IfModule mod_headers.c>
-    # Block Google
-    SetEnvIf User-Agent "Googlebot" googlebot
-    Header set X-Robots-Tag "noindex, nofollow" env=googlebot
-    
-    # Block Bing
-    SetEnvIf User-Agent "bingbot" bingbot
-    Header set X-Robots-Tag "noindex, nofollow" env=bingbot
-    
-    # Block all search engines by default
+    Header always set X-Frame-Options "SAMEORIGIN"
+    Header always set X-Content-Type-Options "nosniff"
+    Header always set X-XSS-Protection "1; mode=block"
+    Header always set Referrer-Policy "strict-origin-when-cross-origin"
+    Header always set Permissions-Policy "camera=(), microphone=(), geolocation=(self), payment=()"
+    Header always set Content-Security-Policy "default-src 'self'; script-src 'self' 'unsafe-inline' cdn.jsdelivr.net; style-src 'self' 'unsafe-inline' fonts.googleapis.com; font-src 'self' fonts.gstatic.com data:; img-src 'self' data: blob:; connect-src 'self' *.supabase.co formsubmit.co; form-action 'self' formsubmit.co; object-src 'none'; base-uri 'self';"
+    Header unset Server
+    Header unset X-Powered-By
+    # Uncomment after SSL is active:
+    # Header always set Strict-Transport-Security "max-age=31536000; includeSubDomains; preload"
+</IfModule>
+
+# Development: block search engines
+<IfModule mod_headers.c>
     Header set X-Robots-Tag "noindex, nofollow, noarchive"
 </IfModule>
 
 # Prevent directory listing
 Options -Indexes
 
-# Security headers
-<IfModule mod_headers.c>
-    Header set X-Content-Type-Options "nosniff"
-    Header set X-Frame-Options "DENY"
-    Header set X-XSS-Protection "1; mode=block"
+# Block access to internal/sensitive files
+<FilesMatch "(^\.env|\.git|\.gitignore|CHANGELOG|README|SETUP|WHATSAPP-|FIX-|WORKING_ON|\.md$|\.txt$|\.log$)">
+    Order allow,deny
+    Deny from all
+</FilesMatch>
+
+<Files "robots.txt">
+    Allow from all
+</Files>
+
+# --- Performance: Compression ---
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
 </IfModule>
+
+# --- Performance: Browser Caching ---
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType image/jpeg "access plus 1 month"
+    ExpiresByType image/png  "access plus 1 month"
+    ExpiresByType image/webp "access plus 1 month"
+    ExpiresByType text/css   "access plus 1 week"
+    ExpiresByType application/javascript "access plus 1 week"
+</IfModule>
+
+# --- HTTPS Redirect (uncomment when custom domain + SSL ready) ---
+# <IfModule mod_rewrite.c>
+#     RewriteEngine On
+#     RewriteCond %{HTTPS} off
+#     RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+# </IfModule>
