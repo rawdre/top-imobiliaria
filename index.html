@@ -3578,64 +3578,44 @@ function calcularAluguel() {
 // Show/hide simulators
 function showSimulator(type) {
   try {
-    var btnA = document.getElementById('btnAluguel');
-    var btnV = document.getElementById('btnVenda');
-    var simA = document.getElementById('simAluguel');
-    var simV = document.getElementById('simVenda');
-    
-    if (!btnA || !btnV || !simA || !simV) { console.error('Simulator elements not found:', {btnA:!!btnA, btnV:!!btnV, simA:!!simA, simV:!!simV}); return; }
-    
-    // Update button states
-    if (type === 'aluguel') {
-      btnA.style.background = 'var(--red)';
-      btnA.style.color = 'var(--navy)';
-      btnV.style.background = 'transparent';
-      btnV.style.color = 'var(--gray-600)';
-    } else {
-      btnV.style.background = 'var(--red)';
-      btnV.style.color = 'var(--navy)';
-      btnA.style.background = 'transparent';
-      btnA.style.color = 'var(--gray-600)';
+    const btnA = document.getElementById('btnAluguel');
+    const btnV = document.getElementById('btnVenda');
+    const simA = document.getElementById('simAluguel');
+    const simV = document.getElementById('simVenda');
+
+    if (!btnA || !btnV || !simA || !simV) {
+      console.error('Simulator elements not found:', { btnA: !!btnA, btnV: !!btnV, simA: !!simA, simV: !!simV });
+      return;
     }
-    
-    // Toggle forms - direct DOM manipulation
-    if (type === 'aluguel') {
-      simA.style.display = 'block';
-      simA.style.opacity = '1';
-      simA.style.visibility = 'visible';
-      simA.style.transform = 'none';
-      simA.style.height = 'auto';
-      simA.style.overflow = 'visible';
-      simV.style.display = 'none';
-    } else {
-      simV.style.display = 'block';
-      simV.style.opacity = '1';
-      simV.style.visibility = 'visible';
-      simV.style.transform = 'none';
-      simV.style.height = 'auto';
-      simV.style.overflow = 'visible';
-      simA.style.display = 'none';
-    }
-    
-    // Also force via setAttribute for stubborn browsers
-    if (type === 'venda') {
-      simV.setAttribute('style', 'display:block;opacity:1;visibility:visible;transform:none;height:auto;overflow:visible');
-      simA.setAttribute('style', 'display:none');
-    } else {
-      simA.setAttribute('style', 'display:block;opacity:1;visibility:visible;transform:none;height:auto;overflow:visible');
-      simV.setAttribute('style', 'display:none');
-    }
-    
-    // Remove reveal class if still present (it sets opacity:0)
+
+    const showVenda = type === 'venda';
+    const activeBtn = showVenda ? btnV : btnA;
+    const inactiveBtn = showVenda ? btnA : btnV;
+    const activeForm = showVenda ? simV : simA;
+    const inactiveForm = showVenda ? simA : simV;
+
+    activeBtn.style.background = 'var(--red)';
+    activeBtn.style.color = 'var(--navy)';
+    inactiveBtn.style.background = 'transparent';
+    inactiveBtn.style.color = 'var(--gray-600)';
+
+    inactiveForm.style.display = 'none';
+    activeForm.style.display = 'block';
+    activeForm.style.opacity = '1';
+    activeForm.style.visibility = 'visible';
+    activeForm.style.transform = 'none';
+    activeForm.style.height = 'auto';
+    activeForm.style.overflow = 'visible';
+
     simA.classList.remove('reveal');
     simV.classList.remove('reveal');
     simA.classList.add('visible');
     simV.classList.add('visible');
-    
-    // Scroll to visible form
-    var activeForm = type === 'aluguel' ? simA : simV;
-    setTimeout(function() { activeForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 100);
-  } catch(e) { console.error('showSimulator error:', e); }
+
+    setTimeout(function () {
+      activeForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }, 100);
+  } catch (e) { console.error('showSimulator error:', e); }
 }
 
 // Sale value calculator
