@@ -1537,7 +1537,7 @@ Saiba Mais Sobre Garantias Locatícias
 </div>
 <div class="sim-field">
 <label>Quartos</label>
-<select id="simQuartosVenda">
+<select id="simQuartos">
 <option value="0">0 Quartos</option>
 <option value="1">1 Quarto</option>
 <option value="2" selected>2 Quartos</option>
@@ -1781,7 +1781,7 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 </div>
 <div class="sim-field">
 <label>Quartos</label>
-<select id="simQuartos">
+<select id="simQuartosVenda">
 <option value="0">0 Quartos</option>
 <option value="1">1 Quarto</option>
 <option value="2" selected>2 Quartos</option>
@@ -1813,7 +1813,7 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 function checkFieldsVenda() {
   const tipo = document.getElementById('simTipoVenda').value;
   const bairro = document.getElementById('simBairroVenda').value;
-  const quartos = document.getElementById('simQuartosVenda')?.value || document.getElementById('simQuartos')?.value;
+  const quartos = document.getElementById('simQuartosVenda').value;
   const metros = document.getElementById('simMetrosVenda').value;
   const btn = document.getElementById('btnCalcularVenda');
   
@@ -1831,7 +1831,7 @@ function checkFieldsVenda() {
 // Add event listeners
 document.getElementById('simTipoVenda').addEventListener('change', checkFieldsVenda);
 document.getElementById('simBairroVenda').addEventListener('change', checkFieldsVenda);
-document.getElementById('simQuartos')?.addEventListener('change', checkFieldsVenda);
+document.getElementById('simQuartosVenda').addEventListener('change', checkFieldsVenda);
 document.getElementById('simMetrosVenda').addEventListener('input', checkFieldsVenda);
 document.getElementById('simGaragemVenda')?.addEventListener('change', checkFieldsVenda);
 
