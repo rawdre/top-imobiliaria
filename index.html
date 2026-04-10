@@ -1808,6 +1808,37 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 
 <button class="btn-calcular" id="btnCalcularVenda" onclick="calcularVenda()">🔍 Calcular Estimativa de Venda</button>
 
+<script>
+// Enable button only when fields are filled
+function checkFieldsVenda() {
+  const tipo = document.getElementById('simTipoVenda').value;
+  const bairro = document.getElementById('simBairroVenda').value;
+  const quartos = document.getElementById('simQuartosVenda')?.value || document.getElementById('simQuartos')?.value;
+  const metros = document.getElementById('simMetrosVenda').value;
+  const btn = document.getElementById('btnCalcularVenda');
+  
+  if (tipo && bairro && quartos && metros) {
+    btn.disabled = false;
+    btn.style.opacity = '1';
+    btn.style.cursor = 'pointer';
+  } else {
+    btn.disabled = true;
+    btn.style.opacity = '0.7';
+    btn.style.cursor = 'not-allowed';
+  }
+}
+
+// Add event listeners
+document.getElementById('simTipoVenda').addEventListener('change', checkFieldsVenda);
+document.getElementById('simBairroVenda').addEventListener('change', checkFieldsVenda);
+document.getElementById('simQuartos')?.addEventListener('change', checkFieldsVenda);
+document.getElementById('simMetrosVenda').addEventListener('input', checkFieldsVenda);
+document.getElementById('simGaragemVenda')?.addEventListener('change', checkFieldsVenda);
+
+// Initialize
+checkFieldsVenda();
+</script>
+
 <div class="sim-result" id="simResultVenda">
 <div class="est-label">Estimativa Média de Valor para Venda</div>
 <div class="est-value" id="simValorVenda">R$ 0</div>
