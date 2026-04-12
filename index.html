@@ -360,7 +360,8 @@ img{max-width:100%;display:block}
 /* SIMULADOR */
 .simulador-section{background:linear-gradient(160deg,var(--gray-50) 0%,#E8ECF4 100%);position:relative;overflow:hidden}
 .simulador-section::before{content:'';position:absolute;top:-30%;right:-15%;width:50%;height:160%;background:radial-gradient(ellipse,rgba(211,47,47,.08),transparent 70%);pointer-events:none}
-.simulador-form{background:var(--white);border-radius:var(--radius-lg);padding:48px;box-shadow:var(--shadow-lg);max-width:800px;margin:0 auto;position:relative;z-index:2}
+.simulators-layout{display:grid;grid-template-columns:1fr;gap:28px;align-items:start;position:relative;z-index:2;max-width:860px;margin:0 auto;justify-items:center}
+.simulador-form{background:var(--white);border-radius:var(--radius-lg);padding:48px;box-shadow:var(--shadow-lg);max-width:860px;margin:0 auto;position:relative;z-index:2;width:100%}
 .simulador-form h3{font-size:1.4rem;font-weight:700;color:var(--navy);margin-bottom:8px}
 .simulador-form .sub{font-size:.95rem;color:var(--gray-600);margin-bottom:32px}
 .sim-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:28px}
@@ -1431,14 +1432,7 @@ Saiba Mais Sobre Garantias Locatícias
 <p class="section-desc">Use nossos simuladores gratuitos para ter uma estimativa de aluguel ou venda do seu imóvel em Águas Claras e região. É rápido e sem compromisso.</p>
 </div>
 
-<!-- TABS -->
-<div class="reveal" style="text-align:center;margin-bottom:32px">
-<div class="sim-type-toggle" style="display:inline-flex;gap:0;background:rgba(255,255,255,.1);border-radius:50px;overflow:hidden;border:1px solid rgba(27,42,74,.1)">
-<button class="sim-type-btn active" onclick="showSimulator('aluguel')" id="btnAluguel" style="padding:12px 32px;border:none;background:var(--red);color:var(--navy);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:var(--transition);border-radius:50px">📊 Simulador de Aluguel</button>
-<button class="sim-type-btn" onclick="showSimulator('venda')" id="btnVenda" style="padding:12px 32px;border:none;background:transparent;color:var(--gray-600);font-family:inherit;font-size:14px;font-weight:600;cursor:pointer;transition:var(--transition);border-radius:50px">💰 Simulador de Venda</button>
-</div>
-</div>
-
+<div class="simulators-layout">
 <!-- SIMULADOR DE ALUGUEL -->
 <div class="simulador-form" id="simAluguel" style="opacity:1;transform:none">
 <h3>📊 Simulador de Aluguel</h3>
@@ -1537,7 +1531,7 @@ Saiba Mais Sobre Garantias Locatícias
 </div>
 <div class="sim-field">
 <label>Quartos</label>
-<select id="simQuartosVenda">
+<select id="simQuartos">
 <option value="0">0 Quartos</option>
 <option value="1">1 Quarto</option>
 <option value="2" selected>2 Quartos</option>
@@ -1684,7 +1678,7 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 </div>
 
 <!-- SIMULADOR DE VENDA -->
-<div class="simulador-form" id="simVenda" style="display:none;opacity:1;transform:none">
+<div class="simulador-form" id="simVenda" style="opacity:1;transform:none">
 <h3>💰 Simulador de Venda</h3>
 <p class="sub">Descubra quanto vale o seu imóvel para venda</p>
 
@@ -1781,7 +1775,7 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 </div>
 <div class="sim-field">
 <label>Quartos</label>
-<select id="simQuartos">
+<select id="simQuartosVenda">
 <option value="0">0 Quartos</option>
 <option value="1">1 Quarto</option>
 <option value="2" selected>2 Quartos</option>
@@ -1813,7 +1807,7 @@ Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</s
 function checkFieldsVenda() {
   const tipo = document.getElementById('simTipoVenda').value;
   const bairro = document.getElementById('simBairroVenda').value;
-  const quartos = document.getElementById('simQuartosVenda')?.value || document.getElementById('simQuartos')?.value;
+  const quartos = document.getElementById('simQuartosVenda').value;
   const metros = document.getElementById('simMetrosVenda').value;
   const btn = document.getElementById('btnCalcularVenda');
   
@@ -1831,7 +1825,7 @@ function checkFieldsVenda() {
 // Add event listeners
 document.getElementById('simTipoVenda').addEventListener('change', checkFieldsVenda);
 document.getElementById('simBairroVenda').addEventListener('change', checkFieldsVenda);
-document.getElementById('simQuartos')?.addEventListener('change', checkFieldsVenda);
+document.getElementById('simQuartosVenda').addEventListener('change', checkFieldsVenda);
 document.getElementById('simMetrosVenda').addEventListener('input', checkFieldsVenda);
 document.getElementById('simGaragemVenda')?.addEventListener('change', checkFieldsVenda);
 
@@ -1922,6 +1916,7 @@ Falar no WhatsApp
 <p style="margin-top:24px;padding-top:16px;border-top:1px solid rgba(0,0,0,.08);font-size:.75rem;color:var(--gray-300);text-align:center;">
 Simulador exclusivo da <strong style="color:var(--gray-600)">Top Imobiliária</strong>
 </p>
+</div>
 </div>
 </div>
 </div>
@@ -2467,7 +2462,7 @@ Começar Agora
 </div>
 
 <div class="text-center reveal" style="padding: 40px 0;">
-<a href="blog-index.html" class="btn-primary" style="display:inline-block;">Ver todos os conteúdos (31 artigos) →</a>
+<a href="blog-index.html" class="btn-primary" style="display:inline-block;">Ver todos os conteúdos (60 artigos) →</a>
 </div>
 </div>
 </section>
@@ -3575,67 +3570,18 @@ function calcularAluguel() {
   setTimeout(function(){ document.getElementById('leadFormAluguel').classList.add('show'); }, 400);
 }
 
-// Show/hide simulators
+// Scroll to the selected simulator card
 function showSimulator(type) {
   try {
-    var btnA = document.getElementById('btnAluguel');
-    var btnV = document.getElementById('btnVenda');
-    var simA = document.getElementById('simAluguel');
-    var simV = document.getElementById('simVenda');
-    
-    if (!btnA || !btnV || !simA || !simV) { console.error('Simulator elements not found:', {btnA:!!btnA, btnV:!!btnV, simA:!!simA, simV:!!simV}); return; }
-    
-    // Update button states
-    if (type === 'aluguel') {
-      btnA.style.background = 'var(--red)';
-      btnA.style.color = 'var(--navy)';
-      btnV.style.background = 'transparent';
-      btnV.style.color = 'var(--gray-600)';
-    } else {
-      btnV.style.background = 'var(--red)';
-      btnV.style.color = 'var(--navy)';
-      btnA.style.background = 'transparent';
-      btnA.style.color = 'var(--gray-600)';
+    const target = document.getElementById(type === 'venda' ? 'simVenda' : 'simAluguel');
+    if (!target) {
+      console.error('Simulator target not found:', type);
+      return;
     }
-    
-    // Toggle forms - direct DOM manipulation
-    if (type === 'aluguel') {
-      simA.style.display = 'block';
-      simA.style.opacity = '1';
-      simA.style.visibility = 'visible';
-      simA.style.transform = 'none';
-      simA.style.height = 'auto';
-      simA.style.overflow = 'visible';
-      simV.style.display = 'none';
-    } else {
-      simV.style.display = 'block';
-      simV.style.opacity = '1';
-      simV.style.visibility = 'visible';
-      simV.style.transform = 'none';
-      simV.style.height = 'auto';
-      simV.style.overflow = 'visible';
-      simA.style.display = 'none';
-    }
-    
-    // Also force via setAttribute for stubborn browsers
-    if (type === 'venda') {
-      simV.setAttribute('style', 'display:block;opacity:1;visibility:visible;transform:none;height:auto;overflow:visible');
-      simA.setAttribute('style', 'display:none');
-    } else {
-      simA.setAttribute('style', 'display:block;opacity:1;visibility:visible;transform:none;height:auto;overflow:visible');
-      simV.setAttribute('style', 'display:none');
-    }
-    
-    // Remove reveal class if still present (it sets opacity:0)
-    simA.classList.remove('reveal');
-    simV.classList.remove('reveal');
-    simA.classList.add('visible');
-    simV.classList.add('visible');
-    
-    // Scroll to visible form
-    var activeForm = type === 'aluguel' ? simA : simV;
-    setTimeout(function() { activeForm.scrollIntoView({ behavior: 'smooth', block: 'nearest' }); }, 100);
-  } catch(e) { console.error('showSimulator error:', e); }
+    setTimeout(function () {
+      target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 100);
+  } catch (e) { console.error('showSimulator error:', e); }
 }
 
 // Sale value calculator
