@@ -786,8 +786,32 @@ img{max-width:100%;display:block}
 
 /* Testimonial quotation marks */
 .testimonial-card::before{content:'"';position:absolute;top:-10px;left:20px;font-size:60px;color:var(--red);opacity:0.1;font-family:serif;line-height:1;pointer-events:none}
+
+/* MOBILE FIX - Simulador visibility */
+@media(max-width:768px){
+  #simAluguel, #simVenda {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    min-height: 100px;
+  }
+}
 </style>
 <style>
+
+/* MOBILE FIX - Simulador visibility */
+@media(max-width:768px){
+  #simAluguel, #simVenda {
+    display: block !important;
+    opacity: 1 !important;
+    transform: none !important;
+    visibility: visible !important;
+    overflow: visible !important;
+    min-height: 100px;
+  }
+}
 </style>
 </head>
 <body>
@@ -1424,7 +1448,7 @@ Saiba Mais Sobre Garantias Locatícias
 </section>
 
 <!-- SIMULADOR DE ALUGUEL E VENDA -->
-<section class="section simulador-section" id="simulador">
+<section class="section simulador-section" id="simulador" style="overflow:visible;">
 <div class="container">
 <div class="text-center reveal">
 <div class="section-label">Avaliação Gratuita</div>
@@ -3141,7 +3165,7 @@ function openPropertyModal(property) {
 
   modal.classList.add('open');
   modal.setAttribute('aria-hidden', 'false');
-  document.body.style.overflow = 'hidden';
+  document.body.style.overflow = 'hidden'; setTimeout(function(){document.body.style.overflow='auto';}, 100);
   history.replaceState(null, '', `#${getPropertyFragment(property.id)}`);
 }
 
