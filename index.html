@@ -3417,27 +3417,30 @@ function getBedroomAdjustment(quartos) {
 
 function getRentBasePerSquareMeter(bairro) {
   const rentBase = {
-    'ac-norte': 33,
-    'ac-sul': 31,
-    'ao-norte': 29,
-    'ao-sul': 28,
+    // ÁGUAS CLARAS - 0.5% of property value (April 2026)
+    'areal': 42,  // ~R$7,800/m² × 0.5%
+    'arniqueiras': 40,  // ~R$7,500/m² × 0.5%
+    'ade': 45,  // ~R$8,200/m² × 0.5%
+    // ASFALTADAS
+    'asa-sul': 75,
+    'asa-norte': 72,
     'asa-sul': 42,
     'asa-norte': 40,
-    'ceilandia': 18,
+    'ceilandia': 25,
     'cruzeiro': 29,
     'gama': 17,
-    'guara': 26,
+    'guara': 40,
     'itapoan': 16,
     'jardim-botanico': 24,
-    'lago-norte': 37,
-    'lago-sul': 39,
-    'park-way': 28,
+    'lago-norte': 100,
+    'lago-sul': 112,
+    'park-way': 70,
     'planaltina': 15,
     'rio-preto': 15,
     'samambaia': 18,
     'sao-marcos': 16,
     'sudoeste': 41,
-    'taguatinga': 22,
+    'taguatinga': 32,
     'varjao': 18,
     'vicente-pires': 23,
     'riohondo': 15,
@@ -3469,34 +3472,38 @@ function getRentBasePerSquareMeter(bairro) {
     'goias': 25,
     'indai': 14,
     'itelandia': 14,
-    'trindade': 16
+    'trindade': 16, 'noroeste': 28
   };
-  return rentBase[bairro] || 20;
+  if (bairro === 'todos') return 40;  // Average Águas Claras
+  return rentBase[bairro] || 35;
 }
 
 function getSaleBasePerSquareMeter(bairro) {
   const saleBase = {
-    'ac-norte': 9400,
-    'ac-sul': 9000,
-    'ao-norte': 8500,
-    'ao-sul': 8200,
+    // ÁGUAS CLARAS - Updated April 2026
+    'areal': 7800,
+    'arniqueiras': 7500,
+    'ade': 8200,
+    // ASFALTADAS
     'asa-sul': 14500,
     'asa-norte': 13800,
-    'ceilandia': 4200,
+    'asa-sul': 14500,
+    'asa-norte': 13800,
+    'ceilandia': 5000,
     'cruzeiro': 7900,
     'gama': 3600,
-    'guara': 6900,
+    'guara': 7800,
     'itapoan': 3400,
     'jardim-botanico': 6200,
-    'lago-norte': 16500,
-    'lago-sul': 17800,
-    'park-way': 11800,
+    'lago-norte': 19500,
+    'lago-sul': 22000,
+    'park-way': 13500,
     'planaltina': 3200,
     'rio-preto': 3000,
     'samambaia': 4300,
     'sao-marcos': 3500,
     'sudoeste': 14800,
-    'taguatinga': 5400,
+    'taguatinga': 6200,
     'varjao': 4200,
     'vicente-pires': 6100,
     'riohondo': 3000,
@@ -3515,7 +3522,7 @@ function getSaleBasePerSquareMeter(bairro) {
     'sri': 4300,
     'saz': 4300,
     'sudeste': 6200,
-    'nucleo-bandeirante': 4700,
+    'nucleo-bandeirante': 6800,
     'agua-linda': 2600,
     'aba-de-goias': 2500,
     'anapolis': 4300,
@@ -3528,9 +3535,10 @@ function getSaleBasePerSquareMeter(bairro) {
     'goias': 7000,
     'indai': 2400,
     'itelandia': 2400,
-    'trindade': 3000
+    'trindade': 3000, 'noroeste': 5200
   };
-  return saleBase[bairro] || 4800;
+  if (bairro === 'todos') return 7500;  // Average Águas Claras
+  return saleBase[bairro] || 6000;
 }
 
 function getPropertyTypeAdjustment(tipo) {
