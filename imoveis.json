@@ -13,9 +13,9 @@
       "area": 55,
       "vagas": 1,
       "valor_venda": null,
-      "valor_aluguel_bruto": 2310.00,
-      "valor_aluguel_desconto": 210.00,
-      "valor_aluguel_liquido": 2100.00,
+      "valor_aluguel_bruto": 2310.0,
+      "valor_aluguel_desconto": 210.0,
+      "valor_aluguel_liquido": 2100.0,
       "condominio": 729.51,
       "agua_rateada": true,
       "descricao": "Excelente apartamento de 1 Quarto, Sala, banheiro social, cozinha americana, área de serviço, 1 vaga de garagem coberta, vista livre, armários planejados em todos os ambientes.\n\nPrédio com área de lazer, piscina aquecida, sauna, academia, churrasqueira e espaço gourmet, muito bem localizado, próximo ao metrô, comércio, parque, e fácil acesso a saída pela EPTG.",
@@ -24,7 +24,10 @@
       "destaque": true,
       "status": "ativo",
       "data_cadastro": "2026-04-15",
-      "fotos": [],
+      "fotos": [
+        "https://images.unsplash.com/photo-1560448204-e02f11c3d0e2?w=1200&h=800&fit=crop&auto=format",
+        "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?w=800&h=600&fit=crop&auto=format"
+      ],
       "video": null,
       "mapa": {
         "latitude": -15.8447,
