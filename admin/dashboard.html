@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Imobiliária | Dashboard</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <img src="../assets/top-imobiliaria/icon-square.jpg" alt="Top Imobiliária">
+        <div>
+          <strong>Top Imobiliária</strong>
+          <span>Painel administrativo</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <a class="active" href="./dashboard.html">Dashboard</a>
+        <a href="./properties.html">Imóveis</a>
+        <a href="./add-property.html">Adicionar imóvel</a>
+        <a href="../index.html" target="_blank" rel="noreferrer">Ver site público</a>
+        <button type="button" data-action="logout">Sair</button>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <h1>Dashboard</h1>
+          <p>Resumo rápido da base de imóveis usada pelo site público.</p>
+        </div>
+        <div class="admin-actions">
+          <a class="btn btn-primary" href="./add-property.html">Novo imóvel</a>
+          <a class="btn btn-secondary" href="./properties.html">Gerenciar imóveis</a>
+        </div>
+      </header>
+
+      <div id="dashboardMessage" class="message"></div>
+
+      <section class="stats-grid">
+        <article class="stat-card">
+          <span>Total de imóveis</span>
+          <strong id="statTotal">--</strong>
+        </article>
+        <article class="stat-card">
+          <span>Imóveis ativos</span>
+          <strong id="statActive">--</strong>
+        </article>
+        <article class="stat-card">
+          <span>Imóveis em destaque</span>
+          <strong id="statFeatured">--</strong>
+        </article>
+        <article class="stat-card">
+          <span>Aluguel / Venda</span>
+          <strong id="statRentSale">--</strong>
+        </article>
+      </section>
+
+      <section class="grid-2">
+        <article class="panel">
+          <div class="toolbar">
+            <h2>Últimos imóveis cadastrados</h2>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead>
+                <tr>
+                  <th>Imóvel</th>
+                  <th>Tipo</th>
+                  <th>Preço</th>
+                  <th>Status</th>
+                  <th>Ação</th>
+                </tr>
+              </thead>
+              <tbody id="recentPropertiesBody">
+                <tr>
+                  <td colspan="5">
+                    <div class="loading-inline">Carregando imóveis...</div>
+                  </td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </article>
+
+        <article class="panel">
+          <h2>Próximos passos</h2>
+          <p class="helper" style="margin-top:12px">
+            1. Configure as chaves do Supabase em <code>admin/api.js</code> e no site público.<br>
+            2. Crie a tabela <code>properties</code> e o bucket <code>property-images</code>.<br>
+            3. Cadastre o primeiro usuário admin no Supabase Auth.<br>
+            4. Publique alguns imóveis e valide no site público.
+          </p>
+        </article>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./api.js"></script>
+  <script src="./dashboard.js"></script>
+</body>
+</html>

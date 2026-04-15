@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Imobiliária | Painel Admin</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body>
+  <main class="login-shell">
+    <section class="login-card">
+      <div class="login-header">
+        <img src="../assets/top-imobiliaria/icon-square.jpg" alt="Top Imobiliária">
+        <h1>Painel Administrativo</h1>
+        <p>Área restrita para gerenciar imóveis, destaques e conteúdo exibido no site público da Top Imobiliária.</p>
+      </div>
+
+      <div id="loginMessage" class="message"></div>
+
+      <form id="loginForm" class="form-grid">
+        <div class="field-full">
+          <label for="email">Email</label>
+          <input id="email" name="email" type="email" placeholder="admin@topimobiliaria.com.br" required>
+        </div>
+        <div class="field-full">
+          <label for="password">Senha</label>
+          <input id="password" name="password" type="password" placeholder="Sua senha" required>
+        </div>
+        <div class="field-full">
+          <button type="submit" class="btn btn-primary">Entrar no painel</button>
+        </div>
+      </form>
+    </section>
+  </main>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./api.js"></script>
+  <script src="./login.js"></script>
+</body>
+</html>

@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Imobiliária | Editar imóvel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-mode="edit">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <img src="../assets/top-imobiliaria/icon-square.jpg" alt="Top Imobiliária">
+        <div>
+          <strong>Top Imobiliária</strong>
+          <span>Painel administrativo</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="./dashboard.html">Dashboard</a>
+        <a class="active" href="./properties.html">Imóveis</a>
+        <a href="./add-property.html">Adicionar imóvel</a>
+        <a href="../index.html" target="_blank" rel="noreferrer">Ver site público</a>
+        <button type="button" data-action="logout">Sair</button>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <h1>Editar imóvel</h1>
+          <p>Atualize dados, imagens, status e destaque do imóvel.</p>
+        </div>
+        <div class="admin-actions">
+          <a class="btn btn-secondary" href="./properties.html">Voltar para imóveis</a>
+        </div>
+      </header>
+
+      <div id="formMessage" class="message"></div>
+
+      <section class="panel">
+        <form id="propertyForm" class="form-grid">
+          <div class="field-full">
+            <label for="title">Título</label>
+            <input id="title" name="title" type="text" required>
+          </div>
+
+          <div class="field">
+            <label for="property_type">Tipo de imóvel</label>
+            <select id="property_type" name="property_type">
+              <option value="apartamento">Apartamento</option>
+              <option value="kitnet">Kitnet</option>
+              <option value="casa">Casa</option>
+              <option value="sobrado">Sobrado</option>
+              <option value="cobertura">Cobertura</option>
+              <option value="duplex">Duplex</option>
+              <option value="sala-comercial">Sala comercial</option>
+              <option value="loja">Loja</option>
+              <option value="galpao">Galpão</option>
+              <option value="terreno">Terreno</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="listing_type">Objetivo</label>
+            <select id="listing_type" name="listing_type">
+              <option value="aluguel">Aluguel</option>
+              <option value="venda">Venda</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="price">Preço</label>
+            <input id="price" name="price" type="number" min="0" step="0.01">
+          </div>
+
+          <div class="field">
+            <label for="area_m2">Metragem (m²)</label>
+            <input id="area_m2" name="area_m2" type="number" min="0" step="0.01">
+          </div>
+
+          <div class="field">
+            <label for="bedrooms">Quartos</label>
+            <input id="bedrooms" name="bedrooms" type="number" min="0" step="1">
+          </div>
+
+          <div class="field">
+            <label for="bathrooms">Banheiros</label>
+            <input id="bathrooms" name="bathrooms" type="number" min="0" step="1">
+          </div>
+
+          <div class="field">
+            <label for="garage_spaces">Garagens</label>
+            <input id="garage_spaces" name="garage_spaces" type="number" min="0" step="1">
+          </div>
+
+          <div class="field">
+            <label for="neighborhood">Região / bairro</label>
+            <input id="neighborhood" name="neighborhood" type="text" required>
+          </div>
+
+          <div class="field-full">
+            <label for="address">Endereço</label>
+            <input id="address" name="address" type="text" required>
+          </div>
+
+          <div class="field-full">
+            <label for="condominium_name">Nome do prédio / condomínio</label>
+            <input id="condominium_name" name="condominium_name" type="text">
+          </div>
+
+          <div class="field-full">
+            <label for="description">Descrição</label>
+            <textarea id="description" name="description"></textarea>
+          </div>
+
+          <div class="field-full">
+            <label for="gradient">Gradient opcional</label>
+            <input id="gradient" name="gradient" type="text">
+          </div>
+
+          <div class="field-full">
+            <label for="imageFiles">Adicionar novas fotos</label>
+            <input id="imageFiles" name="imageFiles" type="file" accept="image/*" multiple>
+            <p class="helper">Imagens novas serão somadas às existentes. Você pode remover as atuais clicando no X.</p>
+            <div id="galleryPreview" class="thumb-list"></div>
+          </div>
+
+          <div class="field">
+            <label>
+              <input type="checkbox" name="is_active">
+              Imóvel ativo no site
+            </label>
+          </div>
+
+          <div class="field">
+            <label>
+              <input type="checkbox" name="is_featured">
+              Exibir em destaque
+            </label>
+          </div>
+
+          <div class="field-full">
+            <button type="submit" class="btn btn-primary">Salvar imóvel</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./api.js"></script>
+  <script src="./property-form.js"></script>
+</body>
+</html>

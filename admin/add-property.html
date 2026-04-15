@@ -1,0 +1,159 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Top Imobiliária | Adicionar imóvel</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="./styles.css">
+</head>
+<body data-mode="create">
+  <div class="admin-shell">
+    <aside class="admin-sidebar">
+      <div class="admin-brand">
+        <img src="../assets/top-imobiliaria/icon-square.jpg" alt="Top Imobiliária">
+        <div>
+          <strong>Top Imobiliária</strong>
+          <span>Painel administrativo</span>
+        </div>
+      </div>
+
+      <nav class="admin-nav">
+        <a href="./dashboard.html">Dashboard</a>
+        <a href="./properties.html">Imóveis</a>
+        <a class="active" href="./add-property.html">Adicionar imóvel</a>
+        <a href="../index.html" target="_blank" rel="noreferrer">Ver site público</a>
+        <button type="button" data-action="logout">Sair</button>
+      </nav>
+    </aside>
+
+    <main class="admin-main">
+      <header class="admin-topbar">
+        <div>
+          <h1>Novo imóvel</h1>
+          <p>Cadastre o imóvel com os mesmos campos usados no site público.</p>
+        </div>
+        <div class="admin-actions">
+          <a class="btn btn-secondary" href="./properties.html">Voltar para imóveis</a>
+        </div>
+      </header>
+
+      <div id="formMessage" class="message"></div>
+
+      <section class="panel">
+        <form id="propertyForm" class="form-grid">
+          <div class="field-full">
+            <label for="title">Título</label>
+            <input id="title" name="title" type="text" placeholder="Apartamento 3 quartos - Rua 25 Sul" required>
+          </div>
+
+          <div class="field">
+            <label for="property_type">Tipo de imóvel</label>
+            <select id="property_type" name="property_type">
+              <option value="apartamento">Apartamento</option>
+              <option value="kitnet">Kitnet</option>
+              <option value="casa">Casa</option>
+              <option value="sobrado">Sobrado</option>
+              <option value="cobertura">Cobertura</option>
+              <option value="duplex">Duplex</option>
+              <option value="sala-comercial">Sala comercial</option>
+              <option value="loja">Loja</option>
+              <option value="galpao">Galpão</option>
+              <option value="terreno">Terreno</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="listing_type">Objetivo</label>
+            <select id="listing_type" name="listing_type">
+              <option value="aluguel">Aluguel</option>
+              <option value="venda">Venda</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label for="price">Preço</label>
+            <input id="price" name="price" type="number" min="0" step="0.01" placeholder="3200">
+          </div>
+
+          <div class="field">
+            <label for="area_m2">Metragem (m²)</label>
+            <input id="area_m2" name="area_m2" type="number" min="0" step="0.01" placeholder="85">
+          </div>
+
+          <div class="field">
+            <label for="bedrooms">Quartos</label>
+            <input id="bedrooms" name="bedrooms" type="number" min="0" step="1" value="0">
+          </div>
+
+          <div class="field">
+            <label for="bathrooms">Banheiros</label>
+            <input id="bathrooms" name="bathrooms" type="number" min="0" step="1" value="0">
+          </div>
+
+          <div class="field">
+            <label for="garage_spaces">Garagens</label>
+            <input id="garage_spaces" name="garage_spaces" type="number" min="0" step="1" value="0">
+          </div>
+
+          <div class="field">
+            <label for="neighborhood">Região / bairro</label>
+            <input id="neighborhood" name="neighborhood" type="text" placeholder="Águas Claras Sul" required>
+          </div>
+
+          <div class="field-full">
+            <label for="address">Endereço</label>
+            <input id="address" name="address" type="text" placeholder="Rua 25 Sul, Águas Claras" required>
+          </div>
+
+          <div class="field-full">
+            <label for="condominium_name">Nome do prédio / condomínio</label>
+            <input id="condominium_name" name="condominium_name" type="text" placeholder="Residencial Park Sul">
+          </div>
+
+          <div class="field-full">
+            <label for="description">Descrição</label>
+            <textarea id="description" name="description" placeholder="Destaques do imóvel, estrutura, lazer, diferenciais e contexto comercial."></textarea>
+          </div>
+
+          <div class="field-full">
+            <label for="gradient">Gradient opcional</label>
+            <input id="gradient" name="gradient" type="text" placeholder="linear-gradient(135deg,#1B2A4A 0%,#3B5998 50%,#6B8CC7 100%)">
+          </div>
+
+          <div class="field-full">
+            <label for="imageFiles">Fotos do imóvel</label>
+            <input id="imageFiles" name="imageFiles" type="file" accept="image/*" multiple>
+            <p class="helper">As imagens serão enviadas para o bucket público <code>property-images</code> no Supabase Storage.</p>
+            <div id="galleryPreview" class="thumb-list"></div>
+          </div>
+
+          <div class="field">
+            <label>
+              <input type="checkbox" name="is_active" checked>
+              Imóvel ativo no site
+            </label>
+          </div>
+
+          <div class="field">
+            <label>
+              <input type="checkbox" name="is_featured">
+              Exibir em destaque
+            </label>
+          </div>
+
+          <div class="field-full">
+            <button type="submit" class="btn btn-primary">Criar imóvel</button>
+          </div>
+        </form>
+      </section>
+    </main>
+  </div>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="./api.js"></script>
+  <script src="./property-form.js"></script>
+</body>
+</html>
