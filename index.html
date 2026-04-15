@@ -1123,7 +1123,7 @@ Via Google Reviews
 <p class="section-desc">Seleção especial dos melhores imóveis disponíveis em Águas Claras, curados pela nossa equipe.</p>
 </div>
 
-<div class="properties-grid">
+<div class="properties-grid" id="properties-container">
 <!-- Properties will be loaded dynamically via JavaScript -->
 <div style="text-align:center;padding:60px 20px;color:var(--gray-600);grid-column:1/-1">
   <div style="font-size:2rem;margin-bottom:16px">🔄</div>
@@ -4201,6 +4201,96 @@ function attachWhatsAppLeadForm(formId, buttonId, serviceType) {
 
 // Initialize WhatsApp Lead Form
 attachWhatsAppLeadForm('whatsappLeadForm', 'whatsappLeadSubmitBtn');
+</script>
+
+<script>
+// Load properties from JSON
+async function carregarImoveis() {
+  try {
+    const response = await fetch('imoveis.json');
+    const data = await response.json();
+    
+    const container = document.getElementById('properties-container');
+    if (!container) return;
+    
+    // Get current filter
+    const currentFilter = document.getElementById('mainTipo')?.value || 'todos';
+    const currentBairro = document.getElementById('mainBairro')?.value || 'todos';
+    
+    // Filter properties
+    let imoveisFiltrados = data.imoveis.filter(imovel => {
+      if (currentFilter !== 'todos' && imovel.acao !== currentFilter) return false;
+      if (currentBairro !== 'todos' && imovel.regiao !== currentBairro) return false;
+      return true;
+    });
+    
+    // Sort by destaque, then by id
+    imoveisFiltrados.sort((a, b) => {
+      if (b.destaque !== a.destaque) return b.destaque - a.destaque;
+      return b.id - a.id;
+    });
+    
+    // Render properties
+    container.innerHTML = '';
+    
+    if (imoveisFiltrados.length === 0) {
+      container.innerHTML = '<p class="text-center p-4">Nenhum imóvel encontrado.</p>';
+      return;
+    }
+    
+    imoveisFiltrados.forEach(imovel => {
+      const card = criarCardImovel(imovel, data.configuracao);
+      container.innerHTML += card;
+    });
+    
+  } catch (error) {
+    console.error('Erro ao carregar imóveis:', error);
+  }
+}
+
+function criarCardImovel(imovel, config) {
+  const valorFormatado = imovel.valor_aluguel_liquido 
+    ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor_aluguel_liquido)
+    : (imovel.valor_venda ? new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.valor_venda) : 'Consulte');
+  
+  const imagemPlaceholder = imovel.fotos && imovel.fotos.length > 0 
+    ? imovel.fotos[0] 
+    : 'https://via.placeholder.com/400x250/1B2A4A/ffffff?text=Imóvel';
+  
+  return `
+  <div class="property-card reveal" data-id="${imovel.id}" data-action="${imovel.acao}" data-regiao="${imovel.regiao}">
+    <div class="property-image" style="background: linear-gradient(135deg, #1B2A4A, #2C3E50);">
+      <img src="${imagemPlaceholder}" alt="${imovel.titulo}" style="width:100%;height:250px;object-fit:cover;" onerror="this.src='https://via.placeholder.com/400x250/1B2A4A/ffffff?text=Imóvel'">
+      <div class="property-badge">${imovel.acao === 'aluguel' ? '🏠 ALUGUEL' : '💰 VENDA'}</div>
+    </div>
+    <div class="property-content">
+      <div class="property-tags">
+        ${imovel.quartos ? `<span>🛏️ ${imovel.quartos} Quarto${imovel.quartos > 1 ? 's' : ''}</span>` : ''}
+        ${imovel.vagas ? `<span>🚗 ${imovel.vagas} Vaga${imovel.vagas > 1 ? 's' : ''}</span>` : ''}
+        ${imovel.area ? `<span>📐 ${imovel.area} m²</span>` : ''}
+      </div>
+      <h3 class="property-title">${imovel.titulo}</h3>
+      <p class="property-location">📍 ${imovel.bairro || 'Águas Claras'}</p>
+      <p class="property-price"><strong>${valorFormatado}</strong> ${imovel.condominio ? `<br><small>Cond: ${new Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(imovel.condominio)}/mês</small>` : ''}</p>
+      <p class="property-desc">${imovel.descricao ? imovel.descricao.substring(0, 120) + '...' : ''}</p>
+      <a href="https://wa.me/556130424344?text=Olá!%20Tenho%20interesse%20no%20imóvel%20${encodeURIComponent(imovel.titulo)}" target="_blank" class="property-cta">
+        👉 Agendar Visita
+      </a>
+    </div>
+  </div>`;
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', () => {
+  carregarImoveis();
+  
+  // Add event listeners for filters
+  document.querySelectorAll('#mainTipo, #mainBairro').forEach(select => {
+    select.addEventListener('change', () => {
+      carregarImoveis();
+    });
+  });
+});
 </script>
 </body>
 </html>
