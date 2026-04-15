@@ -45,6 +45,10 @@ function collectFormPayload() {
     property_type: data.get('property_type'),
     listing_type: data.get('listing_type'),
     price: data.get('price'),
+    gross_price: data.get('gross_price'),
+    punctuality_discount: data.get('punctuality_discount'),
+    condo_fee: data.get('condo_fee'),
+    water_notes: data.get('water_notes'),
     area_m2: data.get('area_m2'),
     bedrooms: data.get('bedrooms'),
     bathrooms: data.get('bathrooms'),
@@ -66,6 +70,10 @@ function fillForm(property) {
   form.property_type.value = property.property_type || 'apartamento';
   form.listing_type.value = property.listing_type || 'aluguel';
   form.price.value = property.price ?? '';
+  if (form.gross_price) form.gross_price.value = property.gross_price ?? '';
+  if (form.punctuality_discount) form.punctuality_discount.value = property.punctuality_discount ?? '';
+  if (form.condo_fee) form.condo_fee.value = property.condo_fee ?? '';
+  if (form.water_notes) form.water_notes.value = property.water_notes || '';
   form.area_m2.value = property.area_m2 ?? '';
   form.bedrooms.value = property.bedrooms ?? 0;
   form.bathrooms.value = property.bathrooms ?? 0;
@@ -102,6 +110,29 @@ function bindFormInteractions() {
     const button = event.target.closest('[data-action="remove-image"]');
     if (!button) return;
     button.closest('.thumb-item')?.remove();
+  });
+
+  const form = document.getElementById('propertyForm');
+  const grossField = form?.querySelector('[name="gross_price"]');
+  const discountField = form?.querySelector('[name="punctuality_discount"]');
+  const priceField = form?.querySelector('[name="price"]');
+  const listingTypeField = form?.querySelector('[name="listing_type"]');
+
+  function syncNetRent() {
+    if (!grossField || !discountField || !priceField) return;
+    if (listingTypeField && listingTypeField.value !== 'aluguel') return;
+    const gross = Number(grossField.value || 0);
+    const discount = Number(discountField.value || 0);
+    if (!gross && !discount) return;
+    const liquid = Math.max(gross - discount, 0);
+    priceField.value = liquid ? liquid.toFixed(2) : '';
+  }
+
+  grossField?.addEventListener('input', syncNetRent);
+  discountField?.addEventListener('input', syncNetRent);
+  listingTypeField?.addEventListener('change', () => {
+    if (listingTypeField.value === 'venda') return;
+    syncNetRent();
   });
 }
 

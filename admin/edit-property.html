@@ -24,6 +24,7 @@
         <a href="./dashboard.html">Dashboard</a>
         <a class="active" href="./properties.html">Imóveis</a>
         <a href="./add-property.html">Adicionar imóvel</a>
+        <a href="./help.html">Como cadastrar</a>
         <a href="../index.html" target="_blank" rel="noreferrer">Ver site público</a>
         <button type="button" data-action="logout">Sair</button>
       </nav>
@@ -36,6 +37,7 @@
           <p>Atualize dados, imagens, status e destaque do imóvel.</p>
         </div>
         <div class="admin-actions">
+          <a class="btn btn-secondary" href="./help.html">Como cadastrar</a>
           <a class="btn btn-secondary" href="./properties.html">Voltar para imóveis</a>
         </div>
       </header>
@@ -43,7 +45,14 @@
       <div id="formMessage" class="message"></div>
 
       <section class="panel">
+        <div class="banner">
+          <strong>Ao editar:</strong> revise preço, status e ordem das fotos antes de salvar. Para locação, bruto e desconto recalculam o valor líquido automaticamente.
+        </div>
         <form id="propertyForm" class="form-grid">
+          <div class="form-section">
+            <div class="form-section-title">Identificação do imóvel</div>
+            <div class="form-section-desc">Esses dados aparecem no card, nos detalhes e ajudam a equipe a localizar o imóvel depois.</div>
+          </div>
           <div class="field-full">
             <label for="title">Título</label>
             <input id="title" name="title" type="text" required>
@@ -73,11 +82,35 @@
             </select>
           </div>
 
+          <div class="form-section">
+            <div class="form-section-title">Valores comerciais</div>
+            <div class="form-section-desc">Para aluguel, informe bruto e desconto. O campo preço vira o valor líquido. Para venda, preencha diretamente o preço final.</div>
+          </div>
           <div class="field">
-            <label for="price">Preço</label>
+            <label for="gross_price">Aluguel bruto</label>
+            <input id="gross_price" name="gross_price" type="number" min="0" step="0.01">
+          </div>
+          <div class="field">
+            <label for="punctuality_discount">Desconto de pontualidade</label>
+            <input id="punctuality_discount" name="punctuality_discount" type="number" min="0" step="0.01">
+          </div>
+          <div class="field">
+            <label for="price">Preço anunciado / líquido</label>
             <input id="price" name="price" type="number" min="0" step="0.01">
           </div>
+          <div class="field">
+            <label for="condo_fee">Condomínio</label>
+            <input id="condo_fee" name="condo_fee" type="number" min="0" step="0.01">
+          </div>
+          <div class="field-full">
+            <label for="water_notes">Observações de água / taxas</label>
+            <input id="water_notes" name="water_notes" type="text">
+          </div>
 
+          <div class="form-section">
+            <div class="form-section-title">Características</div>
+            <div class="form-section-desc">Preencha a estrutura física do imóvel. Se algum dado não existir, pode deixar zero.</div>
+          </div>
           <div class="field">
             <label for="area_m2">Metragem (m²)</label>
             <input id="area_m2" name="area_m2" type="number" min="0" step="0.01">
@@ -103,6 +136,10 @@
             <input id="neighborhood" name="neighborhood" type="text" required>
           </div>
 
+          <div class="form-section">
+            <div class="form-section-title">Localização e texto comercial</div>
+            <div class="form-section-desc">Use a descrição para colocar diferenciais, lazer, regras da locação e condições especiais.</div>
+          </div>
           <div class="field-full">
             <label for="address">Endereço</label>
             <input id="address" name="address" type="text" required>
@@ -126,19 +163,19 @@
           <div class="field-full">
             <label for="imageFiles">Adicionar novas fotos</label>
             <input id="imageFiles" name="imageFiles" type="file" accept="image/*" multiple>
-            <p class="helper">Imagens novas serão somadas às existentes. Você pode remover as atuais clicando no X.</p>
+            <p class="helper">Imagens novas serão somadas às existentes. Você pode remover as atuais clicando no X. Mantenha a melhor foto primeiro para virar a capa do card.</p>
             <div id="galleryPreview" class="thumb-list"></div>
           </div>
 
           <div class="field">
-            <label>
+            <label class="check-stack">
               <input type="checkbox" name="is_active">
               Imóvel ativo no site
             </label>
           </div>
 
           <div class="field">
-            <label>
+            <label class="check-stack">
               <input type="checkbox" name="is_featured">
               Exibir em destaque
             </label>

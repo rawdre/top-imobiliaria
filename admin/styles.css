@@ -59,6 +59,15 @@ button,input,select,textarea{font:inherit}
 .form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px}
 .field-full{grid-column:1/-1}
 .helper{color:var(--gray-600);font-size:.84rem;line-height:1.5}
+.form-section{grid-column:1/-1;padding-top:8px}
+.form-section-title{font-family:"Plus Jakarta Sans",Inter,sans-serif;font-size:1.05rem;color:var(--navy);margin-bottom:6px}
+.form-section-desc{color:var(--gray-600);font-size:.9rem;line-height:1.6}
+.check-stack{display:flex;align-items:center;gap:10px;min-height:52px;padding:12px 14px;border-radius:14px;border:1.5px solid var(--gray-200);background:var(--white)}
+.check-stack input{width:18px;height:18px}
+.banner{padding:14px 16px;border-radius:16px;margin-bottom:18px;border:1px solid rgba(27,42,74,.08);background:linear-gradient(180deg,#FFFFFF 0%,#F6F8FC 100%);color:var(--gray-600);line-height:1.6}
+.banner strong{color:var(--navy)}
+.panel-list{display:flex;flex-direction:column;gap:12px;margin-top:12px}
+.panel-list li{margin-left:18px;color:var(--gray-600);line-height:1.6}
 .message{display:none;padding:14px 16px;border-radius:14px;margin-bottom:16px;font-weight:600}
 .message.show{display:block}
 .message.error{background:#FDECEC;color:#B42318;border:1px solid #F7C9C9}
