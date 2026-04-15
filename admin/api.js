@@ -1,6 +1,7 @@
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
-const PROPERTY_IMAGE_BUCKET = 'property-images';
+const SUPABASE_CONFIG = window.TOP_IMOBILIARIA_SUPABASE || {};
+const SUPABASE_URL = SUPABASE_CONFIG.url || 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = SUPABASE_CONFIG.anonKey || 'YOUR_SUPABASE_ANON_KEY';
+const PROPERTY_IMAGE_BUCKET = SUPABASE_CONFIG.propertyImageBucket || 'property-images';
 
 let supabaseClient = null;
 
@@ -15,7 +16,7 @@ function ensureConfigured() {
     SUPABASE_URL === 'YOUR_SUPABASE_URL' ||
     SUPABASE_ANON_KEY === 'YOUR_SUPABASE_ANON_KEY'
   ) {
-    throw new Error('Configure SUPABASE_URL e SUPABASE_ANON_KEY em admin/api.js e em index.html.');
+    throw new Error('Configure o arquivo assets/top-imobiliaria/supabase-config.js com a URL e a anon key do Supabase.');
   }
 }
 

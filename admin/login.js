@@ -6,7 +6,10 @@ function setLoginMessage(message, type = 'error') {
 }
 
 async function bootstrapLogin() {
+  const form = document.getElementById('loginForm');
+
   try {
+    ensureConfigured();
     const session = await getSession();
     if (session) {
       window.location.href = './dashboard.html';
@@ -14,9 +17,14 @@ async function bootstrapLogin() {
     }
   } catch (error) {
     setLoginMessage(error.message || 'Falha ao verificar sessão.');
+    if (form) {
+      form.querySelectorAll('input, button').forEach((field) => {
+        field.disabled = true;
+      });
+    }
+    return;
   }
 
-  const form = document.getElementById('loginForm');
   if (!form) return;
 
   form.addEventListener('submit', async (event) => {

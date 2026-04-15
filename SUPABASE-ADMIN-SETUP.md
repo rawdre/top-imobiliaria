@@ -44,60 +44,26 @@ O painel foi criado em:
    - `Project URL`
    - `anon public key`
 3. Substitua os placeholders em:
-   - `admin/api.js`
-   - `index.html`
+   - `assets/top-imobiliaria/supabase-config.js`
 
 Procure por:
 
 - `YOUR_SUPABASE_URL`
 - `YOUR_SUPABASE_ANON_KEY`
 
+Esse arquivo é compartilhado pelo site público e pelo painel admin. Assim a configuração fica em um lugar só.
+
 ## 2. Criar tabela properties
 
-Execute o SQL abaixo no SQL Editor do Supabase:
+Execute o arquivo abaixo no SQL Editor do Supabase:
 
-```sql
-create extension if not exists pgcrypto;
-
-create table if not exists public.properties (
-  id uuid primary key default gen_random_uuid(),
-  title text not null,
-  property_type text not null,
-  listing_type text not null check (listing_type in ('aluguel', 'venda')),
-  price numeric not null default 0,
-  gross_price numeric not null default 0,
-  punctuality_discount numeric not null default 0,
-  condo_fee numeric not null default 0,
-  water_notes text,
-  area_m2 numeric not null default 0,
-  bedrooms integer not null default 0,
-  bathrooms integer not null default 0,
-  garage_spaces integer not null default 0,
-  address text not null,
-  neighborhood text not null,
-  condominium_name text,
-  description text,
-  gallery jsonb not null default '[]'::jsonb,
-  gradient text,
-  is_featured boolean not null default false,
-  is_active boolean not null default true,
-  created_at timestamptz not null default now(),
-  updated_at timestamptz not null default now()
-);
-
-create index if not exists idx_properties_listing_type on public.properties (listing_type);
-create index if not exists idx_properties_is_active on public.properties (is_active);
-create index if not exists idx_properties_is_featured on public.properties (is_featured);
-create index if not exists idx_properties_neighborhood on public.properties (neighborhood);
-create index if not exists idx_properties_created_at on public.properties (created_at desc);
-```
+- `supabase/01-schema.sql`
 
 ## 3. Criar bucket de imagens
 
-No Supabase Storage:
+No Supabase Storage, você pode executar:
 
-1. Crie o bucket `property-images`
-2. Marque como `Public`
+- `supabase/03-storage-policies.sql`
 
 Estrutura usada pelo painel:
 
@@ -122,34 +88,7 @@ Para o MVP, o mais simples é:
 
 Execute:
 
-```sql
-alter table public.properties enable row level security;
-
-create policy "Public can read active properties"
-on public.properties
-for select
-to anon, authenticated
-using (is_active = true or auth.role() = 'authenticated');
-
-create policy "Authenticated users can insert properties"
-on public.properties
-for insert
-to authenticated
-with check (true);
-
-create policy "Authenticated users can update properties"
-on public.properties
-for update
-to authenticated
-using (true)
-with check (true);
-
-create policy "Authenticated users can delete properties"
-on public.properties
-for delete
-to authenticated
-using (true);
-```
+- `supabase/02-rls-policies.sql`
 
 Para o bucket público, configure políticas que permitam:
 
@@ -203,7 +142,7 @@ Sem isso, ele existe visualmente, mas não autentica nem persiste dados.
 
 Antes de publicar o admin em produção:
 
-1. configurar Supabase completo
+1. preencher `assets/top-imobiliaria/supabase-config.js`
 2. cadastrar 2 ou 3 imóveis reais
 3. validar imagens e listagem no site público
 4. só depois decidir se o admin fica no mesmo repo público ou vai para um subdomínio separado

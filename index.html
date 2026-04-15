@@ -5,6 +5,7 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Top Imobiliária DF — Imóveis em Águas Claras, Brasília | Desde 1992</title>
+<script src="assets/top-imobiliaria/supabase-config.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
 <meta name="description" content="Top Imobiliária DF — 34+ anos encontrando o imóvel perfeito em Águas Claras, Brasília. Locação, venda e consultoria comercial com aluguel protegido com garantia locatícia.">
 <meta name="keywords" content="imobiliária águas claras, aluguel águas claras, apartamento águas claras, imóveis brasília, locação DF, venda de imóveis águas claras">
@@ -2881,9 +2882,10 @@ Quero Vender Meu Imóvel
 </div>
 
 <script>
-// Supabase config - will be updated when project is created
-const SUPABASE_URL = 'YOUR_SUPABASE_URL';
-const SUPABASE_ANON_KEY = 'YOUR_SUPABASE_ANON_KEY';
+// Supabase config - shared with the admin panel
+const SUPABASE_CONFIG = window.TOP_IMOBILIARIA_SUPABASE || {};
+const SUPABASE_URL = SUPABASE_CONFIG.url || 'YOUR_SUPABASE_URL';
+const SUPABASE_ANON_KEY = SUPABASE_CONFIG.anonKey || 'YOUR_SUPABASE_ANON_KEY';
 let db = null;
 try {
   if (window.supabase && SUPABASE_URL !== 'YOUR_SUPABASE_URL') {
