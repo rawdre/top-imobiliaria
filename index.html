@@ -254,11 +254,18 @@ img{max-width:100%;display:block}
 .property-modal-close{width:42px;height:42px;border-radius:50%;border:1px solid var(--gray-200);background:var(--white);color:var(--navy);font-size:1.2rem;cursor:pointer;transition:var(--transition)}
 .property-modal-close:hover{border-color:var(--red);color:var(--red);transform:rotate(90deg)}
 .property-modal-body{padding:24px 28px 28px}
+.property-modal-gallery{margin-bottom:20px}
+.property-modal-main-image{width:100%;height:320px;border-radius:20px;overflow:hidden;background:var(--gray-100);border:1px solid var(--gray-100);margin-bottom:12px}
+.property-modal-main-image img{width:100%;height:100%;object-fit:cover;display:block}
+.property-modal-thumbs{display:grid;grid-template-columns:repeat(auto-fill,minmax(78px,1fr));gap:10px}
+.property-modal-thumb{padding:0;border:none;background:transparent;cursor:pointer;border-radius:14px;overflow:hidden;border:2px solid transparent;transition:var(--transition)}
+.property-modal-thumb img{display:block;width:100%;height:68px;object-fit:cover}
+.property-modal-thumb.active{border-color:var(--red);box-shadow:0 6px 18px rgba(211,47,47,.18)}
 .property-modal-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-bottom:20px}
 .property-modal-stat{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:18px;padding:14px 16px}
 .property-modal-stat strong{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-600);margin-bottom:6px}
 .property-modal-stat span{font-size:1rem;color:var(--navy);font-weight:600}
-.property-modal-desc{color:var(--gray-600);line-height:1.8;margin-bottom:20px}
+.property-modal-desc{color:var(--gray-600);line-height:1.8;margin-bottom:20px;white-space:pre-line}
 .property-modal-actions{display:flex;flex-wrap:wrap;gap:12px}
 .property-modal-actions button,.property-modal-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:50px;border:none;font-weight:700;font-family:inherit;text-decoration:none;cursor:pointer;transition:var(--transition)}
 .property-modal-actions .primary{background:var(--red);color:var(--white)}
@@ -2845,6 +2852,12 @@ Quero Vender Meu Imóvel
 <button class="property-modal-close" type="button" aria-label="Fechar detalhes" onclick="closePropertyModal()">✕</button>
 </div>
 <div class="property-modal-body">
+<div class="property-modal-gallery" id="propertyModalGallery" hidden>
+<div class="property-modal-main-image">
+<img id="propertyModalMainImage" src="" alt="Foto do imóvel">
+</div>
+<div class="property-modal-thumbs" id="propertyModalThumbs"></div>
+</div>
 <div class="property-modal-grid" id="propertyModalStats"></div>
 <p class="property-modal-desc" id="propertyModalDescription"></p>
 <div class="property-modal-actions">
@@ -2869,6 +2882,46 @@ try {
 
 // Sample properties for fallback when Supabase isn't configured
 const sampleProperties = [
+  {
+    id: 'max-home-mall-1q-locacao',
+    title: 'Apartamento 1 quarto com lazer completo - Max Home e Mall',
+    property_type: 'apartamento',
+    listing_type: 'aluguel',
+    price: 2100,
+    gross_price: 2310,
+    punctuality_discount: 210,
+    condo_fee: 729.51,
+    water_notes: 'Água rateada',
+    area_m2: 0,
+    bedrooms: 1,
+    bathrooms: 1,
+    garage_spaces: 1,
+    address: 'Rua 07 Norte, Águas Claras - DF',
+    neighborhood: 'Águas Claras',
+    condominium_name: 'Ed. Max Home e Mall',
+    is_featured: true,
+    gradient: 'linear-gradient(135deg,#C7B299 0%,#9F7E69 45%,#556270 100%)',
+    description: 'Excelente apartamento de 1 quarto com sala, banheiro social, cozinha americana, área de serviço, 1 vaga de garagem coberta e vista livre. O imóvel conta com armários planejados em todos os ambientes e o prédio oferece lazer completo com piscina aquecida, sauna, academia, churrasqueira e espaço gourmet. Muito bem localizado, próximo ao metrô, comércio, parque e com fácil acesso à EPTG.\n\nAluguel bruto: R$ 2.310,00. Desconto de pontualidade: R$ 210,00. Aluguel líquido: R$ 2.100,00. Condomínio: R$ 729,51. Água rateada.\n\nNão trabalhamos com taxa de reserva do imóvel. O imóvel só fica reservado mediante apresentação da documentação completa para análise. O primeiro cliente que deixar a documentação para análise terá preferência na locação.\n\nOs valores de taxas condominiais podem sofrer alterações e devem ser confirmados junto à administração do condomínio.',
+    gallery: [
+      { name: 'Área comum com espelho d’água', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-01.jpeg' },
+      { name: 'Sala com varanda', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-02.jpeg' },
+      { name: 'Sala integrada', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-03.jpeg' },
+      { name: 'Cozinha americana', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-04.jpeg' },
+      { name: 'Área de serviço', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-05.jpeg' },
+      { name: 'Varanda com vista livre', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-06.jpeg' },
+      { name: 'Vista da área de lazer', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-07.jpeg' },
+      { name: 'Quarto com armário', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-08.jpeg' },
+      { name: 'Quarto e suíte', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-09.jpeg' },
+      { name: 'Banheiro', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-10.jpeg' },
+      { name: 'Espaço gourmet', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-11.jpeg' },
+      { name: 'Área externa', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-12.jpeg' },
+      { name: 'Salão de festas', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-13.jpeg' },
+      { name: 'Piscina', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-14.jpeg' },
+      { name: 'Fachada do edifício', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-15.jpeg' },
+      { name: 'Churrasqueira', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-16.jpeg' },
+      { name: 'Academia', url: 'assets/top-imobiliaria/properties/max-home-mall-1q/foto-17.jpeg' }
+    ]
+  },
   {
     id: 'sample-1',
     title: 'Apartamento 3 quartos - Rua 25 Sul',
@@ -2974,6 +3027,69 @@ function getPropertyUrl(propertyId) {
   return `${window.location.origin}${window.location.pathname}#${getPropertyFragment(propertyId)}`;
 }
 
+function getPropertyGallery(property) {
+  if (!property || !Array.isArray(property.gallery)) return [];
+  return property.gallery
+    .map((item, index) => {
+      if (typeof item === 'string') {
+        return { url: item, name: `${property.title || 'Imóvel'} - foto ${index + 1}` };
+      }
+      if (item && item.url) {
+        return {
+          url: item.url,
+          name: item.name || `${property.title || 'Imóvel'} - foto ${index + 1}`
+        };
+      }
+      return null;
+    })
+    .filter(Boolean);
+}
+
+function getPropertyCover(property) {
+  const gallery = getPropertyGallery(property);
+  return gallery.length ? gallery[0].url : null;
+}
+
+function renderPropertyGallery(property) {
+  const wrapper = document.getElementById('propertyModalGallery');
+  const mainImage = document.getElementById('propertyModalMainImage');
+  const thumbs = document.getElementById('propertyModalThumbs');
+  if (!wrapper || !mainImage || !thumbs) return;
+
+  const gallery = getPropertyGallery(property);
+  if (!gallery.length) {
+    wrapper.hidden = true;
+    thumbs.innerHTML = '';
+    mainImage.removeAttribute('src');
+    return;
+  }
+
+  wrapper.hidden = false;
+  mainImage.src = gallery[0].url;
+  mainImage.alt = gallery[0].name || (property.title || 'Foto do imóvel');
+
+  thumbs.innerHTML = gallery.map((image, index) => `
+    <button
+      type="button"
+      class="property-modal-thumb ${index === 0 ? 'active' : ''}"
+      data-url="${image.url}"
+      data-name="${image.name ? image.name.replace(/"/g, '&quot;') : ''}"
+      aria-label="Ver foto ${index + 1}"
+    >
+      <img src="${image.url}" alt="${image.name || `Foto ${index + 1}`}">
+    </button>
+  `).join('');
+
+  thumbs.querySelectorAll('.property-modal-thumb').forEach((button) => {
+    button.addEventListener('click', () => {
+      mainImage.src = button.dataset.url;
+      mainImage.alt = button.dataset.name || (property.title || 'Foto do imóvel');
+      thumbs.querySelectorAll('.property-modal-thumb').forEach((item) => item.classList.remove('active'));
+      button.classList.add('active');
+    });
+  });
+}
+
 function getVisibleProperties() {
   if (!currentListingFilter) return allProperties;
   return allProperties.filter((property) => property.listing_type === currentListingFilter);
@@ -3045,11 +3161,15 @@ function renderProperties(properties) {
     const isRent = property.listing_type === 'aluguel';
     const price = formatPrice(property.price, isRent);
     const gradient = property.gradient || gradients[index % gradients.length];
+    const coverImage = getPropertyCover(property);
+    const backgroundStyle = coverImage
+      ? `background-image:linear-gradient(rgba(15,26,46,.18),rgba(15,26,46,.28)),url('${coverImage}');background-size:cover;background-position:center;`
+      : `background:${gradient}`;
     
     return `
       <div class="property-card reveal reveal-delay-${(index % 3) + 1}" id="${getPropertyFragment(property.id)}">
         <div class="property-img">
-          <div class="gradient-bg" style="background:${gradient}"></div>
+          <div class="gradient-bg" style="${backgroundStyle}"></div>
           <button class="property-fav" title="Salvar nos favoritos">♡</button>
           <span class="property-tag tag-${isRent ? 'rent' : 'sale'}">${isRent ? 'Aluguel' : 'Venda'}</span>
           <div class="property-price-overlay">
@@ -3137,6 +3257,7 @@ function openPropertyModal(property) {
   if (!modal || !property) return;
 
   currentPropertyModalId = property.id;
+  renderPropertyGallery(property);
   document.getElementById('propertyModalTitle').textContent = property.title || 'Detalhes do imóvel';
   document.getElementById('propertyModalSubtitle').textContent = property.address || property.neighborhood || 'Águas Claras e região';
   document.getElementById('propertyModalDescription').textContent =
@@ -3147,10 +3268,26 @@ function openPropertyModal(property) {
     ['Modalidade', property.listing_type === 'aluguel' ? 'Aluguel' : 'Venda'],
     ['Preço', property.price ? formatPrice(property.price, property.listing_type === 'aluguel').replace(/<[^>]+>/g, '') : 'Consulte'],
     ['Tipo', property.property_type || 'Não informado'],
-    ['Condomínio', property.condominium_name || 'Não informado'],
+    ['Prédio', property.condominium_name || 'Não informado'],
     ['Quartos', property.bedrooms ? `${property.bedrooms}` : 'Não informado'],
     ['Área', property.area_m2 ? `${property.area_m2} m²` : 'Não informado']
   ];
+
+  if (property.garage_spaces) {
+    stats.push(['Garagem', `${property.garage_spaces} vaga${property.garage_spaces > 1 ? 's' : ''}`]);
+  }
+  if (property.gross_price) {
+    stats.push(['Aluguel bruto', formatPrice(property.gross_price, true).replace(/<[^>]+>/g, '')]);
+  }
+  if (property.punctuality_discount) {
+    stats.push(['Desc. pontualidade', formatPrice(property.punctuality_discount, false).replace(/<[^>]+>/g, '')]);
+  }
+  if (property.condo_fee) {
+    stats.push(['Condomínio', formatPrice(property.condo_fee, false).replace(/<[^>]+>/g, '')]);
+  }
+  if (property.water_notes) {
+    stats.push(['Observação', property.water_notes]);
+  }
 
   document.getElementById('propertyModalStats').innerHTML = stats.map(([label, value]) => `
     <div class="property-modal-stat">
