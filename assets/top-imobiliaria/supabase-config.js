@@ -1,6 +1,5 @@
 window.TOP_IMOBILIARIA_SUPABASE = {
-  url: 'YOUR_SUPABASE_URL',
-  anonKey: 'YOUR_SUPABASE_ANON_KEY',
+  url: 'https://agnpgfqugurxtplxljaw.supabase.co',
+  anonKey: 'sb_publishable_ZKn9l3sBJPFqbgqQ8g-KVA_xiRLK0le',
   propertyImageBucket: 'property-images',
 };
-
