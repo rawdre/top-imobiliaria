@@ -266,6 +266,8 @@ img{max-width:100%;display:block}
 .property-modal-stat{background:var(--gray-50);border:1px solid var(--gray-100);border-radius:18px;padding:14px 16px}
 .property-modal-stat strong{display:block;font-size:.78rem;letter-spacing:.06em;text-transform:uppercase;color:var(--gray-600);margin-bottom:6px}
 .property-modal-stat span{font-size:1rem;color:var(--navy);font-weight:600}
+.property-modal-amenities{display:flex;flex-wrap:wrap;gap:10px;margin-bottom:20px}
+.property-modal-amenity{display:inline-flex;align-items:center;gap:6px;padding:8px 12px;border-radius:999px;background:var(--gray-50);border:1px solid var(--gray-100);color:var(--navy);font-size:.88rem;font-weight:600}
 .property-modal-desc{color:var(--gray-600);line-height:1.8;margin-bottom:20px;white-space:pre-line}
 .property-modal-actions{display:flex;flex-wrap:wrap;gap:12px}
 .property-modal-actions button,.property-modal-actions a{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 18px;border-radius:50px;border:none;font-weight:700;font-family:inherit;text-decoration:none;cursor:pointer;transition:var(--transition)}
@@ -2871,6 +2873,7 @@ Quero Vender Meu Imóvel
 <div class="property-modal-thumbs" id="propertyModalThumbs"></div>
 </div>
 <div class="property-modal-grid" id="propertyModalStats"></div>
+<div class="property-modal-amenities" id="propertyModalAmenities" hidden></div>
 <p class="property-modal-desc" id="propertyModalDescription"></p>
 <div class="property-modal-actions">
 <button class="primary" type="button" id="propertyModalWhatsApp">💬 Falar no WhatsApp</button>
@@ -3045,17 +3048,19 @@ function getPropertyGallery(property) {
   return property.gallery
     .map((item, index) => {
       if (typeof item === 'string') {
-        return { url: item, name: `${property.title || 'Imóvel'} - foto ${index + 1}` };
+        return { url: item, name: `${property.title || 'Imóvel'} - foto ${index + 1}`, is_cover: index === 0 };
       }
       if (item && item.url) {
         return {
           url: item.url,
-          name: item.name || `${property.title || 'Imóvel'} - foto ${index + 1}`
+          name: item.name || `${property.title || 'Imóvel'} - foto ${index + 1}`,
+          is_cover: Boolean(item.is_cover)
         };
       }
       return null;
     })
-    .filter(Boolean);
+    .filter(Boolean)
+    .sort((a, b) => Number(b.is_cover) - Number(a.is_cover));
 }
 
 function getPropertyCover(property) {
@@ -3286,6 +3291,12 @@ function openPropertyModal(property) {
     ['Área', property.area_m2 ? `${property.area_m2} m²` : 'Não informado']
   ];
 
+  if (property.suites) {
+    stats.push(['Suítes', `${property.suites}`]);
+  }
+  if (property.has_dce) {
+    stats.push(['DCE', 'Sim']);
+  }
   if (property.garage_spaces) {
     stats.push(['Garagem', `${property.garage_spaces} vaga${property.garage_spaces > 1 ? 's' : ''}`]);
   }
@@ -3308,6 +3319,20 @@ function openPropertyModal(property) {
       <span>${value}</span>
     </div>
   `).join('');
+
+  const amenitiesWrapper = document.getElementById('propertyModalAmenities');
+  const amenities = Array.isArray(property.amenities) ? property.amenities : [];
+  if (amenitiesWrapper) {
+    if (amenities.length) {
+      amenitiesWrapper.hidden = false;
+      amenitiesWrapper.innerHTML = amenities.map((item) => `
+        <span class="property-modal-amenity">✓ ${item}</span>
+      `).join('');
+    } else {
+      amenitiesWrapper.hidden = true;
+      amenitiesWrapper.innerHTML = '';
+    }
+  }
 
   document.getElementById('propertyModalWhatsApp').onclick = () => contatarWhatsApp(property.id);
   document.getElementById('propertyModalVisit').onclick = () => agendarVisita(property.id);

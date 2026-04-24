@@ -112,11 +112,45 @@ Observação importante:
 2. Fazer login com Supabase Auth
 3. Cadastrar imóvel
 4. Enviar imagens
-5. Marcar:
+5. Selecionar a foto principal na área de miniaturas
+6. Definir a situação do cadastro:
    - ativo
+   - vendido
+   - suspenso
+   - inativo
+7. Marcar:
    - destaque, se necessário
-6. Salvar
-7. Validar no site público
+8. Salvar
+9. Validar no site público
+
+## 7.1 Campos importantes do novo cadastro
+
+O formulário do admin agora aceita também:
+
+- `Situação do cadastro`
+- `Suítes`
+- `DCE`
+- checklist de `Detalhes do imóvel`
+- seleção de `foto principal`
+
+Exemplos de detalhes já disponíveis no checklist:
+
+- cozinha com armários
+- salão de festas
+- piscina
+- área de lazer
+- academia
+- churrasqueira
+- sauna
+- área de serviço
+- varanda
+- playground
+- aceita pet
+- vista livre
+- elevador
+- portaria 24h
+
+Esses campos são gravados na tabela `properties` e também aparecem no detalhamento do imóvel no site público.
 
 ## 8. Compatibilidade com o site atual
 
@@ -126,6 +160,12 @@ Quando as chaves forem configuradas corretamente:
 
 - o site deixa de usar `sampleProperties`
 - passa a usar a base real do Supabase
+
+Além disso:
+
+- a imagem marcada como principal vira a primeira da galeria
+- o status do cadastro ajuda a equipe a filtrar imóveis no admin
+- suítes, DCE e detalhes do imóvel passam a enriquecer o modal público
 
 ## 9. Limitações atuais
 

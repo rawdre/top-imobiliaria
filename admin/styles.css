@@ -92,8 +92,16 @@ td strong{color:var(--navy)}
 .thumb-list{display:grid;grid-template-columns:repeat(auto-fill,minmax(120px,1fr));gap:12px;margin-top:12px}
 .thumb-item{position:relative;border-radius:16px;overflow:hidden;background:var(--gray-100);border:1px solid var(--gray-200)}
 .thumb-item img{display:block;width:100%;height:110px;object-fit:cover}
-.thumb-item button{position:absolute;top:8px;right:8px;width:30px;height:30px;border-radius:50%;border:none;background:rgba(15,26,46,.78);color:var(--white);cursor:pointer}
+.thumb-item button{position:absolute;width:30px;height:30px;border-radius:50%;border:none;background:rgba(15,26,46,.78);color:var(--white);cursor:pointer}
+.thumb-item button[data-action="remove-image"]{top:8px;right:8px}
+.thumb-item button[data-action="set-cover"]{top:8px;left:8px;background:rgba(211,47,47,.88)}
+.thumb-item.cover{border:2px solid var(--red);box-shadow:0 10px 24px rgba(211,47,47,.18)}
+.thumb-cover-badge{position:absolute;left:8px;bottom:8px;background:rgba(211,47,47,.92);color:var(--white);font-size:.72rem;font-weight:700;padding:6px 8px;border-radius:999px}
+.check-grid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;grid-column:1/-1}
+.check-item{display:flex;align-items:center;gap:10px;padding:12px 14px;border:1.5px solid var(--gray-200);border-radius:14px;background:var(--white);min-height:52px}
+.check-item input{width:18px;height:18px;flex:0 0 auto}
+.check-item span{font-size:.92rem;color:var(--gray-800);font-weight:500}
 .loading-inline{display:inline-flex;align-items:center;gap:10px;color:var(--gray-600)}
 @media(max-width:1100px){.stats-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.grid-2{grid-template-columns:1fr}}
 @media(max-width:900px){.admin-shell{grid-template-columns:1fr}.admin-sidebar{position:relative;height:auto}}
-@media(max-width:768px){.admin-main{padding:20px}.form-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr}.admin-topbar{flex-direction:column;align-items:flex-start}}
+@media(max-width:768px){.admin-main{padding:20px}.form-grid{grid-template-columns:1fr}.stats-grid{grid-template-columns:1fr}.admin-topbar{flex-direction:column;align-items:flex-start}.check-grid{grid-template-columns:1fr}}

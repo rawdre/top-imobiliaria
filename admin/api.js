@@ -107,10 +107,8 @@ async function fetchProperties(filters = {}) {
     query = query.eq('listing_type', filters.listingType);
   }
 
-  if (filters.status === 'active') {
-    query = query.eq('is_active', true);
-  } else if (filters.status === 'inactive') {
-    query = query.eq('is_active', false);
+  if (filters.status) {
+    query = query.eq('registration_status', filters.status);
   }
 
   const { data, error } = await query;
@@ -162,10 +160,13 @@ async function uploadPropertyImages(files) {
 }
 
 function normalizePropertyPayload(rawPayload) {
+  const registrationStatus = rawPayload.registration_status || 'ativo';
+
   return {
     title: rawPayload.title?.trim() || '',
     property_type: rawPayload.property_type || 'apartamento',
     listing_type: rawPayload.listing_type || 'aluguel',
+    registration_status: registrationStatus,
     price: Number(rawPayload.price || 0),
     gross_price: Number(rawPayload.gross_price || 0),
     punctuality_discount: Number(rawPayload.punctuality_discount || 0),
@@ -173,7 +174,9 @@ function normalizePropertyPayload(rawPayload) {
     water_notes: rawPayload.water_notes?.trim() || null,
     area_m2: Number(rawPayload.area_m2 || 0),
     bedrooms: Number(rawPayload.bedrooms || 0),
+    suites: Number(rawPayload.suites || 0),
     bathrooms: Number(rawPayload.bathrooms || 0),
+    has_dce: Boolean(rawPayload.has_dce),
     garage_spaces: Number(rawPayload.garage_spaces || 0),
     address: rawPayload.address?.trim() || '',
     neighborhood: rawPayload.neighborhood?.trim() || '',
@@ -181,7 +184,8 @@ function normalizePropertyPayload(rawPayload) {
     description: rawPayload.description?.trim() || null,
     gradient: rawPayload.gradient?.trim() || null,
     gallery: Array.isArray(rawPayload.gallery) ? rawPayload.gallery : [],
-    is_active: Boolean(rawPayload.is_active),
+    amenities: Array.isArray(rawPayload.amenities) ? rawPayload.amenities : [],
+    is_active: registrationStatus === 'ativo',
     is_featured: Boolean(rawPayload.is_featured),
     updated_at: new Date().toISOString(),
   };

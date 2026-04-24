@@ -81,6 +81,15 @@
               <option value="venda">Venda</option>
             </select>
           </div>
+          <div class="field">
+            <label for="registration_status">Situação do cadastro</label>
+            <select id="registration_status" name="registration_status">
+              <option value="ativo">Ativo</option>
+              <option value="vendido">Vendido</option>
+              <option value="suspenso">Suspenso</option>
+              <option value="inativo">Inativo</option>
+            </select>
+          </div>
 
           <div class="form-section">
             <div class="form-section-title">Valores comerciais</div>
@@ -120,6 +129,10 @@
             <label for="bedrooms">Quartos</label>
             <input id="bedrooms" name="bedrooms" type="number" min="0" step="1" value="0">
           </div>
+          <div class="field">
+            <label for="suites">Suítes</label>
+            <input id="suites" name="suites" type="number" min="0" step="1" value="0">
+          </div>
 
           <div class="field">
             <label for="bathrooms">Banheiros</label>
@@ -134,6 +147,17 @@
           <div class="field">
             <label for="neighborhood">Região / bairro</label>
             <input id="neighborhood" name="neighborhood" type="text" placeholder="Águas Claras Sul" required>
+          </div>
+          <div class="field">
+            <label class="check-stack">
+              <input id="has_dce" name="has_dce" type="checkbox">
+              Possui DCE
+            </label>
+          </div>
+
+          <div class="field-full">
+            <label>Detalhes do imóvel</label>
+            <div id="amenitiesChecklist" class="check-grid"></div>
           </div>
 
           <div class="form-section">
@@ -163,7 +187,7 @@
           <div class="field-full">
             <label for="imageFiles">Fotos do imóvel</label>
             <input id="imageFiles" name="imageFiles" type="file" accept="image/*" multiple>
-            <p class="helper">Ordem sugerida: fachada ou área comum primeiro, depois sala, cozinha, quartos, banheiro e lazer. As imagens serão enviadas para o bucket público <code>property-images</code> no Supabase Storage.</p>
+            <p class="helper">Ordem sugerida: fachada ou área comum primeiro, depois sala, cozinha, quartos, banheiro e lazer. Depois de subir as imagens, escolha qual será a <strong>foto principal</strong>. As imagens serão enviadas para o bucket público <code>property-images</code> no Supabase Storage.</p>
             <div id="galleryPreview" class="thumb-list"></div>
           </div>
 

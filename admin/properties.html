@@ -62,8 +62,10 @@
               <label for="filterStatus">Status</label>
               <select id="filterStatus">
                 <option value="">Todos</option>
-                <option value="active">Ativo</option>
-                <option value="inactive">Inativo</option>
+                <option value="ativo">Ativo</option>
+                <option value="vendido">Vendido</option>
+                <option value="suspenso">Suspenso</option>
+                <option value="inativo">Inativo</option>
               </select>
             </div>
           </div>
@@ -82,13 +84,14 @@
                 <th>Tipo</th>
                 <th>Preço</th>
                 <th>Região</th>
+                <th>Status</th>
                 <th>Fotos</th>
                 <th>Ações</th>
               </tr>
             </thead>
             <tbody id="propertiesTableBody">
               <tr>
-                <td colspan="7">
+                <td colspan="8">
                   <div class="loading-inline">Carregando imóveis...</div>
                 </td>
               </tr>

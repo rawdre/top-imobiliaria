@@ -9,6 +9,17 @@ function propertyImageCount(item) {
   return Array.isArray(item.gallery) ? item.gallery.length : 0;
 }
 
+function getStatusChip(status) {
+  const normalized = status || 'inativo';
+  const map = {
+    ativo: { label: 'Ativo', className: 'green' },
+    vendido: { label: 'Vendido', className: 'blue' },
+    suspenso: { label: 'Suspenso', className: 'gray' },
+    inativo: { label: 'Inativo', className: 'gray' },
+  };
+  return map[normalized] || map.inativo;
+}
+
 function renderPropertiesTable(items) {
   const tbody = document.getElementById('propertiesTableBody');
   if (!tbody) return;
@@ -16,7 +27,7 @@ function renderPropertiesTable(items) {
   if (!items.length) {
     tbody.innerHTML = `
       <tr>
-        <td colspan="7">
+        <td colspan="8">
           <div class="empty-state">Nenhum imóvel encontrado para os filtros selecionados.</div>
         </td>
       </tr>
@@ -24,7 +35,9 @@ function renderPropertiesTable(items) {
     return;
   }
 
-  tbody.innerHTML = items.map((item) => `
+  tbody.innerHTML = items.map((item) => {
+    const status = getStatusChip(item.registration_status || (item.is_active ? 'ativo' : 'inativo'));
+    return `
     <tr>
       <td>
         <strong>${escapeHtml(item.title)}</strong><br>
@@ -34,15 +47,16 @@ function renderPropertiesTable(items) {
       <td>${escapeHtml(item.property_type)}</td>
       <td>${formatCurrency(item.price)}</td>
       <td>${escapeHtml(item.neighborhood || '--')}</td>
+      <td><span class="chip ${status.className}">${status.label}</span></td>
       <td>${propertyImageCount(item)}</td>
       <td class="table-actions">
-        ${item.is_active ? '<span class="chip green">Ativo</span>' : '<span class="chip gray">Inativo</span>'}
         ${item.is_featured ? '<span class="chip blue">Destaque</span>' : ''}
         <a class="btn btn-secondary" href="./edit-property.html?id=${encodeURIComponent(item.id)}">Editar</a>
         <button class="btn btn-secondary" type="button" data-action="delete" data-id="${escapeHtml(item.id)}">Excluir</button>
       </td>
     </tr>
-  `).join('');
+  `;
+  }).join('');
 }
 
 async function loadPropertiesTable() {
